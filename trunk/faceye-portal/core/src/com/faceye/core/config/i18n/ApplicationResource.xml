@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  
+==============================security User Validator Information===========================
+-->
+<!-- 
+security.user.name.existed=您使用的用户名 <font color="red"> {0} </font> 已经存在，请使用其它用户名。
+security.user.register.success=<font color="red"> {0} </font> 注册成功
+system.exception.entity.on.detial=您传入的实体ID为空或实体类型为空
+system.exception.entity.on.remove=您传入的实体ID为空或实体类型为空
+system.global.success.on.remove=数据删除成功！
+
+com.faceye.home.default.title=FaceYe:做最棒的RSS订阅网站
+-->

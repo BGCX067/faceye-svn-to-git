@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd">
+	<!-- ======================== FILTER CHAIN ======================= -->
+
+	<!--  if you wish to use channel security, add "channelProcessingFilter," in front
+		of "httpSessionContextIntegrationFilter" in the list below 
+		去掉了:captchaValidationProcessingFilter
+	-->
+
+	<bean id="filterChainProxy"
+		class="org.acegisecurity.util.FilterChainProxy">
+		<property name="filterInvocationDefinitionSource">
+			<value>
+				CONVERT_URL_TO_LOWERCASE_BEFORE_COMPARISON
+				PATTERN_TYPE_APACHE_ANT
+				<!-- 
+				/**=httpSessionContextIntegrationFilter,logoutFilter,authenticationProcessingFilter,basicProcessingFilter,securityContextHolderAwareRequestFilter,rememberMeProcessingFilter,anonymousProcessingFilter,switchUserProcessingFilter,exceptionTranslationFilter,filterInvocationInterceptor
+				 -->
+				
+					/**=httpSessionContextIntegrationFilter,logoutFilter,authenticationProcessingFilter,basicProcessingFilter,securityContextHolderAwareRequestFilter,rememberMeProcessingFilter,channelProcessingFilter,anonymousProcessingFilter,exceptionTranslationFilter,filterInvocationInterceptor
+					
+				<!-- Come From AppFuse -->
+				<!-- 
+					/**=httpSessionContextIntegrationFilter,logoutFilter,authenticationProcessingFilter,securityContextHolderAwareRequestFilter,rememberMeProcessingFilter,anonymousProcessingFilter,exceptionTranslationFilter,filterInvocationInterceptor
+				-->
+			</value>
+		</property>
+	</bean>
+	<!-- ======================== AUTHENTICATION ======================= -->
+<!--
+		通过Providers提供认证者列表,如果一个认证提供者失败可以尝试另外一个认证提供者,以保证获取不同来源的身份认证，如
+		DaoAuthenticationProvider 从数据库中读取用户信息验证身份
+		AnonymousAuthenticationProvider 匿名用户身份认证
+		RememberMeAuthenticationProvider 已存cookie中的用户信息身份认证
+		
+		其它的还有
+		AuthByAdapterProvider 使用容器的适配器验证身份
+		CasAuthenticationProvider 根据Yale中心认证服务验证身份, 用于实现单点登陆
+		JaasAuthenticationProvider 从JASS登陆配置中获取用户信息验证身份
+		RemoteAuthenticationProvider 根据远程服务验证用户身份
+		RunAsImplAuthenticationProvider 对身份已被管理器替换的用户进行验证
+		X509AuthenticationProvider 从X509认证中获取用户信息验证身份
+		TestingAuthenticationProvider 单元测试时使用
+		
+		每个认证者会对自己指定的证明信息进行认证，如DaoAuthenticationProvider仅对UsernamePasswordAuthenticationToken这个证明信息进行认证。
+	-->
+	<bean id="authenticationManager"
+		class="org.acegisecurity.providers.ProviderManager">
+		<property name="providers">
+			<list>
+				<ref local="daoAuthenticationProvider" />
+				<ref local="anonymousAuthenticationProvider" />
+				<ref local="rememberMeAuthenticationProvider" />
+			</list>
+		</property>
+		<!-- 防止用户重登陆 -->
+		
+		<property name="sessionController">
+			<ref bean="concurrentSessionController" />
+		</property>
+	</bean>
+	<!-- 
+		<bean id="jdbcDaoImpl"
+		class="org.acegisecurity.userdetails.jdbc.JdbcDaoImpl">
+		<property name="dataSource">
+		<ref bean="dataSource" />
+		</property>
+		</bean>
+	-->
+
+	<bean id="passwordEncoder"
+		class="org.acegisecurity.providers.encoding.Md5PasswordEncoder" />
+
+	<bean id="daoAuthenticationProvider"
+		class="org.acegisecurity.providers.dao.DaoAuthenticationProvider">
+		<property name="userDetailsService">
+			<!-- 
+				<ref local="jdbcDaoImpl" />
+			-->
+			<ref bean="userService" />
+		</property>
+		<property name="userCache">
+			<ref local="userCache" />
+		</property>
+		<property name="passwordEncoder">
+			<ref local="passwordEncoder" />
+		</property>
+	</bean>
+<!--  
+	<bean id="cacheManager"
+		class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean" />
+-->
+	<bean id="userCacheBackend"
+		class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+		<property name="cacheManager">
+			<ref bean="cacheManager" />
+		</property>
+		<property name="cacheName">
+			<value>userCache</value>
+		</property>
+	</bean>
+
+	<bean id="userCache"
+		class="org.acegisecurity.providers.dao.cache.EhCacheBasedUserCache">
+		<property name="cache">
+			<ref local="userCacheBackend" />
+		</property>
+	</bean>
+
+	<!-- Automatically receives AuthenticationEvent messages -->
+	<bean id="loggerListener"
+		class="org.acegisecurity.event.authentication.LoggerListener" />
+
+	<bean id="basicProcessingFilter"
+		class="org.acegisecurity.ui.basicauth.BasicProcessingFilter">
+		<property name="authenticationManager">
+			<ref local="authenticationManager" />
+		</property>
+		<property name="authenticationEntryPoint">
+			<ref local="basicProcessingFilterEntryPoint" />
+		</property>
+	</bean>
+
+	<bean id="basicProcessingFilterEntryPoint"
+		class="org.acegisecurity.ui.basicauth.BasicProcessingFilterEntryPoint">
+		<property name="realmName">
+			<value>Faceye Realm</value>
+		</property>
+	</bean>
+
+	<bean id="anonymousProcessingFilter"
+		class="org.acegisecurity.providers.anonymous.AnonymousProcessingFilter">
+		<property name="key">
+			<value>foobar</value>
+		</property>
+		<property name="userAttribute">
+			<value>anonymousUser,ROLE_ANONYMOUS</value>
+		</property>
+	</bean>
+
+	<bean id="anonymousAuthenticationProvider"
+		class="org.acegisecurity.providers.anonymous.AnonymousAuthenticationProvider">
+		<property name="key">
+			<value>foobar</value>
+		</property>
+	</bean>
+
+	<bean id="httpSessionContextIntegrationFilter"
+		class="org.acegisecurity.context.HttpSessionContextIntegrationFilter">
+	</bean>
+
+	<bean id="rememberMeProcessingFilter"
+		class="org.acegisecurity.ui.rememberme.RememberMeProcessingFilter">
+		<property name="authenticationManager">
+			<ref local="authenticationManager" />
+		</property>
+		<property name="rememberMeServices">
+			<ref local="rememberMeServices" />
+		</property>
+	</bean>
+
+	<bean id="rememberMeServices"
+		class="org.acegisecurity.ui.rememberme.TokenBasedRememberMeServices">
+		<property name="userDetailsService">
+			<ref bean="userService" />
+		</property>
+		<property name="authenticationDetailsSource"
+			ref="authenticationDetailsSourceHelper" />
+		<property name="key">
+			<value>springRocks</value>
+		</property>
+		<property name="parameter" value="rememberme"></property>
+	</bean>
+
+	<bean id="authenticationDetailsSourceHelper"
+		class="com.faceye.core.service.security.service.intercept.AuthenticationDetailsSourceHelper" />
+
+	<bean id="rememberMeAuthenticationProvider"
+		class="org.acegisecurity.providers.rememberme.RememberMeAuthenticationProvider">
+		<property name="key">
+			<value>springRocks</value>
+		</property>
+	</bean>
+
+	<bean id="logoutFilter"
+		class="org.acegisecurity.ui.logout.LogoutFilter">
+		<constructor-arg value="/default.jsp?acegi=logout" />
+		<!-- URL redirected to after logout -->
+		<constructor-arg>
+			<list>
+				<ref bean="rememberMeServices" />
+				<bean
+					class="org.acegisecurity.ui.logout.SecurityContextLogoutHandler" />
+				<ref bean="customSessionLogoutHandler" />
+
+			</list>
+		</constructor-arg>
+		<property name="filterProcessesUrl">
+		  <value>/j_acegi_security_logout</value>
+		</property>
+	</bean>
+	<bean id="customSessionLogoutHandler"
+		class="com.faceye.core.service.security.service.intercept.SessionLogoutHandler">
+		<property name="sessionRegistry">
+			<ref bean="sessionRegistry" />
+		</property>
+	</bean>
+
+	<!-- 可以阻止某个用户名在已经成功登录进web应用的同时再进行一次成功的登录 -->
+	<bean id="concurrentSessionController"
+		class="org.acegisecurity.concurrent.ConcurrentSessionControllerImpl">
+		<property name="maximumSessions">
+			<value>1</value>
+		</property>
+		<property name="sessionRegistry">
+			<ref local="sessionRegistry" />
+		</property>
+		<property name="exceptionIfMaximumExceeded" value="true" />
+	</bean>
+
+	<bean id="sessionRegistry"
+		class="org.acegisecurity.concurrent.SessionRegistryImpl" />
+
+	<!--
+		通过装饰模式，装饰的HttpServletRequest对象。
+		其Wapper是ServletRequest包装类HttpServletRequestWrapper的子类(如:SavedRequestAwareWrapper或SecurityContextHolderAwareRequestWrapper)，
+		附上获取用户权限信息，request参数，headers 和 cookies 的方法
+	-->
+
+	<bean id="securityContextHolderAwareRequestFilter"
+		class="org.acegisecurity.wrapper.SecurityContextHolderAwareRequestFilter" />
+
+	<!-- ===================== HTTP CHANNEL REQUIREMENTS ==================== -->
+
+	<!-- You will need to uncomment the "Acegi Channel Processing Filter"
+		<filter-mapping> in web.xml for the following beans to be used -->
+
+	<bean id="channelProcessingFilter"
+		class="org.acegisecurity.securechannel.ChannelProcessingFilter">
+		<property name="channelDecisionManager">
+			<ref local="channelDecisionManager" />
+		</property>
+		<property name="filterInvocationDefinitionSource">
+			<value>
+				CONVERT_URL_TO_LOWERCASE_BEFORE_COMPARISON
+				<!--
+					\A/secure/.*\Z=REQUIRES_SECURE_CHANNEL
+					\A/acegilogin.jsp.*\Z=REQUIRES_SECURE_CHANNEL
+					\A/j_acegi_security_check.*\Z=REQUIRES_SECURE_CHANNEL
+					\A.*\Z=REQUIRES_INSECURE_CHANNEL
+				-->
+			</value>
+		</property>
+	</bean>
+
+	<bean id="channelDecisionManager"
+		class="org.acegisecurity.securechannel.ChannelDecisionManagerImpl">
+		<property name="channelProcessors">
+			<list>
+				<ref local="secureChannelProcessor" />
+				<ref local="insecureChannelProcessor" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="secureChannelProcessor"
+		class="org.acegisecurity.securechannel.SecureChannelProcessor" />
+	<bean id="insecureChannelProcessor"
+		class="org.acegisecurity.securechannel.InsecureChannelProcessor" />
+
+	<!-- ===================== HTTP REQUEST SECURITY ==================== -->
+
+	<bean id="exceptionTranslationFilter"
+		class="org.acegisecurity.ui.ExceptionTranslationFilter">
+		<property name="authenticationEntryPoint">
+			<ref local="authenticationProcessingFilterEntryPoint" />
+		</property>
+		<property name="accessDeniedHandler">
+			<bean
+				class="org.acegisecurity.ui.AccessDeniedHandlerImpl">
+				<property name="errorPage" value="/core/security/user/login.jsp" />
+			</bean>
+		</property>
+	</bean>
+	<bean id="authenticationProcessingFilter"
+		class="com.faceye.core.service.security.service.intercept.UserAuthenticationProcessingFilter">
+		<property name="authenticationManager">
+			<ref bean="authenticationManager" />
+		</property>
+		<!-- 认证失败后的重定向抵制  -->
+		<property name="authenticationFailureUrl">
+			<value>/core/security/user/login.jsp?acegi=loginFailure</value>
+		</property>
+		<property name="defaultTargetUrl">
+			<value>/default.jsp?acegi=loginSuccess</value>
+		</property>
+		<!-- 需要拦截的认证的地址  -->
+		<property name="filterProcessesUrl">
+			<value>/j_acegi_security_check</value>
+		</property>
+		<property name="rememberMeServices">
+			<ref local="rememberMeServices" />
+		</property>
+		<property name="userService">
+		 <ref bean="userService"/>
+		</property>
+	</bean>
+<!-- 当AccessDeniedException且存在anonymous user时触发 -->
+	<bean id="authenticationProcessingFilterEntryPoint"
+		class="org.acegisecurity.ui.webapp.AuthenticationProcessingFilterEntryPoint">
+		<property name="loginFormUrl">
+			<value>/core/security/user/login.jsp?acegi=login</value>
+		</property>
+		<property name="forceHttps">
+			<value>false</value>
+		</property>
+	</bean>
+
+	<bean id="httpRequestAccessDecisionManager"
+		class="org.acegisecurity.vote.AffirmativeBased">
+		<property name="allowIfAllAbstainDecisions">
+			<value>false</value>
+		</property>
+		<property name="decisionVoters">
+			<list>
+				<ref bean="roleVoter" />
+			</list>
+		</property>
+	</bean>
+
+	<!-- Note the order that entries are placed against the objectDefinitionSource is critical.
+		The FilterSecurityInterceptor will work from the top of the list down to the FIRST pattern that matches the request URL.
+		Accordingly, you should place MOST SPECIFIC (ie a/b/c/d.*) expressions first, with LEAST SPECIFIC (ie a/.*) expressions last -->
+	<bean id="filterInvocationInterceptor"
+		class="org.acegisecurity.intercept.web.FilterSecurityInterceptor">
+		<property name="authenticationManager">
+			<ref bean="authenticationManager" />
+		</property>
+		<property name="accessDecisionManager">
+			<ref local="httpRequestAccessDecisionManager" />
+		</property>
+		<property name="objectDefinitionSource">
+			<!-- 
+				<value>
+				CONVERT_URL_TO_LOWERCASE_BEFORE_COMPARISON
+				PATTERN_TYPE_APACHE_ANT
+				/index.jsp=ROLE_ANONYMOUS,ROLE_USER
+				/hello.htm=ROLE_ANONYMOUS,ROLE_USER
+				/logoff.jsp=ROLE_ANONYMOUS,ROLE_USER
+				/switchuser.jsp=ROLE_SUPERVISOR
+				/j_acegi_switch_user=ROLE_SUPERVISOR
+				/acegilogin.jsp*=ROLE_ANONYMOUS,ROLE_USER /**=ROLE_USER
+				
+				</value>
+			-->
+			<ref local="filterDefinitionSource"/>
+		</property>
+	</bean>
+	
+	<bean id="filterDefinitionSource"
+		class="com.faceye.core.service.security.service.intercept.WebFilterInvocationDefinitionSource">
+		<property name="convertUrlToLowercaseBeforeComparison"
+			value="true" />
+		<property name="useAntPath" value="true" />
+		<property name="resourceCacheService" ref="resourceCacheService" />
+	</bean>
+	
+
+	<!-- Filter used to switch the user context. Note: the switch and exit url must be secured 
+		based on the role granted the ability to 'switch' to another user -->
+	<!-- In this example 'marissa' has ROLE_SUPERVISOR that can switch to regular ROLE_USER(s) -->
+	<!-- bean id="switchUserProcessingFilter"
+		class="org.acegisecurity.ui.switchuser.SwitchUserProcessingFilter">
+		<property name="userDetailsService">
+			<ref bean="userService" />
+		</property>
+		<property name="switchUserUrl">
+			<value>/j_acegi_switch_user</value>
+		</property>
+		<property name="exitUserUrl">
+			<value>/j_acegi_exit_user</value>
+		</property>
+		<property name="targetUrl">
+			<value>
+				/acegi-security-sample-contacts-filter/secure/index.htm
+			</value>
+		</property>
+	</bean-->
+	<bean id="roleVoter" class="org.acegisecurity.vote.RoleVoter">
+		<property name="rolePrefix" value="AUTH_" />
+	</bean>
+</beans>

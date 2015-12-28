@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+
+	<bean name="/articleCategoryAction"
+		class="com.faceye.components.blog.web.controller.ArticleCategoryActon">
+		<property name="service">
+			<ref bean="service" />
+		</property>
+		<property name="articleCategoryService">
+			<ref bean="articleCategoryService" />
+		</property>
+		<property name="portalContainerService">
+			<ref bean="portalContainerService" />
+		</property>
+		<property name="treeService">
+			<ref bean="treeService" />
+		</property>
+	</bean>
+	<bean name="/articleAction"
+		class="com.faceye.components.blog.web.controller.ArticleAction">
+		<property name="articleService">
+			<ref bean="articleService" />
+		</property>
+		<property name="service">
+			<ref bean="service" />
+		</property>
+		<property name="articleClickCountService">
+		  <ref bean="articleClickCountService"/>
+		</property>
+	</bean>
+	<bean name="/blogManagerAction"
+		class="com.faceye.components.blog.web.controller.BlogManagerAction">
+		<property name="service">
+			<ref bean="service" />
+		</property>
+		<property name="blogService">
+		  <ref bean="blogService"/>
+		</property>
+	</bean>
+	<bean name="/discusAction" class="com.faceye.components.blog.web.controller.DiscusAction">
+	  <property name="service">
+	    <ref bean="service"/>
+	  </property>
+	  <property name="discusService">
+	    <ref bean="discusService"/>
+	  </property>
+	</bean>
+	<bean name="/articleClickAction" class="com.faceye.components.blog.web.controller.ArticleClickAction">
+	<property name="service">
+	    <ref bean="service"/>
+	  </property>
+	  <property name="articleClickCountService">
+	    <ref bean="articleClickCountService"/>
+	  </property>
+	</bean>
+</beans>

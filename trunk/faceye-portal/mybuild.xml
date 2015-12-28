@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. -->
+<project basedir="." default="build" name="lala">
+    <property environment="env"/>
+    <property name="ECLIPSE_HOME" value="F:/CommonProgram/MyEclipse6.0.1/eclipse"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.5"/>
+    <property name="source" value="1.5"/>
+    <path id="Java EE 5 Libraries.libraryclasspath">
+        <pathelement location="F:/CommonProgram/MyEclipse6.0.1/myeclipse/eclipse/plugins/com.genuitec.eclipse.j2eedt.core_6.0.1.zmyeclipse601200710/data/libraryset/EE_5/javaee.jar"/>
+        <pathelement location="F:/CommonProgram/MyEclipse6.0.1/myeclipse/eclipse/plugins/com.genuitec.eclipse.j2eedt.core_6.0.1.zmyeclipse601200710/data/libraryset/EE_5/jsf-impl.jar"/>
+        <pathelement location="F:/CommonProgram/MyEclipse6.0.1/myeclipse/eclipse/plugins/com.genuitec.eclipse.j2eedt.core_6.0.1.zmyeclipse601200710/data/libraryset/EE_5/jsf-api.jar"/>
+        <pathelement location="F:/CommonProgram/MyEclipse6.0.1/myeclipse/eclipse/plugins/com.genuitec.eclipse.j2eedt.core_6.0.1.zmyeclipse601200710/data/libraryset/EE_5/jstl-1.2.jar"/>
+    </path>
+    <path id="lala.classpath">
+        <pathelement location="WebRoot/WEB-INF/classes"/>
+        <path refid="Java EE 5 Libraries.libraryclasspath"/>
+        <pathelement location="lib/acegi-security-1.0.6.jar"/>
+        <pathelement location="lib/acegi-security-tiger-1.0.6.jar"/>
+        <pathelement location="lib/activation.jar"/>
+        <pathelement location="lib/antlr-2.7.6.jar"/>
+        <pathelement location="lib/aopalliance.jar"/>
+        <pathelement location="lib/asm-2.2.2.jar"/>
+        <pathelement location="lib/asm-commons-2.2.2.jar"/>
+        <pathelement location="lib/asm-util-2.2.2.jar"/>
+        <pathelement location="lib/avalon-framework-4.2.0.jar"/>
+        <pathelement location="lib/bsh-2.0b4.jar"/>
+        <pathelement location="lib/c3p0-0.9.0.4.jar"/>
+        <pathelement location="lib/cglib-nodep-2.1_3.jar"/>
+        <pathelement location="lib/commonj-twm.jar"/>
+        <pathelement location="lib/commons-beanutils.jar"/>
+        <pathelement location="lib/commons-codec.jar"/>
+        <pathelement location="lib/commons-collections.jar"/>
+        <pathelement location="lib/commons-dbcp.jar"/>
+        <pathelement location="lib/commons-digester.jar"/>
+        <pathelement location="lib/commons-discovery.jar"/>
+        <pathelement location="lib/commons-fileupload.jar"/>
+        <pathelement location="lib/commons-httpclient.jar"/>
+        <pathelement location="lib/commons-io.jar"/>
+        <pathelement location="lib/commons-javaflow.jar"/>
+        <pathelement location="lib/commons-lang.jar"/>
+        <pathelement location="lib/commons-logging.jar"/>
+        <pathelement location="lib/commons-pool.jar"/>
+        <pathelement location="lib/commons-validator.jar"/>
+        <pathelement location="lib/connector.jar"/>
+        <pathelement location="lib/cos.jar"/>
+        <pathelement location="lib/dom4j-1.6.1.jar"/>
+        <pathelement location="lib/ehcache-1.2.3.jar"/>
+        <pathelement location="lib/ezmorph-1.0.2.jar"/>
+        <pathelement location="lib/fop-0.20.5.jar"/>
+        <pathelement location="lib/hessian-3.0.20.jar"/>
+        <pathelement location="lib/hibernate3.jar"/>
+        <pathelement location="lib/jakarta-oro-2.0.8.jar"/>
+        <pathelement location="lib/JAMon.jar"/>
+        <pathelement location="lib/jaxen-1.1-beta-7.jar"/>
+        <pathelement location="lib/jaxrpc.jar"/>
+        <pathelement location="lib/jdom.jar"/>
+        <pathelement location="lib/jotm.jar"/>
+        <pathelement location="lib/json-lib-2.0-jdk15.jar"/>
+        <pathelement location="lib/jstl.jar"/>
+        <pathelement location="lib/jxl.jar"/>
+        <pathelement location="lib/log4j-1.2.14.jar"/>
+        <pathelement location="lib/mysql-connector-java-5.0.3-bin.jar"/>
+        <pathelement location="lib/poi-2.5.1.jar"/>
+        <pathelement location="lib/qdox-1.5.jar"/>
+        <pathelement location="lib/rome-0.9.jar"/>
+        <pathelement location="lib/saaj.jar"/>
+        <pathelement location="lib/serp-1.12.1.jar"/>
+        <pathelement location="lib/sitemesh-2.2.jar"/>
+        <pathelement location="lib/spring.jar"/>
+        <pathelement location="lib/spring-webmvc-struts.jar"/>
+        <pathelement location="lib/standard.jar"/>
+        <pathelement location="lib/struts.jar"/>
+        <pathelement location="lib/aspectjrt.jar"/>
+        <pathelement location="lib/aspectjweaver.jar"/>
+        <pathelement location="lib/persistence.jar"/>
+        <pathelement location="lib/jta.jar"/>
+    </path>
+    <path id="run.AntMachTest.bootclasspath">
+        <path refid="Java EE 5 Libraries.libraryclasspath"/>
+    </path>
+    <path id="run.FeedParseService.bootclasspath">
+        <path refid="Java EE 5 Libraries.libraryclasspath"/>
+    </path>
+    <path id="run.FeedReaderService.bootclasspath">
+        <path refid="Java EE 5 Libraries.libraryclasspath"/>
+    </path>
+    <path id="run.TestList.bootclasspath">
+        <path refid="Java EE 5 Libraries.libraryclasspath"/>
+    </path>
+    <target name="init">
+        <mkdir dir="WebRoot/WEB-INF/classes"/>
+        <copy includeemptydirs="false" todir="WebRoot/WEB-INF/classes">
+            <fileset dir="core-web-struts-1/src" excludes="**/*.launch, **/*.java"/>
+        </copy>
+        <copy includeemptydirs="false" todir="WebRoot/WEB-INF/classes">
+            <fileset dir="portal/src" excludes="**/*.launch, **/*.java"/>
+        </copy>
+        <copy includeemptydirs="false" todir="WebRoot/WEB-INF/classes">
+            <fileset dir="test/src" excludes="**/*.launch, **/*.java"/>
+        </copy>
+        <copy includeemptydirs="false" todir="WebRoot/WEB-INF/classes">
+            <fileset dir="blog/src" excludes="**/*.launch, **/*.java"/>
+        </copy>
+        <copy includeemptydirs="false" todir="WebRoot/WEB-INF/classes">
+            <fileset dir="navigation/src" excludes="**/*.launch, **/*.java"/>
+        </copy>
+        <copy includeemptydirs="false" todir="WebRoot/WEB-INF/classes">
+            <fileset dir="opensource/src" excludes="**/*.launch, **/*.java"/>
+        </copy>
+        <copy includeemptydirs="false" todir="WebRoot/WEB-INF/classes">
+            <fileset dir="bbs/src" excludes="**/*.launch, **/*.java"/>
+        </copy>
+        <copy includeemptydirs="false" todir="WebRoot/WEB-INF/classes">
+            <fileset dir="core/src" excludes="**/*.launch, **/*.java"/>
+        </copy>
+        <copy includeemptydirs="false" todir="WebRoot/WEB-INF/classes">
+            <fileset dir="core-components-support/src" excludes="**/*.launch, **/*.java"/>
+        </copy>
+        <copy includeemptydirs="false" todir="WebRoot/WEB-INF/classes">
+            <fileset dir="core-security/src" excludes="**/*.launch, **/*.java"/>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="WebRoot/WEB-INF/classes"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="WebRoot/WEB-INF/classes" source="${source}" target="${target}">
+            <src path="core-web-struts-1/src"/>
+            <classpath refid="lala.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="WebRoot/WEB-INF/classes" source="${source}" target="${target}">
+            <src path="portal/src"/>
+            <classpath refid="lala.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="WebRoot/WEB-INF/classes" source="${source}" target="${target}">
+            <src path="test/src"/>
+            <classpath refid="lala.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="WebRoot/WEB-INF/classes" source="${source}" target="${target}">
+            <src path="blog/src"/>
+            <classpath refid="lala.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="WebRoot/WEB-INF/classes" source="${source}" target="${target}">
+            <src path="navigation/src"/>
+            <classpath refid="lala.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="WebRoot/WEB-INF/classes" source="${source}" target="${target}">
+            <src path="opensource/src"/>
+            <classpath refid="lala.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="WebRoot/WEB-INF/classes" source="${source}" target="${target}">
+            <src path="bbs/src"/>
+            <classpath refid="lala.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="WebRoot/WEB-INF/classes" source="${source}" target="${target}">
+            <src path="core/src"/>
+            <classpath refid="lala.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="WebRoot/WEB-INF/classes" source="${source}" target="${target}">
+            <src path="core-components-support/src"/>
+            <classpath refid="lala.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="WebRoot/WEB-INF/classes" source="${source}" target="${target}">
+            <src path="core-security/src"/>
+            <classpath refid="lala.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+    <target name="AntMachTest">
+        <java classname="com.ZaoDian.test.common.AntMachTest" failonerror="true" fork="yes">
+            <classpath refid="lala.classpath"/>
+            <bootclasspath>
+                <path refid="run.AntMachTest.bootclasspath"/>
+                <fileset dir="${java.home}/lib" includes="*.jar"/>
+            </bootclasspath>
+        </java>
+    </target>
+    <target name="FeedParseService">
+        <java classname="com.faceye.components.navigation.service.controller.FeedParseService" failonerror="true" fork="yes">
+            <classpath refid="lala.classpath"/>
+            <bootclasspath>
+                <path refid="run.FeedParseService.bootclasspath"/>
+                <fileset dir="${java.home}/lib" includes="*.jar"/>
+            </bootclasspath>
+        </java>
+    </target>
+    <target name="FeedReaderService">
+        <java classname="com.faceye.components.navigation.service.controller.FeedReaderService" failonerror="true" fork="yes">
+            <classpath refid="lala.classpath"/>
+            <bootclasspath>
+                <path refid="run.FeedReaderService.bootclasspath"/>
+                <fileset dir="${java.home}/lib" includes="*.jar"/>
+            </bootclasspath>
+        </java>
+    </target>
+    <target name="TestList">
+        <java classname="com.faceye.core.dao.TestList" failonerror="true" fork="yes">
+            <classpath refid="lala.classpath"/>
+            <bootclasspath>
+                <path refid="run.TestList.bootclasspath"/>
+                <fileset dir="${java.home}/lib" includes="*.jar"/>
+            </bootclasspath>
+        </java>
+    </target>
+</project>

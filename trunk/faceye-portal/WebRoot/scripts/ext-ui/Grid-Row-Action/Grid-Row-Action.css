@@ -1,0 +1,9 @@
+.ux-grid3-row-action-cell .x-grid3-cell-inner {
+    padding: 1px 0 0 0;
+}
+.ux-grid3-row-action-cell .x-grid3-cell-inner div {
+    background-repeat:no-repeat;
+    width:16px;
+    height:16px;
+    cursor:pointer;
+}

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+    
+    <struts>
+    <include file="struts-default.xml"/>
+    <!--   将访问Action的默认后缀名由action改为do -->
+    <!-- constant name="struts.action.extension" value="do" /-->
+    <!-- 将struts2的action交给 spring管理  -->
+    <constant name="struts.objectFactory" value="spring" />
+    <constant name="struts.devMode" value="true" />
+    <package name="basic" extends="struts-default" namespace="/basic">
+      <action name="baseActionSupportTemplate" class="baseActionSupportTemplate" method="list">
+        <result>/test/test.list.jsp</result>
+      </action>
+      <action name="toSave" class="baseActionSupportTemplate" method="toSave">
+      <result>/test/test.save.jsp</result>
+      </action>
+      <action name="save" class="baseActionSupportTemplate" method="save">
+        <result type="redirect-action">baseActionSupportTemplate</result>
+      </action>
+      <action name="test" class="baseActionSupportTemplate" method="test">
+        <result type="redirect-action">baseActionSupportTemplate</result>
+      </action>
+      <action name="update" class="baseActionSupportTemplate" method="update">
+      <result>/test/test.save.jsp</result>
+      </action>
+    </package>
+    
+    </struts>

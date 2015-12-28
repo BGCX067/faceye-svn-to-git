@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+	<class name="com.faceye.core.componentsupport.dao.model.Property"
+		table="SYS_PROPERTY">
+		<id name="id" unsaved-value="" type="java.lang.String">
+			<column name="id" length="32"></column>
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="name" type="string">
+			<column name="name" length="50"></column>
+		</property>
+		<property name="cloumnName" type="string">
+			<column name="cloumnName" length="255"></column>
+		</property>
+		<property name="propertyName" type="string">
+			<column name="propertyName" length="255"></column>
+		</property>
+		
+		<property name="show" type="boolean">
+			<column name="isShow"></column>
+		</property>
+
+		<property name="orderIndexOfInput" type="integer">
+			<column name="orderIndexOfInput"></column>
+		</property>
+
+		<set name="validatorTypies" table="SYS_Property_Validator"
+			inverse="true" cascade="save-update">
+			<key>
+				<column name="Property_ID" length="32"></column>
+			</key>
+			<many-to-many
+				class="com.faceye.core.componentsupport.dao.model.ValidatorType"
+				column="validator_ID">
+			</many-to-many>
+		</set>
+
+		<set name="domainQuerise" table="SYS_DOMAIN_QUERY_PROPERTY"
+			inverse="true" cascade="save-update">
+			<key>
+				<column name="Property_ID" length="32"></column>
+			</key>
+			<many-to-many
+				class="com.faceye.core.componentsupport.dao.model.DomainQuery"
+				column="DOMAIN_QUERY_ID">
+			</many-to-many>
+		</set>
+		
+		<many-to-one name="domain" column="domain_id"
+			class="com.faceye.core.componentsupport.dao.model.Domain"
+			cascade="save-update" />
+		<many-to-one name="htmlType" column="htmlType_id"
+			class="com.faceye.core.componentsupport.dao.model.HtmlType"
+			cascade="save-update" />
+		<many-to-one name="dataType" column="dataType_id"
+			class="com.faceye.core.componentsupport.dao.model.DataType"
+			cascade="save-update">
+		</many-to-one>
+	</class>
+</hibernate-mapping>

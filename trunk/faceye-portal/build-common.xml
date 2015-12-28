@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="common">
+
+	<property name="project.dir" value="..">
+	</property>
+	<property name="project.version" value="1.0.0">
+	</property>
+	<property name="packages" value="com.faceye">
+	</property>
+	<!-- ================================================================ -->
+	<property name="src.dir" value="${basedir}/src">
+	</property>
+	<property name="build.dir" value="${basedir}/build" />
+	<property name="dist.dir" value="${basedir}/dist" />
+	<property name="bak.dir" value="${basedir}/bak" />
+	<property name="doc.dir" value="${basedir}/doc" />
+	<property name="class.dir" value="${build.dir}/classes">
+	</property>
+	<property name="javac.debug" value="true">
+	</property>
+	<property name="test.dir" value="${basedir}/test">
+	</property>
+	<property name="test.data.dir" value="${test.dir}/data">
+	</property>
+	<property name="test.reports.dir" value="${test.dir}/reports">
+	</property>
+	<property name="test.src" value="${test.dir}/src">
+	</property>
+	<property name="build.test.dir" value="${build.dir}/test">
+	</property>
+	<property name="build.web.dir" value="${build.dir}/web">
+	</property>
+	<property name="WebRoot.dir" value="${basedir}/WebRoot">
+	</property>
+	<property name="generator.dir" value="${basedir}/generator">
+	</property>
+	<property name="metada.dir" value="${basedir}/metada">
+	</property>
+	<property name="lib.dir" value="${project.dir}/lib" />
+	<!-- ================================= 
+		target:  系统路径                 
+		=================================   -->
+	<path id="project.class.path">
+		<pathelement path="${classpath}" />
+		<fileset dir="${lib.dir}">
+			<include name="*.jar" />
+		</fileset>
+		<!--
+		<pathelement location="${project.dir}/core/src" />
+		<pathelement location="${project.dir}/build/src" />
+		<pathelement location="${project.dir}/portal/src" />
+		<pathelement location="${project.dir}/opensource/src" />
+		<pathelement location="${project.dir}/navigation/src" />
+		<pathelement location="${project.dir}/core-security/src" />
+		<pathelement location="${project.dir}/core-components-support/src" />
+		<pathelement location="${project.dir}/build/src" />
+		-->
+		
+		<pathelement location="${class.dir}" />
+		<pathelement location="${src.dir}" />
+	
+		<pathelement location="${project.dir}/build/classes" />
+
+	</path>
+	<!-- ================================= 
+		target:  测试路径                 
+		=================================   -->
+	<path id="test.class.path">
+		<path refid="project.class.path">
+		</path>
+		<pathelement path="${lib.dir}/junit.jar" />
+		<pathelement path="${build.test.dir}" />
+		<pathelement path="${class.dir}" />
+	</path>
+</project>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+
+<tiles-definitions>
+	<!-- Default Container -->
+	<definition name=".default" path="/templates/tiles/default.jsp">
+		<put name="title" value="www.faceye.com"></put>
+		<put name="TopContainer"
+			value="/templates/global/topMenu.jsp">
+		</put>
+		<put name="LeftContainer"
+			value="/templates/tiles/defaultPart/blank.jsp">
+		</put>
+		<put name="MainContainer"
+			value="/templates/tiles/defaultPart/blank.jsp">
+		</put>
+		<put name="RightContainer"
+			value="/templates/tiles/defaultPart/blank.jsp">
+		</put>
+		<put name="FooterContainer"
+			value="/templates/tiles/defaultPart/blank.jsp">
+		</put>
+	</definition>
+	<!-- Basic Container -->
+	<definition name=".basic" path="/templates/tiles/basic.jsp">
+		<put name="title" value="www.faceye.com"></put>
+		<put name="TopContainer"
+			value="/templates/global/topMenu.jsp">
+		</put>
+		<put name="MainContainer"
+			value="/templates/tiles/defaultPart/blank.jsp">
+		</put>
+		<put name="FooterContainer"
+			value="/templates/tiles/defaultPart/blank.jsp">
+		</put>
+	</definition>
+	<!-- Admin Container -->
+	<definition name=".admin" path="/templates/tiles/admin.jsp">
+		<put name="title" value="www.faceye.com"></put>
+		<put name="TopContainer"
+			value="/templates/global/topMenu.jsp">
+		</put>
+		<put name="LeftContainer"
+			value="/core/security/common/adminNavigator.jsp">
+		</put>
+		<put name="MainContainer"
+			value="/templates/tiles/defaultPart/blank.jsp">
+		</put>
+		<put name="FooterContainer"
+			value="/templates/tiles/defaultPart/blank.jsp">
+		</put>
+	</definition>
+	<!-- Global Infomation Page -->
+	<definition name=".system.save.success" extends=".basic">
+		<put name="MainContainer"
+			value="/templates/global/saveSuccessMessage.jsp">
+		</put>
+	</definition>
+	<definition name=".system.remove.success" extends=".basic">
+	<put name="MainContainer"
+			value="/templates/global/removeSuccessMessage.jsp">
+		</put>
+	</definition>
+	<definition name=".system.global.message" extends=".basic">
+	  <put name="MainContainer" value="/templates/global/GlobalMessage.jsp"></put>
+	</definition>
+	<definition name=".security.user.register" extends=".basic">
+		<put name="MainContainer"
+			value="/core/security/user/update.jsp">
+		</put>
+	</definition>
+	<definition name=".security.user.list" extends=".admin">
+	  <put name="MainContainer" value="/core/security/user/list.jsp"></put>
+	</definition>
+	
+	<definition name=".security.permission.update" extends=".admin">
+	  <put name="MainContainer" value="/core/security/permission/update.jsp"></put>
+	</definition>
+	<definition name=".security.permission.list" extends=".admin">
+	<put name="MainContainer" value="/core/security/permission/list.jsp"></put>
+	</definition>
+	<definition name=".security.permission.list.for.select" extends=".admin">
+	<put name="MainContainer" value="/core/security/permission/listPermissionsForSelect.jsp"></put>
+	</definition>
+	<definition name=".security.role.update" extends=".admin">
+	  <put name="MainContainer" value="/core/security/role/update.jsp"></put>
+	</definition>
+    <definition name=".security.role.list" extends=".admin">
+     <put name="MainContainer" value="/core/security/role/list.jsp"></put>
+    </definition>
+    
+    <definition name=".security.resource.update" extends=".admin">
+      <put name="MainContainer" value="/core/security/resource/update.jsp"></put>
+    </definition>
+    <definition name=".security.resource.list" extends=".admin">
+          <put name="MainContainer" value="/core/security/resource/list.jsp"></put>
+    </definition>
+    
+	<!-- Test Pages -->
+  
+</tiles-definitions>

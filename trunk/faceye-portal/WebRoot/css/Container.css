@@ -1,0 +1,112 @@
+body {
+	margin-left: 5px;
+	margin-top: 5px;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	text-align: left;
+	word-break: break-all;
+	font-size: 12px;
+}
+
+table {
+	border: 0px solid #666;
+}
+
+a,a:visited,a:hover {
+	color: #766;
+	text-decoration: none;
+	font-size: 12px;
+	color: #466;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+div#Container {
+	position: absolute height :     100%;
+	width: 100%;
+	border: 0px solid #C3CECD;
+}
+
+div#TopContainer {
+	height: 30px;
+	width: 100%;
+	margin-top: 0px;
+	border: 1px solid #F6CECD;
+}
+
+div#MiddleContainer {
+	width: 100%;
+	height: 100%;
+}
+div#AdminMainContainer{
+	width:84%;
+	float:right;
+	}
+
+div#BasicModdleContainer {
+	margin-top: 2px;
+	width: 100%;
+	height: 100%;
+	border: 1px solid #F6CECD;
+}
+
+div#LeftContainer {
+	float: left;
+	width: 15%;
+	margin-top: 2px;
+	margin-right: 2px;
+	border: 1px solid #F6CECD;
+}
+
+div#AdminLeftContainer{
+	float: left;
+	width: 15%;
+	margin-top: 2px;
+	margin-right: 2px;
+	border: 1px solid #F6CECD;
+	height:100%;
+	}
+
+div#MainContainer {
+	float: left;
+	width: 60%;
+	margin-top: 2px;
+	margin-right: 2px;
+	border: 1px solid #F6CECD;
+}
+
+
+
+div#RightContainer {
+	float: right;
+	width: 24%;
+	border: 1px solid #F6CECD;
+	margin-top: 2px;
+}
+
+div#FooterContainer {
+	float: center;
+	width: 100%;
+	height: 25px;
+	margin-top: 2px;
+	text-align: center;
+	border: 1px solid #F6CECD;
+	font:normal 8pt arial,helvetica;
+	color:green;
+	width: 100%;
+}
+div#PageContainer{
+  float:center;
+  width:100%;
+  height:25px;
+  border: 1px solid #F6CECD;
+}
+
+div#ToolContainer{
+ float:center;
+ width:100px;
+ height:25px;
+ border:1px solid #F6CECD;
+}

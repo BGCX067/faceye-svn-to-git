@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+	<class name="com.faceye.components.navigation.dao.model.FeedSubscribe" table="SYS_feed_subscribe">
+        <id name="id" unsaved-value="" type="java.lang.String">
+          <column name="id" length="32"></column>
+          <generator class="uuid.hex"></generator>
+        </id>
+        <property name="name" type="string">
+          <column name="name" length="50"></column>
+        </property>
+       <property name="subscribeTime" type="date">
+        <column name="subscribeTime"></column>
+       </property>
+       <property name="feedOrder" type="integer"></property>
+       <many-to-one name="feed" column="feed_id"
+			class="com.faceye.components.navigation.dao.model.Feed"
+			cascade="save-update" />
+			
+			<many-to-one name="userResourceCategory" column="user_resource_category_ID"
+			class="com.faceye.components.navigation.dao.model.UserResourceCategory"
+			cascade="save-update" />
+	</class>
+</hibernate-mapping>

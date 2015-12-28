@@ -1,0 +1,100 @@
+本内容由　[心雨]　提供,感谢[心雨]
+
+工具：
+    1. Windows 2003 sp1
+    2. svn-1.3.0-setup.exe 				   SVN服务端软件
+    3. SVNService.exe  				   添加到Windows服务需要的工具
+    4. TortoiseSVN-1.4.0.7501-win32-svn-1.4.0.msi  SVN客户端软件
+    5. LanguagePack-1.4.0.7501-win32-zh_CN.exe	   SVN客户端软件的中文语言包
+
+相关下载：
+	1．Subversion
+		http://subversion.tigris.org
+	2．客户端软件TortoiseSVN
+		http://tortoisesvn.tigris.org
+	       Eclipse下使用的插件,需要在线更新
+	       更新地址:http://subclipse.tigris.org/update_1.0.x
+	       安装指南:http://subclipse.tigris.org/install.html
+	
+安装SVN服务器
+    1. 安装服务器软件
+    2. 将SVN添加到Windows服务
+	    1. 新建一个文件夹用来存放库文件 c:\SVN
+	    2. 运行命令:SVNService -install -d -r c:\svn 安装 Windows 服务
+	    3. 通过Windows服务管理平台启动SVN服务
+    	    4. 其它命令
+    			1. 改变服务设置:
+    			    运行命令:SVNService -setup -d -r <newsvnroot>
+    			    在实际操作中,<newsvnroot>代表与SubVersion服务启动时不同的电子仓库目录.
+
+    			2. 删除服务:
+    			    运行命令:SVNService -remove
+
+安装客户端工具
+    因为安装TortoiseSVN 需要重启系统，所以在这里略过安装步骤
+
+配置SVN
+1. 配置服务器
+	    打开仓库目录下的 conf/svnserve.conf 文件
+	    ********************************************
+	    [general]
+# anon-access = read
+# auth-access = write
+password-db = passwd
+authz-db = authz
+	    --------------------------------------------
+	    去掉 password-db = passwd 和 authz-db = authz 的注释
+	    前两行为匿名用户的权限
+	    后两行为启用配置文件来对用户和权限进行管理
+	    注意：所有配置信息必须顶格
+
+    2. 配置用户
+	    打开仓库目录下的 conf/passwd 文件
+	    [users]
+	      admin=admin  等号左边为用户名，右边为密码
+	    新增用户只需要在这里直接增加即可，如：oksonic=123456
+
+	    增加好用户以后需要重启SVN服务器
+
+    3. 配置工作组
+	    打开仓库目录下的 conf/authz 文件，文件内容如下：
+	    ********************************************
+	    # [groups]	
+	    # harry_and_sally = harry,sally
+
+	    # [/foo/bar]
+	    # harry = rw
+	    # * =
+
+	    # [repository:/baz/fuz]
+	    # @harry_and_sally = rw
+	    # * = r
+	    --------------------------------------------
+
+	    因为所有配置信息都被注释掉了，所以所有的用户都有管理员的权限(所有目录的读/写)
+
+	    [groups]    这里的内容为组的配置
+	    把已经建好的两个用户合并为一个分组，用户名之内以逗号分隔，配置内容如下：
+	    ********************************************
+	    [groups]	
+	    admin_group = admin,oksonic
+	    --------------------------------------------
+
+    4. 配置权限
+	    SVN 的权限只有两个，1 是只读，2 是读/写
+	    例：
+	    ********************************************
+	    [/]
+	    # 指定所有的仓库默认只读
+	    * = r
+	    # 指定 admin_group 组的用户对库中所有内容具有读/写权限 
+	    @admin_group = rw
+	    --------------------------------------------
+
+	    [/] ：这里代表的仓库的目录，此为根目录
+	    * = r : * 号代表所有的用户， r 为只读
+
+	    现在需要建一个项目到仓库中
+	    1. 在桌面建一个文件夹，如：SVN测试
+	    2. 在目录中新建几个文件和文件夹以作测试
+	    3. 使用客户端工具把目录中的所有文件加入到SVN服务器中的 test 目录中

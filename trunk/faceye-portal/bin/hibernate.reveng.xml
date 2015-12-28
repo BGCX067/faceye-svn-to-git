@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+	<!-- 
+		<table name="FUNCTIONKEY" schema="MISDFRAMEWORK"
+		class="FuctionKey">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="GROUPS" schema="MISDFRAMEWORK" class="Group">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="MENU" schema="MISDFRAMEWORK" class="Menu">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="IMFORMATIONTYPECODE" schema="MISDFRAMEWORK"
+		class="InformationTypeCode">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="INFORMATION_GRADE" schema="MISDFRAMEWORK"
+		class="InformationGrade">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="TESTFRAMEWORK" schema="MISDFRAMEWORK"
+		class="TestFramework">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="SYS_USER_PASSWORD_RECOVER" schema="MISDFRAMEWORK"
+		class="UserPasswordRecover">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="PUB_ATTRIBUTE_INFO" schema="MISDFRAMEWORK"
+		class="PubAttribute">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="PUB_ENTITY_INFO" schema="MISDFRAMEWORK"
+		class="PubEntity">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="BB_XZQK" schema="IT3SCHOOL" class="Area">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="BB_DMK" schema="IT3SCHOOL" class="CodeDetail">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="BB_LXB" schema="IT3SCHOOL" class="CodeType">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="BB_XS_BY" schema="IT3SCHOOL" class="GraduatedInfo">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="BB_XS_CF" schema="IT3SCHOOL"
+		class="StudentPunishInfo">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="BB_XS_JL" schema="IT3SCHOOL" class="Hortation">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="BB_XS_JSXY" schema="IT3SCHOOL" class="EndSchoolWork">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="BB_XS_JX" schema="IT3SCHOOL" class="ArmyEducateInfo">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="BB_XS_RXKS" schema="IT3SCHOOL"
+		class="EnterSchoolExamInfo">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="BB_XS_WDXSZBDLXR" schema="IT3SCHOOL"
+		class="OtherPlaceStudentLocalConnectInfo">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="BB_XS_XJYD" schema="IT3SCHOOL"
+		class="StudentIdentiferChanageInfo">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="BB_XS_XSJL" schema="IT3SCHOOL" class="StudentResume">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="BB_XS_XSJTCY" schema="IT3SCHOOL"
+		class="StudentHomeMemberInfo">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="BB_XS_XSJTJB" schema="IT3SCHOOL"
+		class="StudentBasicHomeInfo">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="BB_XS_XSLY" schema="IT3SCHOOL"
+		class="StudentComeFromInfo">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="BB_XS_XSXX" schema="IT3SCHOOL"
+		class="StudentBasicInfo">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="BB_XS_ZC" schema="IT3SCHOOL" class="RegisterInfo">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="BB_XS_ZXKS" schema="IT3SCHOOL"
+		class="StudentExamInfo">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="BB_XXQK_BJXXL" schema="IT3SCHOOL" class="ClassInfo">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="BZRGZ_BHKZB" schema="IT3SCHOOL"
+		class="ClassConferencePrepare">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="BZRGZ_BJDSJ" schema="IT3SCHOOL" class="ClassHistory">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="BZRGZ_BJGZAP" schema="IT3SCHOOL"
+		class="ClassWorkArrange">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="BZRGZ_BJGZJH" schema="IT3SCHOOL"
+		class="ClassWorkPlan">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="BZRGZ_BJGZZJ" schema="IT3SCHOOL"
+		class="ClassWorkSummary">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="BZRGZ_BJLN" schema="IT3SCHOOL" class="ClassThinking">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="BZRGZ_BJZQGL" schema="IT3SCHOOL"
+		class="ClassDailyManage">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="BZRGZ_BJZW" schema="IT3SCHOOL" class="ClassSite">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="BZRGZ_BJZY" schema="IT3SCHOOL" class="ClassHomePage">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="BZRGZ_GBGZKP" schema="IT3SCHOOL"
+		class="ClassLeaderExam">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="BZRGZ_XDGB" schema="IT3SCHOOL" class="ChoseLeader">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="BZRGZ_XSCXPD" schema="IT3SCHOOL"
+		class="StudentDaily">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="BZRGZ_XSCZJL" schema="IT3SCHOOL"
+		class="StudentGraRecord">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="BZRGZ_XSLHKH" schema="IT3SCHOOL"
+		class="StudentQualityExam">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="BZRGZ_XSXWGL" schema="IT3SCHOOL"
+		class="StudentActionManage">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="JXJH_KCBMX" schema="IT3SCHOOL"
+		class="CourseTableDetail">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="JXJH_KCBZB" schema="IT3SCHOOL"
+		class="CourseTableMain">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="JXJH_KCJB" schema="IT3SCHOOL" class="CourseGrade">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="JXJH_KCJBZL" schema="IT3SCHOOL"
+		class="CourseBaseInfo">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="JXJH_KCXS" schema="IT3SCHOOL" class="CourseModules">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="JXJH_NJKCJH" schema="IT3SCHOOL"
+		class="GradeCoursePlan">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="JXJH_NJKCJHBJ" schema="IT3SCHOOL"
+		class="GradeCoursePlanClass">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="JXJH_XKKSJH" schema="IT3SCHOOL"
+		class="SubjectSetPlan">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="JXJH_XXKCJH" schema="IT3SCHOOL"
+		class="SchoolCoursePlan">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="JXJH_XXKCJHMXDNJ" schema="IT3SCHOOL"
+		class="SchoolCoursePlanFaceToGrade">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="BB_JZG_JZGJB" schema="IT3SCHOOL"
+		class="TeacherAndEmployee">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="DYGL_RZJL" schema="IT3SCHOOL"
+		class="WorkAsLeaderRecord">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="XTDL_XDB" schema="IT3SCHOOL" class="LearnPeriod">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="XTGL_JCTXB" schema="IT3SCHOOL" class="CourseSource">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="XTGL_JXZDZB" schema="IT3SCHOOL" class="TeachWeek">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="XTGL_PYJLB" schema="IT3SCHOOL" class="RemarkRecord">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="XTGL_XNB" schema="IT3SCHOOL" class="TeachYear">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="XTGL_XQSJB" schema="IT3SCHOOL"
+		class="TeachPeriodTime">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="XTGL_ZXSJB" schema="IT3SCHOOL" class="ReposeTime">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="DEMO_BRANCH" schema="IT3SCHOOL" class="Branch">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="DEMO_FIRM" schema="IT3SCHOOL" class="Firm">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="DEMO_MANAGER" schema="IT3SCHOOL" class="Manager">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="DEMO_ORGMANAGER" schema="IT3SCHOOL"
+		class="OrgManager">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="DEMO_SALESDEPT" schema="IT3SCHOOL" class="SalesDept">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="DEMO_SHAREHOLDER" schema="IT3SCHOOL"
+		class="Shareholder">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="DEMP_EXCHANGE_SITE" schema="IT3SCHOOL"
+		class="ExchangeSite">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="PAL_SHCHECKWORKFLOW" schema="IT3SCHOOL"
+		class="ShareholderCheckworkflow">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="PAL_SHDEALSTATUS" schema="IT3SCHOOL"
+		class="ShareholderStatus">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="DEMO_APPROVE_PERSON" schema="IT3SCHOOL"
+		class="ApprovePerson">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="DEMO_APPROVE_STUFF" schema="IT3SCHOOL"
+		class="ApproveStuff">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="DEMO_AUDITING_IDEA" schema="IT3SCHOOL"
+		class="AuditingIdea">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+		<table name="DEMO_SHAREHOLDERAPPROVE" schema="IT3SCHOOL" class="ShareholderApprove">
+		<primary-key>
+		<generator class="uuid.hex"></generator>
+		</primary-key>
+		</table>
+	-->
+</hibernate-reverse-engineering>

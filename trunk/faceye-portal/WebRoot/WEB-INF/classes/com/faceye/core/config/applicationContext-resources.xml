@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+	<!-- JNDI Config -->
+	<!-- 
+		<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName">
+		<value>java:comp/env/jdbc/myDatasource</value>
+		</property>
+		</bean>
+		
+		<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+		<value>/WEB-INF/jdbc.properties</value>
+		</property>
+		</bean>
+	-->
+
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName">
+			<!--=======================MySQL JDBC Information==================-->
+			<value>com.mysql.jdbc.Driver</value>
+			<!--
+			-->
+			<!--=======================SQL Server2000 JDBC Information==============-->
+			<!--
+				<value>oracle.jdbc.driver.OracleDriver</value>
+				<value>com.microsoft.jdbc.sqlserver.SQLServerDriver</value>
+				<value>net.sourceforge.jtds.jdbc.Driver</value>
+				<value>net.sourceforge.jtds.jdbc.Driver</value>
+			-->
+		</property>
+		<property name="url">
+			<!-- ===================SQL Server2000 DB URL Information===============-->
+			<!--
+				<value>jdbc:oracle:thin:@192.168.0.214:1521:hzmcs</value>
+				<value>jdbc:jtds:sqlserver://192.168.0.62:1433;DatabaseName=myecsun</value>
+				<value>jdbc:microsoft:sqlserver://192.168.0.62:1433;DatabaseName=myecsun </value>
+				<value>jdbc:mysql://localhost:3306/myecsun?useUnicode=true&amp;characterEncoding=utf-8</value>
+			-->
+			<!-- ===================MySQL DB URL Information==============-->
+
+			<value>jdbc:mysql://localhost:3306/faceye</value>
+
+		</property>
+		<property name="username">
+			<value>root</value>
+		</property>
+		<property name="password">
+			<value>ecsunchina</value>
+		</property>
+
+		<!--连接池中保留的最小连接数。-->
+		<!-- property name="minPoolSize" value="3" /-->
+		<!--连接池中保留的最大连接数。Default: 15 -->
+		<!-- property name="maxPoolSize" value="30" /-->
+		<!--最大空闲时间,1800秒内未使用则连接被丢弃。若为0则永不丢弃。Default: 0 -->
+		<!-- property name="maxIdleTime" value="1800" /-->
+		<!--当连接池中的连接耗尽的时候c3p0一次同时获取的连接数。Default: 3 -->
+		<!-- property name="acquireIncrement" value="3" /-->
+		<!-- property name="maxStatements" value="0" /-->
+		<!-- property name="initialPoolSize" value="3" /-->
+		<!--每60秒检查所有连接池中的空闲连接。Default: 0 -->
+		<!-- property name="idleConnectionTestPeriod" value="60" /-->
+		<!--定义在从数据库获取新连接失败后重复尝试的次数。Default: 30 -->
+		<!-- property name="acquireRetryAttempts" value="30" /-->
+		<!-- property name="breakAfterAcquireFailure" value="true" /-->
+		<!-- property name="testConnectionOnCheckout" value="false" /-->
+
+		<property name="maxActive" value="100" />
+		<property name="maxIdle" value="30" />
+		<property name="maxWait" value="1000" />
+		<property name="defaultAutoCommit" value="true" />
+		<property name="removeAbandoned" value="true" />
+		<property name="removeAbandonedTimeout" value="60" />
+		<property name="logAbandoned" value="true" />
+	</bean>
+
+	<!-- =====================SessionFactory Definition==============================-->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref local="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<!--
+					<prop key="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</prop>
+				-->
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.jdbc.use_scrollable_resultset">
+					true
+				</prop>
+				<!--prop key="hibernate.hbm2ddl.auto">update</prop-->
+				<!-- ==============User The Cache Of Hibernate================-->
+				<prop key="hibernate.cache.provider_class">
+					org.hibernate.cache.EhCacheProvider
+				</prop>
+				<prop key="hibernate.cache.use_query_cache">true</prop>
+				<prop key="hibernate.query.substitutions">
+					yes=1 no=0
+				</prop>
+			</props>
+		</property>
+		<!--
+			<property name="lobHandler">
+			<ref local="oracleLobHandle" />
+			</property>
+		-->
+		<!--
+			if want to add a directory as the MappingResources,Use this Way.
+			(Of Course the directory only contanis *.hbm.xml  &  setter/getter JavaBaean.)
+			The <property></property> is :
+			
+			==============Start====================
+			=============End========================
+		-->
+
+		<property name="mappingDirectoryLocations">
+			<list>
+				<value>
+					classpath*:com/faceye/core/service/security/model
+				</value>
+				<value>
+					classpath*:com/faceye/core/componentsupport/dao/model
+				</value>
+				<value>
+					classpath*:com/faceye/components/opensource/dao/model
+				</value>
+				<value>
+					classpath*:com/faceye/components/navigation/dao/model
+				</value>
+				<value>
+					classpath*:com/faceye/components/portal/dao/model
+				</value>
+				<value>
+					classpath*:com/faceye/components/blog/dao/model
+				</value>
+			</list>
+		</property>
+
+
+
+		<!-- 
+			<property name="mappingResources">
+			<list>
+			<value>com/huasoft/misdframework/dbengine/pojo/Privilege.hbm.xml</value>
+			</list>
+			</property>
+		-->
+	</bean>
+	<!--================== Hibernate Cache===================-->
+	<!-- 
+		<bean id="nativeJdbcExtractor"
+		class="org.springframework.jdbc.support.nativejdbc.SimpleNativeJdbcExtractor" />
+		<bean id="nativeJdbcExtractor"
+		class="org.springframework.jdbc.support.nativejdbc.SimpleNativeJdbcExtractor" />
+	-->
+
+	<!-- 
+		
+		<bean id="oracleLobHandle"
+		class="org.springframework.jdbc.support.lob.DefaultLobHandler">
+		
+		<property name="nativeJdbcExtractor">
+		<ref local="nativeJdbcExtractor" />
+		</property>
+		
+		</bean>
+	-->
+
+	<bean id="hibernateTemplate"
+		class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+		<property name="cacheQueries">
+			<value>true</value>
+		</property>
+	</bean>
+
+	<bean id="cacheManager"
+		class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+		<property name="configLocation">
+			<value>classpath:com/faceye/core/config/ehcache.xml</value>
+		</property>
+	</bean>
+
+	<bean id="jdbcTemplate"
+		class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+	</bean>
+
+	<bean id="jdbcTransactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+	</bean>
+
+	<bean id="querySqlConfig"
+		class="com.faceye.core.util.helper.QuerySqlConfig">
+		<property name="resource">
+			<value>
+				classpath*:/com/faceye/core/config/QuerySqlConfig.properties
+			</value>
+		</property>
+	</bean>
+
+	<bean id="systemConfig"
+		class="com.faceye.core.util.helper.SystemConfig">
+		<property name="resource">
+			<value>
+				/WEB-INF/classes/com/faceye/core/config/SystemConfig.properties
+			</value>
+		</property>
+	</bean>
+
+	<!-- ===  ==========================TransactionManager Definition==========================-->
+
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory">
+			<ref local="sessionFactory" />
+		</property>
+	</bean>
+	<!-- 异常拦截 -->
+
+	<bean id="exceptionAdvise"
+		class="com.faceye.core.intercept.ExceptionAdvise">
+	</bean>
+
+	<bean id="logInterceptor"
+		class="com.faceye.core.intercept.LoggerInterceptor">
+	</bean>
+	<!--
+		<bean id="exceptionAdvisor"
+		class="org.springframework.aop.support.NameMatchMethodPointcutAdvisor">
+		<property name="mappedName">
+		<value>.*.</value>
+		</property>
+		<property name="advice">
+		<ref local="exceptionAdvise" />
+		</property>
+		</bean>
+		
+		
+		<bean id="autoProxyCreator"
+		class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator">
+		</bean>
+	-->
+	<!--  
+		<bean id="beanNameAutoProxyCreator"
+		class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<property name="beanNames">
+		<value>*Service,*Dao</value>
+		</property>
+		<property name="interceptorNames">
+		<list>
+		
+		<value>logInterceptor</value>
+		</list>
+		</property>
+		</bean>
+	-->
+	<tx:advice id="transactionManagerAdvice"
+		transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="get*" read-only="true" />
+			<!-- tx:method name="save*" propagation="REQUIRED" rollback-for="DataAccessException"/-->
+			<tx:method name="save*" propagation="REQUIRED" />
+			<tx:method name="remove*" propagation="REQUIRED" />
+			<tx:method name="auth*" propagation="REQUIRED"></tx:method>
+			<tx:method name="*" propagation="REQUIRED" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+	<tx:advice id="jdbcTransactionManagerAdvice"
+		transaction-manager="jdbcTransactionManager">
+		<tx:attributes>
+			<tx:method name="get*" read-only="true" />
+			<tx:method name="save*" propagation="REQUIRED" />
+			<tx:method name="remove*" propagation="REQUIRED" />
+			<tx:method name="*" propagation="REQUIRED" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+	<aop:config>
+		<aop:pointcut id="baseHibernateServiceOperation"
+			expression="execution(* com.faceye.core.service.controller.BaseHibernateService.*(..))" />
+		<aop:pointcut id="baseJdbcServiceOperation"
+			expression="execution(* com.faceye.core.service.controller.BaseJdbcService.*(..))" />
+		<aop:pointcut id="securityServiceOperation"
+			expression="execution(* com.faceye.core.service.security.service.controller.*.*(..))" />
+		<aop:pointcut id="componentSupportServiceOperation"
+			expression="execution(* com.faceye.core.componentsupport.service.controller.*.*(..))" />
+		<aop:pointcut id="componentsServiceOperation"
+			expression="execution(* com.faceye.components.*.service.controller.*Service.*(..))" />
+		<aop:advisor pointcut-ref="securityServiceOperation"
+			advice-ref="transactionManagerAdvice" />
+		<aop:advisor pointcut-ref="baseJdbcServiceOperation"
+			advice-ref="jdbcTransactionManagerAdvice" />
+		<aop:advisor pointcut-ref="baseHibernateServiceOperation"
+			advice-ref="transactionManagerAdvice" />
+		<aop:advisor pointcut-ref="componentSupportServiceOperation"
+			advice-ref="transactionManagerAdvice" />
+		<aop:advisor pointcut-ref="componentsServiceOperation"
+			advice-ref="transactionManagerAdvice" />
+		<aop:advisor id="exceptionAdvisor" advice-ref="exceptionAdvise"
+			pointcut="execution(* com.faceye.*.*.*.*.*.*(..))" />
+		<aop:advisor id="loggerAdvisor" advice-ref="logInterceptor"
+			pointcut="execution(* com.faceye.*.*.*.*.*.*(..))" />
+
+	</aop:config>
+
+	<!-- ==============================TransactionManager Template Definition -->
+	<!--
+		This template come from MastIng Spring 
+	-->
+	<bean id="transactionTemplate"
+		class="org.springframework.transaction.support.TransactionTemplate">
+		<property name="transactionManager">
+			<ref local="transactionManager" />
+		</property>
+	</bean>
+
+	<!--
+		Transaction template for Managers, from:
+		http://blog.exis.com/colin/archives/2004/07/31/concise-transaction-definitions-spring-11/
+		
+		<bean id="txProxyTemplate" abstract="true"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributes">
+		<props>
+		<prop key="save*">
+		PROPAGATION_REQUIRED,-Exception,-HibernateException,-DataAccessException,-DBException
+		</prop>
+		<prop key="remove*">
+		PROPAGATION_REQUIRED,-Exception,-HibernateException,-DataAccessException,-DBException
+		</prop>
+		<prop key="*">PROPAGATION_REQUIRED,readOnly</prop>
+		</props>
+		</property>
+		</bean>
+		
+		<bean id="jdbcTxProxyTemplate" abstract="true"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager"
+		ref="jdbcTransactionManager" />
+		<property name="transactionAttributes">
+		<props>
+		<prop key="save*">
+		PROPAGATION_REQUIRED,-Exception,-HibernateException,-DataAccessException,-DBException
+		</prop>
+		<prop key="perm*">
+		PROPAGATION_REQUIRED,-Exception,-HibernateException,-DataAccessException,-DBException
+		</prop>
+		<prop key="remove*">
+		PROPAGATION_REQUIRED,-Exception,-HibernateException,-DataAccessException,-DBException
+		</prop>
+		<prop key="*">PROPAGATION_REQUIRED,readOnly</prop>
+		</props>
+		</property>
+		</bean>
+	-->
+</beans>

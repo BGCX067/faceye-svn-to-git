@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+	<class name="com.faceye.components.navigation.dao.model.Feed"
+		table="SYS_feed">
+		<id name="id" unsaved-value="" type="java.lang.String">
+			<column name="id" length="32"></column>
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="name" type="string">
+			<column name="name" length="50"></column>
+		</property>
+		<property name="url" type="string">
+			<column name="url" length="255"></column>
+		</property>
+		<property name="description" type="string">
+			<column name="description"></column>
+		</property>
+		<property name="createDate" type="date">
+			<column name="createDate"></column>
+		</property>
+		<many-to-one name="column" column="column_id"
+			class="com.faceye.core.service.security.model.Column"
+			cascade="save-update" />
+
+		<many-to-one name="category" column="category_ID"
+			class="com.faceye.components.navigation.dao.model.Category"
+			cascade="save-update" />
+
+		<set name="feedSubscribes" cascade="save-update"
+			inverse="true">
+			<key column="feed_id" />
+			<one-to-many
+				class="com.faceye.components.navigation.dao.model.FeedSubscribe" />
+		</set>
+		<set name="feedSubscribeCount" cascade="save-update"
+			inverse="true">
+			<key column="feed_id" />
+			<one-to-many
+				class="com.faceye.components.navigation.dao.model.FeedSubscribeCount" />
+		</set>
+		<!--	
+			<set name="userResourceCategory" table="USER_FEED_RESOURCECATEGORY" inverse="true" cascade="save-update">
+			<key>
+			<column name="FEED_ID" length="32"></column>
+			</key>
+			<many-to-many class="com.faceye.components.navigation.dao.model.UserResourceCategory" column="RESOURCECATEGORY_ID"></many-to-many>
+			</set>
+		-->
+	</class>
+</hibernate-mapping>

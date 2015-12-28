@@ -1,0 +1,597 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="faceye" basedir="." default="build">
+	<!-- =========================================== -->
+	<!-- 早点网络系统构建                                   -->
+	<!-- 公司:早点网络                                      -->
+	<!-- 版权:早点网络版权所有                          -->
+	<!-- 作者:宋海鹏                                -->
+	<!-- =========================================== -->
+
+	<import file="build-basic-environment.xml" />
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: useage
+         - - - - - - - - - - - - - - - - - -->
+	<target name="help">
+		<echo message="/**--------------------------------------------------------------" />
+		<echo message="* 项目名称:${project.name}(早点) 网络支持系统" />
+		<echo message="* 基于Spring的应用系统构建方案" />
+		<echo message="* 作者：宋海鹏" />
+		<echo message="* 官方网站:www.faceye.com" />
+		<echo message="* 与作者联系：E_Mail:ecsun@sohu.com,MSN:myhibernate@hotmail.com" />
+		<echo message="*---------------------------------------------------------------*/" />
+		<echo message="|---> 系统构建任务列表" />
+		<echo message="|-  --> [ init ]               --> 系统构建初始化" />
+		<echo message="|-  --> [ clean ]              --> 系统目录清理" />
+		<echo message="|-  --> [ build ]              -->系统构建任务" />
+		<echo message="|-  --> [ compile ]            -->编译任务" />
+		<echo message="|-  --> [ hibernateXDoclet ]   -->Hibernate配置文件生成任务" />
+		<echo message="|-  --> [ test-compile ]       -->测试例编译" />
+		<echo message="|-  --> [ junit-test ]         -->Junit测试任务" />
+		<echo message="|-  --> [ junit-report ]       -->生成测试报告任务" />
+		<echo message="|-  --> [ jar-core-dao ]       -->jar包任务" />
+		<echo message="|-  --> [ javadoc ]            -->生成faceye API核心文档" />
+		<echo message="|-  --> [ bak ]                -->系统备份" />
+		<echo message="|-  --> [ clean-bak ]            -->清除各模块级备份" />
+		<echo message="|-  --> [ extends-bak ]            -->备份代码到工程以外的文件夹" />
+		<echo message="|-  --> [ create-new-model ]       -->创建新的模块" />
+		<echo message="|-  --> [ clean-model ]           -->删除整个模块" />
+		<echo message="|-  --> [ hibernateXDoclet ]         -->Hibernate XDoclet任务" />
+		<echo message="|-  --> [ prepare-web ]           -->准备war包资源" />
+		<echo message="|-  --> [ war ]                 -->打war包" />
+		<echo message="|-  --> [ update ]               -->局部更新" />
+		<echo message="|-  --> [ deploy ]               -->Tomcat部署任务" />
+		<echo message="|-  --> [ undeploy ]             -->卸载Tomcat部署任务" />
+		<echo message="|-  --> [ redeploy ]           -->重新部署" />
+		<echo message="|-  --> [ update-deploy ]      -->更新部署" />
+		<echo message="|-  --> [ start.tomcat ]          -->启动Tomcat" />
+		<echo message="|-  --> [ start ]              -->启动tomcat服务" />
+		<echo message="|-  --> [ stop ]               -->停止tomcat服务" />
+		<echo message="|-  --> [ i18n ]               -->国际化任务" />
+		<echo message="|-  --> [ generator-form ]       -->Struts Form任务" />
+		<echo message="/*----------------------------- END -----------------------------*/" />
+	</target>
+	<!-- - - - - - - - - - - - - - - - - - 
+	          target: init   系统初始化              
+	         - - - - - - - - - - - - - - - - - -->
+	<target name="init" depends="init-home">
+		<ant dir="core" target="init" />
+		<ant dir="core-web-struts-1" target="init" />
+		<ant dir="core-components-support" target="init" />
+		<ant dir="blog" target="init" />
+		<ant dir="opensource" target="init" />
+		<ant dir="navigation" target="init" />
+		<ant dir="portal" target="init">
+		</ant>
+	</target>
+	<!-- - - - - - - - - - - - - - - - - - 
+	          target: compile  系统编译                    
+	         - - - - - - - - - - - - - - - - - -->
+	<target name="compile" depends="init">
+		<ant dir="core" target="compile" />
+		<ant dir="core-security" target="compile" />
+		<ant dir="core-web-struts-1" target="compile" />
+		<antcall target="i18n">
+		</antcall>
+		<ant dir="core-components-support" target="compile" />
+		<ant dir="blog" target="compile" />
+		<ant dir="opensource" target="compile" />
+		<ant dir="navigation" target="compile" />
+		<ant dir="portal" target="compile" />
+	</target>
+	<!-- ================================= 
+          target: prepare-src              
+         ================================= -->
+	<target name="prepare-src" depends="init" description="--> prepare-src">
+		<ant dir="core" target="prepare-src" />
+		<ant dir="core-security" target="prepare-src" />
+		<ant dir="core-components-support" target="prepare-src" />
+		<ant dir="core-web-struts-1" target="prepare-src" />
+		<antcall target="i18n">
+		</antcall>
+		<ant dir="blog" target="prepare-src" />
+		<ant dir="opensource" target="prepare-src" />
+		<ant dir="navigation" target="prepare-src" />
+		<ant dir="portal" target="prepare-src" />
+	</target>
+
+	<!-- ================================= 
+          target: full-compile              
+         ================================= -->
+	<target name="full-compile" depends="prepare-src" description="--> description">
+		<mkdir dir="${basedir}/build/classes" />
+		<copy todir="${basedir}/build/classes">
+			<fileset dir="${basedir}/build/src">
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+		<javac debug="${javac.debug}" destdir="${basedir}/build/classes" compiler="modern" memoryMaximumSize="1024m" fork="true" nowarn="no">
+			<src path="${basedir}/build/src">
+			</src>
+			<classpath>
+				<path id="project.class.path">
+					<pathelement path="${classpath}" />
+					<fileset dir="${basedir}/lib">
+						<include name="*.jar" />
+					</fileset>
+					<pathelement location="${class.dir}" />
+					<pathelement location="${src.dir}" />
+					<pathelement location="${project.dir}/build/src" />
+					<pathelement location="${project.dir}/build/classes" />
+				</path>
+			</classpath>
+		</javac>
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: test-compile  全局测试编译                    
+         - - - - - - - - - - - - - - - - - -->
+	<target name="test-compile">
+		<mkdir dir="${basedir}/build/test" />
+		<ant dir="core" target="test-compile">
+		</ant>
+		<ant dir="core-web-struts-1" target="test-compile" />
+		<ant dir="core-components-support" target="test-compile" />
+		<ant dir="blog" target="test-compile">
+		</ant>
+		<ant dir="opensouce" target="test-compile">
+		</ant>
+		<ant dir="navigation" target="test-compile">
+		</ant>
+	</target>
+	<!-- - - - - - - - - - - - - - - - - - 
+	          target: jar  jar打包                    
+	         - - - - - - - - - - - - - - - - - -->
+	<target name="jar">
+		<ant dir="core" target="jar">
+		</ant>
+		<ant dir="core-web-struts-1" target="jar" />
+		<ant dir="core-components-support" target="jar" />
+		<ant dir="blog" target="jar">
+		</ant>
+		<ant dir="opensource" target="jar">
+		</ant>
+		<ant dir="navigation" target="jar">
+		</ant>
+		<ant dir="portal" target="jar">
+		</ant>
+	</target>
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: javadoc    生成API文档                  
+         - - - - - - - - - - - - - - - - - -->
+	<target name="doc" depends="javadoc,java2html">
+	</target>
+	<target name="javadoc">
+		<mkdir dir="${basedir}/doc" />
+		<ant dir="core" target="javadoc">
+		</ant>
+		<ant dir="core-web-struts-1" target="javadoc" />
+		<ant dir="core-components-support" target="javadoc" />
+		<ant dir="blog" target="javadoc">
+		</ant>
+		<ant dir="opensource" target="javadoc">
+		</ant>
+		<ant dir="navigation" target="javadoc">
+		</ant>
+	</target>
+	<target name="java2html">
+		<ant dir="core" target="java2html">
+		</ant>
+		<ant dir="core-web-struts-1" target="java2html" />
+		<ant dir="core-components-support" target="java2html" />
+		<ant dir="blog" target="java2html" />
+		<ant dir="opensource" target="java2html" />
+	</target>
+	<!-- - - - - - - - - - - - - - - - - - 
+	          target: clean  系统级清理任务                   
+	         - - - - - - - - - - - - - - - - - -->
+	<target name="clean">
+		<ant dir="core" target="clean">
+		</ant>
+		<ant dir="core-web-struts-1" target="clean" />
+		<ant dir="core-components-support" target="clean" />
+		<antcall target="clean-home" />
+		<ant dir="blog" target="clean" />
+		<ant dir="opensource" target="clean" />
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - - - 
+	target clean-home 清理根目录
+	- - - - - - - - - - - - - - - - - - - - - -->
+	<target name="clean-home">
+		<delete dir="${basedir}/dist">
+		</delete>
+		<delete dir="${basedir}/build">
+		</delete>
+	</target>
+
+	<!-- - - - - - - - - - - - - - - 
+	  init-home 根目录初始化
+	  - - - - - - - - - - - - - - - - -->
+	<target name="init-home">
+		<mkdir dir="${basedir}/dist" />
+		<mkdir dir="${basedir}/build/classes" />
+		<mkdir dir="${basedir}/build/web" />
+	</target>
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: junit-test 单元测试                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="junit-test">
+		<mkdir dir="${basedir}/test/reports" />
+		<ant dir="core" target="junit-test">
+		</ant>
+		<ant dir="core-web-struts-1" target="junit-test" />
+		<ant dir="core-components-support" target="junit-test" />
+		<ant dir="blog" target="junit-test" />
+		<ant dir="opensource" target="junit-test" />
+		<ant dir="navigation" target="junit-test" />
+	</target>
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: clean-bak 系统级备份清理                    
+         - - - - - - - - - - - - - - - - - -->
+	<target name="clean-bak">
+		<ant dir="core" target="clean-bak">
+		</ant>
+		<ant dir="core-web-struts-1" target="clean-bak" />
+		<ant dir="core-components-support" target="clean-bak" />
+		<ant dir="blog" target="clean-bak" />
+		<ant dir="opensource" target="clean-bak" />
+		<ant dir="navigation" target="clean-bak" />
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: bak 系统级备份                    
+         - - - - - - - - - - - - - - - - - -->
+	<target name="bak">
+		<ant dir="core" target="bak">
+		</ant>
+		<ant dir="core-web-struts-1" target="bak" />
+		<ant dir="core-components-support" target="bak" />
+		<ant dir="core-security" target="bak">
+		</ant>
+		<ant dir="core-web-springMVC2" target="bak">
+		</ant>
+		<ant dir="core-web-struts-2" target="bak">
+		</ant>
+		<ant dir="blog" target="bak" />
+		<ant dir="opensource" target="bak" />
+		<ant dir="navigation" target="bak" />
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - - - 
+	    target:extends-bak 系统扩展备份任务
+		将整个系统备份到其它磁盘
+		- - - - - - - - - - - - - -  - - - - -->
+	<target name="extends-bak">
+		<mkdir dir="${extends.bak.dir}" />
+		<tstamp prefix="source.">
+			<format property="TimeSign" pattern="yyyy-MM-dd HH.mm.ss" />
+		</tstamp>
+		<mkdir dir="${extends.bak.dir}/${source.TimeSign}" />
+		<copy todir="${extends.bak.dir}/${source.TimeSign}">
+			<fileset dir="${basedir}">
+				<exclude name="**/*.jar" />
+			</fileset>
+		</copy>
+	</target>
+	<!--
+	清理外界备份信息
+	-->
+	<target name="clean-extends-bak">
+		<delete dir="${extends.bak.dir}">
+			<fileset>
+				<include name="**/*.jar" />
+			</fileset>
+		</delete>
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: create-new-model 创建新模?       
+         - - - - - - - - - - - - - - - - - -->
+	<target name="create-new-model">
+		<echo level="info">
++-------------------------------------------------------------+
+|    -- 欢迎使用${project.name}新模块生成向?!  --                |
+|                                                             |
+|      请正确回答以下问题，这些问题对自对生成新模块非常关键             |
++-------------------------------------------------------------+
+            </echo>
+		<input message="您希望新模块使用什么名字[model.name]?(注：模块名只能为英文)" addProperty="model.name">
+		</input>
+		<mkdir dir="${basedir}/${model.name}" />
+		<copy todir="${basedir}/${model.name}">
+			<fileset dir="${template.dir}/">
+				<include name="build.xml" />
+			</fileset>
+		</copy>
+		<ant dir="${basedir}/${model.name}" target="init">
+		</ant>
+		<mkdir dir="${basedir}/${model.name}/WebRoot/scripts/components/${model.name}" />
+		<mkdir dir="${basedir}/${model.name}/WebRoot/components/${model.name}" />
+		<replaceregexp flags="g">
+			<regexp pattern="modeltemplate" />
+			<substitution expression="${model.name}" />
+			<fileset dir="${basedir}/${model.name}">
+				<include name="build.xml" />
+				<!--
+    	                <exclude name="lib/rename-packages-*/*.xml"/>
+    	                <exclude name="src/**/*.java"/>
+    	                <exclude name="src/**/*.xml"/>
+    	                <exclude name="test/**/*.java"/>
+    	                <exclude name="test/**/*.xml"/>   
+    	                <exclude name="extras/**/*.java"/>
+    	                <exclude name="extras/**/*.xml"/>
+    	                <exclude name="metadata/web/global-exceptions.xml"/>
+    	                <exclude name="web/WEB-INF/*.xml"/>
+    	                <exclude name="web/WEB-INF/classes/log4j.properties"/>
+    	                <exclude name="web/WEB-INF/classes/mail.properties"/>
+    	                <exclude name="**/*.page"/>
+    	                <exclude name="**/*.application"/>
+    	                <exclude name="**/*.jwc"/>
+    	                <exclude name="**/*_page.xdt"/>
+    	                <exclude name="**/managed-beans.xdt"/>
+    	                <exclude name="docs/**"/>
+    	                <exclude name="**/loginMenu.jsp"/>
+    	                <exclude name="**/README.txt"/>
+    	                <exclude name=".springBeansProject"/>
+    	                <exclude name="**/*.jar"/>
+    	                -->
+			</fileset>
+		</replaceregexp>
+		<mkdir dir="${basedir}/${model.name}/src/com/${project.name}/components/${model.name}/config" />
+		<copy todir="${basedir}/${model.name}/src/com/${project.name}/components/${model.name}/config">
+			<fileset dir="${template.dir}/">
+				<exclude name="build.xml" />
+				<exclude name="*test*.xml" />
+			</fileset>
+		</copy>
+		<move file="${basedir}/${model.name}/src/com/${project.name}/components/${model.name}/config/applicationContext-dao.xml" tofile="${basedir}/${model.name}/src/com/${project.name}/components/${model.name}/config/applicationContext-${model.name}-dao.xml">
+		</move>
+		<move file="${basedir}/${model.name}/src/com/${project.name}/components/${model.name}/config/applicationContext-service.xml" tofile="${basedir}/${model.name}/src/com/${project.name}/components/${model.name}/config/applicationContext-${model.name}-service.xml">
+		</move>
+		<move file="${basedir}/${model.name}/src/com/${project.name}/components/${model.name}/config/applicationContext-controller.xml" tofile="${basedir}/${model.name}/src/com/${project.name}/components/${model.name}/config/applicationContext-${model.name}-controller.xml">
+		</move>
+		<mkdir dir="${basedir}/${model.name}/test/src/com/${project.name}/test/components/${model.name}/config" />
+		<copy todir="${basedir}/${model.name}/test/src/com/${project.name}/test/components/${model.name}/config">
+			<fileset dir="${template.dir}/">
+				<include name="applicationContext-test.xml" />
+			</fileset>
+		</copy>
+		<move file="${basedir}/${model.name}/test/src/com/${project.name}/test/components/${model.name}/config/applicationContext-test.xml" tofile="${basedir}/${model.name}/test/src/com/${project.name}/test/components/${model.name}/config/applicationContext-${model.name}-test.xml">
+		</move>
+		
+		<mkdir dir="${basedir}/${model.name}/src/com/${project.name}/components/${model.name}/dao/model" />
+		<mkdir dir="${basedir}/${model.name}/src/com/${project.name}/components/${model.name}/dao/iface" />
+		<mkdir dir="${basedir}/${model.name}/src/com/${project.name}/components/${model.name}/dao/controller" />
+		<mkdir dir="${basedir}/${model.name}/src/com/${project.name}/components/${model.name}/service/iface" />
+		<mkdir dir="${basedir}/${model.name}/src/com/${project.name}/components/${model.name}/service/controller" />
+		<mkdir dir="${basedir}/${model.name}/src/com/${project.name}/components/${model.name}/web/controller" />
+		<mkdir dir="${basedir}/${model.name}/src/com/${project.name}/components/${model.name}/web/form" />
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: bak-model  创建模块级备份                  
+         - - - - - - - - - - - - - - - - - -->
+	<target name="clean-model">
+		<mkdir dir="${basedir}/bak/model" />
+		<echo message="删除已创建模块任务向?" />
+		<input message="请输入您要删除的模块??" addProperty="model.will.be.del">
+		</input>
+		<mkdir dir="${basedir}/bak/model/${model.will.be.del}" />
+		<copy todir="${basedir}/bak/model/${model.will.be.del}">
+			<fileset dir="${basedir}/${model.will.be.del}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+		<delete dir="${basedir}/${model.will.be.del}">
+		</delete>
+	</target>
+
+	<!--================================================================代码生成工具任务========================================================-->
+	<!-- - - - - - - - - - - - - - - - - - 
+	          target: hibernateXDoclet                      
+	         - - - - - - - - - - - - - - - - -   -->
+	<target name="hibernateXDoclet">
+		<taskdef name="hibernatedoclet" classname="xdoclet.modules.hibernate.HibernateDocletTask" classpathref="project.class.path" />
+		<hibernatedoclet destdir="${generator.dir}" mergedir="${metada.dir}" excludedtags="@version,@author" addedtags="@xdoclet-generated at ${TODAY}" force="true">
+			<fileset dir="${test.src}">
+				<include name="**/*.java" />
+			</fileset>
+			<hibernate validatexml="true" version="3.0" />
+		</hibernatedoclet>
+
+	</target>
+
+	<!-- ===============================================================单元测试===============================================================-->
+
+
+	<!--============================================================打包========================================================================-->
+
+
+	<!-- ================================= 
+          target: prepare-web  准备 WEB资源           
+         =================================   -->
+	<target name="prepare-web" description="  --> 准备WEB资源">
+		<copy todir="${basedir}/build/web">
+			<fileset dir="${basedir}/WebRoot">
+				<exclude name="**/classes/**">
+				</exclude>
+				<exclude name="**/lib/**">
+				</exclude>
+			</fileset>
+		</copy>
+		<ant dir="blog" target="prepare-web" />
+		<ant dir="core-components-support" target="prepare-web" />
+		<ant dir="blog" target="prepare-web" />
+		<ant dir="opensource" target="prepare-web" />
+		<ant dir="navigation" target="prepare-web" />
+	</target>
+	<!-- ================================= 
+          target: war 打war包              
+         =================================   -->
+	<target name="war" depends="full-compile,prepare-web" description="  --> build war">
+		<mkdir dir="${basedir}/dist" />
+		<war warfile="${basedir}/dist/${deploy.name}.war" webxml="${basedir}/build/web/WEB-INF/web.xml">
+			<lib dir="${basedir}/lib">
+				<exclude name="servlet-api.jar" />
+				<exclude name="jsp-api.jar" />
+			</lib>
+			<fileset dir="${basedir}/build/web">
+				<exclude name="**/web.xml" />
+			</fileset>
+			<classes dir="${basedir}/build/classes">
+			</classes>
+		</war>
+	</target>
+
+	<!-- ================================= 
+	          target: update  进行系统的代码更新         
+	         =================================   -->
+	<target name="update" description="  --> description">
+		<antcall target="compile">
+		</antcall>
+		<antcall target="prepare-web">
+		</antcall>
+		<!--
+		<antcall target="war"></antcall>
+		  -->
+		<antcall target="update-deploy">
+		</antcall>
+	</target>
+
+
+
+	<!-- ================================= 
+          target: build              
+         ================================= -->
+	<target name="build" depends="clean,deploy" description="--> description">
+		<echo message="-------------构建完成----------------">
+		</echo>
+	</target>
+
+	<!--=====================================================Tomcat 服务相关任务================================================================-->
+
+	<!-- ================================= 
+          target: deploy 系统部署任务              
+         =================================   -->
+	<target name="deploy" depends="prepare-web,war">
+		<copy todir="${deplay.path}">
+			<fileset dir="${basedir}/dist">
+				<include name="**/*.war" />
+			</fileset>
+		</copy>
+	</target>
+	<!-- ================================= 
+	          target: undeploy 部署卸载任务              
+	         =================================   -->
+	<target name="undeploy" description="updeploy from tomcat">
+		<echo>Un Deploy From Tomcat,Web App Name is:${project.name}</echo>
+		<delete file="${deplay.path}/${deploy.name}.war">
+		</delete>
+		<delete dir="${deplay.path}/${deploy.name}">
+		</delete>
+	</target>
+	<!-- ================================= 
+          target: redeploy   重新部署任务           
+         =================================   -->
+	<target name="redeploy" description="  --> description">
+		<antcall target="undeploy">
+		</antcall>
+		<antcall target="deploy">
+		</antcall>
+	</target>
+	<!-- ================================= 
+          target: update-deploy  日常部署更新        
+         =================================   -->
+	<target name="update-deploy" depends="prepare-web" description="  --> description">
+		<copy todir="${deplay.path}/${deploy.name}">
+			<fileset dir="${basedir}/build/web">
+				<exclude name="**/scripts/ext*/*.*"/>
+			</fileset>
+		</copy>
+		<copy todir="${deplay.path}/${deploy.name}/WEB-INF/classes">
+			<fileset dir="${basedir}/build/classes">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+	<!-- ================================= 
+	          target: start 启动tomcat              
+	         =================================   -->
+	<target name="start" description="初始WEB应用服务(Start Tomcat application)">
+		<java classname="org.apache.catalina.startup.Bootstrap" fork="yes">
+			<jvmarg value="-Dcatalina.home=${tomcat.home}" />
+			<!--
+				<jvmarg line="${run.appfuse.test.debugargline}" />
+				  -->
+			<arg value="start" />
+			<classpath>
+				<pathelement path="${java.home}/../lib/tools.jar" />
+				<fileset dir="${tomcat.home}">
+					<include name="bin/bootstrap.jar" />
+				</fileset>
+			</classpath>
+		</java>
+	</target>
+	<!-- ================================= 
+	          target: start.tomcat 备用Tomcat启动服务              
+	         =================================   -->
+	<target name="start.tomcat" description="Start Tomcat application">
+		<start url="${tomcat.manager.url}" username="${tomcat.username}" password="${tomcat.password}" path="/${project.name}" />
+	</target>
+	<!-- ================================= 
+	          target: stop 停止Tomcat服务              
+	         =================================   -->
+	<target name="stop" description="Stop Tomcat application">
+		<stop url="${tomcat.manager.url}" username="${tomcat.username}" password="${tomcat.password}" path="/${project.name}" />
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: i18n                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="i18n">
+		<delete dir="${basedir}/core/build/classes/com/${project.name}/core/config/i18n">
+			<include name="*.properties" />
+		</delete>
+		<native2ascii encoding="GBK" src="${basedir}/core/src/com/${project.name}/core/config/i18n" dest="${basedir}/core/build/classes/com/${project.name}/core/config/i18n" includes="*.properties" />
+		<copy todir="${basedir}/build/classes/com/${project.name}/core/config/i18n" overwrite="true">
+			<fileset dir="${basedir}/core/build/classes/com/${project.name}/core/config/i18n">
+				<include name="*.*" />
+			</fileset>
+		</copy>
+	</target>
+
+
+	<!-- =========================根据生成的PO生成Form对象（Struts)==============================-->
+	<target name="generator-form">
+
+	</target>
+
+  <target name="new">
+  <input message="您希望新模块使用什么名字[model.name]?(注：模块名只能为英文)" addProperty="model.name">
+		</input>
+   <mkdir dir="${basedir}/newproject"/>
+     <mkdir dir="${basedir}/newproject/${model.name}/src/com/easou/"/>
+	 <copy todir="${basedir}/newproject/${model.name}/src/com/easou/" overwrite="true">
+         <fileset dir="${basedir}/${model.name}/src/com/faceye/">
+           <include name="**/*.*"/>
+		 </fileset>
+	 </copy>
+ <replaceregexp flags="g">
+            <regexp pattern="faceye"/>
+            <substitution expression="easou"/>
+            <fileset dir="${basedir}/newproject/${model.name}/src/com/easou/">
+                <include name="**"/>
+            </fileset>
+        </replaceregexp>
+  </target>
+  <target name="copy-build">
+     <input message="您希望新模块使用什么名字[model.name]?(注：模块名只能为英文)" addProperty="model.name">
+		</input>
+ <copy todir="${basedir}/newproject/${model.name}" overwrite="true">
+         <fileset dir="${basedir}/${model.name}">
+           <include name="build.xml"/>
+		 </fileset>
+	 </copy>
+  </target>
+
+</project>

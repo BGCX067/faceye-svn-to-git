@@ -1,0 +1,141 @@
+Testsuite: com.zaodian.test.core.dao.TestHibernateDAOUtils
+Tests run: 4, Failures: 0, Errors: 0, Time elapsed: 31.969 sec
+------------- Standard Output ---------------
+23:17:35,781  INFO Environment:500 - Hibernate 3.2.1
+23:17:35,984  INFO Environment:533 - hibernate.properties not found
+23:17:36,000  INFO Environment:667 - Bytecode provider name : cglib
+23:17:36,062  INFO Environment:584 - using JDK 1.4 java.sql.Timestamp handling
+23:17:37,062  INFO Configuration:299 - Reading mappings from file: E:\WorkSpace\HomeJ2EE\ZaoDian\build\test\com\zaodian\test\core\domain\Testdao.hbm.xml
+23:17:37,531 DEBUG DTDEntityResolver:38 - trying to resolve system-id [http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd]
+23:17:37,531 DEBUG DTDEntityResolver:40 - recognized hibernate namespace; attempting to resolve on classpath under org/hibernate/
+23:17:37,546 DEBUG DTDEntityResolver:50 - located [http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd] in classpath
+23:17:38,546  INFO HbmBinder:300 - Mapping class: com.zaodian.test.core.domain.Testdao -> testdao
+23:17:38,625 DEBUG HbmBinder:1270 - Mapped property: id -> id
+23:17:38,796 DEBUG HbmBinder:1270 - Mapped property: name -> name
+23:17:38,796 DEBUG Configuration:1282 - Preparing to build session factory with filters : {}
+23:17:38,796 DEBUG Configuration:1117 - processing extends queue
+23:17:38,812 DEBUG Configuration:1121 - processing collection mappings
+23:17:38,812 DEBUG Configuration:1132 - processing native query and ResultSetMapping mappings
+23:17:38,812 DEBUG Configuration:1140 - processing association property references
+23:17:38,812 DEBUG Configuration:1162 - processing foreign key constraints
+23:17:39,687  INFO ConnectionProviderFactory:72 - Initializing connection provider: org.springframework.orm.hibernate3.LocalDataSourceConnectionProvider
+AbandonedObjectPool is used (org.apache.commons.dbcp.AbandonedObjectPool@174219d)
+   LogAbandoned: true
+   RemoveAbandoned: true
+   RemoveAbandonedTimeout: 60
+23:17:44,359  INFO SettingsFactory:81 - RDBMS: MySQL, version: 5.0.18-nt
+23:17:44,375  INFO SettingsFactory:82 - JDBC driver: MySQL-AB JDBC Driver, version: mysql-connector-java-5.0.3 ( $Date: 2006-07-26 17:26:47 +0200 (Wed, 26 Jul 2006) $, $Revision: 5553 $ )
+23:17:44,687  INFO Dialect:151 - Using dialect: org.hibernate.dialect.MySQLDialect
+23:17:44,750  INFO TransactionFactoryFactory:31 - Using default transaction strategy (direct JDBC transactions)
+23:17:44,796  INFO TransactionManagerLookupFactory:33 - No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+23:17:44,796  INFO SettingsFactory:134 - Automatic flush during beforeCompletion(): disabled
+23:17:44,796  INFO SettingsFactory:138 - Automatic session close at end of transaction: disabled
+23:17:44,812  INFO SettingsFactory:145 - JDBC batch size: 15
+23:17:44,828  INFO SettingsFactory:148 - JDBC batch updates for versioned data: disabled
+23:17:44,843  INFO SettingsFactory:153 - Scrollable result sets: enabled
+23:17:44,843 DEBUG SettingsFactory:157 - Wrap result sets: disabled
+23:17:44,843  INFO SettingsFactory:161 - JDBC3 getGeneratedKeys(): enabled
+23:17:44,843  INFO SettingsFactory:169 - Connection release mode: on_close
+23:17:44,859  INFO SettingsFactory:193 - Maximum outer join fetch depth: 2
+23:17:44,859  INFO SettingsFactory:196 - Default batch fetch size: 1
+23:17:44,859  INFO SettingsFactory:200 - Generate SQL with comments: disabled
+23:17:44,859  INFO SettingsFactory:204 - Order SQL updates by primary key: disabled
+23:17:44,859  INFO SettingsFactory:369 - Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+23:17:44,921  INFO ASTQueryTranslatorFactory:24 - Using ASTQueryTranslatorFactory
+23:17:44,921  INFO SettingsFactory:212 - Query language substitutions: {no=0, yes=1}
+23:17:44,921  INFO SettingsFactory:217 - JPA-QL strict compliance: disabled
+23:17:44,921  INFO SettingsFactory:222 - Second-level cache: enabled
+23:17:44,921  INFO SettingsFactory:226 - Query cache: enabled
+23:17:44,921  INFO SettingsFactory:356 - Cache provider: org.hibernate.cache.EhCacheProvider
+23:17:44,968  INFO SettingsFactory:241 - Optimize cache for minimal puts: disabled
+23:17:44,968  INFO SettingsFactory:250 - Structured second-level cache entries: disabled
+23:17:44,968  INFO SettingsFactory:343 - Query cache factory: org.hibernate.cache.StandardQueryCacheFactory
+23:17:45,109  INFO SettingsFactory:270 - Echoing all SQL to stdout
+23:17:45,109  INFO SettingsFactory:277 - Statistics: disabled
+23:17:45,109  INFO SettingsFactory:281 - Deleted entity synthetic identifier rollback: disabled
+23:17:45,109  INFO SettingsFactory:296 - Default entity-mode: pojo
+23:17:45,609  INFO SessionFactoryImpl:161 - building session factory
+23:17:45,625 DEBUG SessionFactoryImpl:173 - Session factory constructed with filter configurations : {}
+23:17:45,625 DEBUG SessionFactoryImpl:177 - instantiating session factory with properties: {java.runtime.name=Java(TM) 2 Runtime Environment, Standard Edition, hibernate.cache.provider_class=org.hibernate.cache.EhCacheProvider, sun.boot.library.path=D:\Program Files\Java\jdk1.5.0_06\jre\bin, java.vm.version=1.5.0_06-b05, ant.library.dir=D:\Program Files\eclipse-SDK-3.2-win32\eclipse\plugins\org.apache.ant_1.6.5\lib, java.vm.vendor=Sun Microsystems Inc., java.vendor.url=http://java.sun.com/, path.separator=;, hibernate.cache.use_query_cache=true, java.vm.name=Java HotSpot(TM) Client VM, file.encoding.pkg=sun.io, user.country=CN, sun.os.patch.level=Service Pack 2, java.vm.specification.name=Java Virtual Machine Specification, user.dir=E:\WorkSpace\HomeJ2EE\ZaoDian, java.runtime.version=1.5.0_06-b05, java.awt.graphicsenv=sun.awt.Win32GraphicsEnvironment, java.endorsed.dirs=D:\Program Files\Java\jdk1.5.0_06\jre\lib\endorsed, os.arch=x86, java.io.tmpdir=D:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\, line.separator=
+, java.vm.specification.vendor=Sun Microsystems Inc., user.variant=, os.name=Windows XP, ant.home=D:\Program Files\eclipse-SDK-3.2-win32\eclipse\plugins\org.apache.ant_1.6.5, sun.jnu.encoding=GBK, java.library.path=D:\Program Files\Java\jdk1.5.0_06\bin;.;D:\WINDOWS\system32;D:\WINDOWS;D:\Program Files\Java\jdk1.5.0_06\bin;D:\Program Files\ANT\apache-ant-1.6.5-bin\apache-ant-1.6.5\bin;D:\WINDOWS\system32;D:\WINDOWS;D:\WINDOWS\System32\Wbem;D:\Program Files\eclipse-SDK-3.2-win32\eclipse\configuration\org.eclipse.osgi\bundles\49\1\.cp, java.specification.name=Java Platform API Specification, java.class.version=49.0, sun.management.compiler=HotSpot Client Compiler, os.version=5.1, hibernate.jdbc.use_scrollable_resultset=true, user.home=D:\Documents and Settings\Administrator, user.timezone=Asia/Shanghai, java.awt.printerjob=sun.awt.windows.WPrinterJob, hibernate.connection.release_mode=on_close, java.specification.version=1.5, file.encoding=GBK, user.name=Administrator, java.class.path=D:\Program Files\eclipse-SDK-3.2-win32\eclipse\plugins\org.apache.ant_1.6.5\lib\ant.jar;D:\Program Files\eclipse-SDK-3.2-win32\eclipse\plugins\org.apache.ant_1.6.5\lib\ant-antlr.jar;D:\Program Files\eclipse-SDK-3.2-win32\eclipse\plugins\org.apache.ant_1.6.5\lib\ant-apache-bcel.jar;D:\Program Files\eclipse-SDK-3.2-win32\eclipse\plugins\org.apache.ant_1.6.5\lib\ant-apache-bsf.jar;D:\Program Files\eclipse-SDK-3.2-win32\eclipse\plugins\org.apache.ant_1.6.5\lib\ant-apache-log4j.jar;D:\Program Files\eclipse-SDK-3.2-win32\eclipse\plugins\org.apache.ant_1.6.5\lib\ant-apache-oro.jar;D:\Program Files\eclipse-SDK-3.2-win32\eclipse\plugins\org.apache.ant_1.6.5\lib\ant-apache-regexp.jar;D:\Program Files\eclipse-SDK-3.2-win32\eclipse\plugins\org.apache.ant_1.6.5\lib\ant-apache-resolver.jar;D:\Program Files\eclipse-SDK-3.2-win32\eclipse\plugins\org.apache.ant_1.6.5\lib\ant-commons-logging.jar;D:\Program Files\eclipse-SDK-3.2-win32\eclipse\plugins\org.apache.ant_1.6.5\lib\ant-commons-net.jar;D:\Program Files\eclipse-SDK-3.2-win32\eclipse\plugins\org.apache.ant_1.6.5\lib\ant-icontract.jar;D:\Program Files\eclipse-SDK-3.2-win32\eclipse\plugins\org.apache.ant_1.6.5\lib\ant-jai.jar;D:\Program Files\eclipse-SDK-3.2-win32\eclipse\plugins\org.apache.ant_1.6.5\lib\ant-javamail.jar;D:\Program Files\eclipse-SDK-3.2-win32\eclipse\plugins\org.apache.ant_1.6.5\lib\ant-jdepend.jar;D:\Program Files\eclipse-SDK-3.2-win32\eclipse\plugins\org.apache.ant_1.6.5\lib\ant-jmf.jar;D:\Program Files\eclipse-SDK-3.2-win32\eclipse\plugins\org.apache.ant_1.6.5\lib\ant-jsch.jar;D:\Program Files\eclipse-SDK-3.2-win32\eclipse\plugins\org.apache.ant_1.6.5\lib\ant-junit.jar;D:\Program Files\eclipse-SDK-3.2-win32\eclipse\plugins\org.apache.ant_1.6.5\lib\ant-launcher.jar;D:\Program Files\eclipse-SDK-3.2-win32\eclipse\plugins\org.apache.ant_1.6.5\lib\ant-netrexx.jar;D:\Program Files\eclipse-SDK-3.2-win32\eclipse\plugins\org.apache.ant_1.6.5\lib\ant-nodeps.jar;D:\Program Files\eclipse-SDK-3.2-win32\eclipse\plugins\org.apache.ant_1.6.5\lib\ant-starteam.jar;D:\Program Files\eclipse-SDK-3.2-win32\eclipse\plugins\org.apache.ant_1.6.5\lib\ant-stylebook.jar;D:\Program Files\eclipse-SDK-3.2-win32\eclipse\plugins\org.apache.ant_1.6.5\lib\ant-swing.jar;D:\Program Files\eclipse-SDK-3.2-win32\eclipse\plugins\org.apache.ant_1.6.5\lib\ant-trax.jar;D:\Program Files\eclipse-SDK-3.2-win32\eclipse\plugins\org.apache.ant_1.6.5\lib\ant-vaj.jar;D:\Program Files\eclipse-SDK-3.2-win32\eclipse\plugins\org.apache.ant_1.6.5\lib\ant-weblogic.jar;D:\Program Files\eclipse-SDK-3.2-win32\eclipse\plugins\org.apache.ant_1.6.5\lib\ant-xalan1.jar;D:\Program Files\eclipse-SDK-3.2-win32\eclipse\plugins\org.apache.ant_1.6.5\lib\ant-xslp.jar;E:\WorkSpace\HomeJ2EE\ZaoDian\lib\junit\junit.jar;D:\Program Files\eclipse-SDK-3.2-win32\eclipse\configuration\org.eclipse.osgi\bundles\28\1\.cp\lib\remoteAnt.jar;D:\Program Files\Java\jdk1.5.0_06\lib\tools.jar;D:\Program Files\eclipse-SDK-3.2-win32\eclipse\plugins\org.eclipse.swt.win32.win32.x86_3.2.0.v3232m.jar;E:\Program Files\MyEclipse Enterprise Workbench 5.1.0 GA\eclipse\plugins\com.genuitec.javascript.debug.mozilla_5.1.0\browser.jar;E:\Program Files\MyEclipse Enterprise Workbench 5.1.0 GA\eclipse\plugins\com.genuitec.javascript.debug.mozilla_5.1.0\htmltransferfix.jar;E:\Program Files\MyEclipse Enterprise Workbench 5.1.0 GA\eclipse\plugins\org.eclipse.atf.mozilla.swt.browser_5.1.0\mozilla_swt.jar, hibernate.bytecode.use_reflection_optimizer=false, hibernate.show_sql=true, hibernate.query.substitutions=yes=1 no=0, java.vm.specification.version=1.0, sun.arch.data.model=32, java.home=D:\Program Files\Java\jdk1.5.0_06\jre, hibernate.dialect=org.hibernate.dialect.MySQLDialect, java.specification.vendor=Sun Microsystems Inc., user.language=zh, awt.toolkit=sun.awt.windows.WToolkit, java.vm.info=mixed mode, sharing, java.version=1.5.0_06, java.ext.dirs=D:\Program Files\Java\jdk1.5.0_06\jre\lib\ext, sun.boot.class.path=D:\Program Files\Java\jdk1.5.0_06\jre\lib\rt.jar;D:\Program Files\Java\jdk1.5.0_06\jre\lib\i18n.jar;D:\Program Files\Java\jdk1.5.0_06\jre\lib\sunrsasign.jar;D:\Program Files\Java\jdk1.5.0_06\jre\lib\jsse.jar;D:\Program Files\Java\jdk1.5.0_06\jre\lib\jce.jar;D:\Program Files\Java\jdk1.5.0_06\jre\lib\charsets.jar;D:\Program Files\Java\jdk1.5.0_06\jre\classes, java.vendor=Sun Microsystems Inc., file.separator=\, java.vendor.url.bug=http://java.sun.com/cgi-bin/bugreport.cgi, hibernate.connection.provider_class=org.springframework.orm.hibernate3.LocalDataSourceConnectionProvider, sun.cpu.endian=little, sun.io.unicode.encoding=UnicodeLittle, sun.desktop=windows, sun.cpu.isalist=}
+23:17:45,828  WARN ConfigurationFactory:127 - No configuration found. Configuring ehcache from ehcache-failsafe.xml  found in the classpath: jar:file:/E:/WorkSpace/HomeJ2EE/ZaoDian/lib/ehcache/ehcache-1.2.3.jar!/ehcache-failsafe.xml
+23:17:50,328 DEBUG AbstractEntityPersister:2688 - Static SQL for entity: com.zaodian.test.core.domain.Testdao
+23:17:50,328 DEBUG AbstractEntityPersister:2693 -  Version select: select id from zaodian.testdao where id =?
+23:17:50,343 DEBUG AbstractEntityPersister:2696 -  Snapshot select: select testdao_.id, testdao_.name as name0_ from zaodian.testdao testdao_ where testdao_.id=?
+23:17:50,343 DEBUG AbstractEntityPersister:2699 -  Insert 0: insert into zaodian.testdao (name, id) values (?, ?)
+23:17:50,343 DEBUG AbstractEntityPersister:2700 -  Update 0: update zaodian.testdao set name=? where id=?
+23:17:50,343 DEBUG AbstractEntityPersister:2701 -  Delete 0: delete from zaodian.testdao where id=?
+23:17:50,562 DEBUG EntityLoader:79 - Static select for entity com.zaodian.test.core.domain.Testdao: select testdao0_.id as id0_0_, testdao0_.name as name0_0_ from zaodian.testdao testdao0_ where testdao0_.id=?
+23:17:50,578 DEBUG EntityLoader:79 - Static select for entity com.zaodian.test.core.domain.Testdao: select testdao0_.id as id0_0_, testdao0_.name as name0_0_ from zaodian.testdao testdao0_ where testdao0_.id=?
+23:17:50,578 DEBUG EntityLoader:79 - Static select for entity com.zaodian.test.core.domain.Testdao: select testdao0_.id as id0_0_, testdao0_.name as name0_0_ from zaodian.testdao testdao0_ where testdao0_.id=? for update
+23:17:50,578 DEBUG EntityLoader:79 - Static select for entity com.zaodian.test.core.domain.Testdao: select testdao0_.id as id0_0_, testdao0_.name as name0_0_ from zaodian.testdao testdao0_ where testdao0_.id=? for update
+23:17:50,578 DEBUG EntityLoader:79 - Static select for entity com.zaodian.test.core.domain.Testdao: select testdao0_.id as id0_0_, testdao0_.name as name0_0_ from zaodian.testdao testdao0_ where testdao0_.id=? for update
+23:17:50,734 DEBUG EntityLoader:34 - Static select for action ACTION_MERGE on entity com.zaodian.test.core.domain.Testdao: select testdao0_.id as id0_0_, testdao0_.name as name0_0_ from zaodian.testdao testdao0_ where testdao0_.id=?
+23:17:50,734 DEBUG EntityLoader:34 - Static select for action ACTION_REFRESH on entity com.zaodian.test.core.domain.Testdao: select testdao0_.id as id0_0_, testdao0_.name as name0_0_ from zaodian.testdao testdao0_ where testdao0_.id=?
+23:17:50,796 DEBUG SessionFactoryObjectFactory:39 - initializing class SessionFactoryObjectFactory
+23:17:50,812 DEBUG SessionFactoryObjectFactory:76 - registered: 402881c70f773da2010f773db80e0000 (unnamed)
+23:17:50,812  INFO SessionFactoryObjectFactory:82 - Not binding factory to JNDI, no JNDI name configured
+23:17:50,828 DEBUG SessionFactoryImpl:308 - instantiated session factory
+23:17:50,828  INFO UpdateTimestampsCache:41 - starting update timestamps cache at region: org.hibernate.cache.UpdateTimestampsCache
+23:17:50,843  WARN EhCacheProvider:86 - Could not find configuration [org.hibernate.cache.UpdateTimestampsCache]; using defaults.
+23:17:51,046 DEBUG EhCacheProvider:89 - started EHCache region: org.hibernate.cache.UpdateTimestampsCache
+23:17:51,078  INFO StandardQueryCache:52 - starting query cache at region: org.hibernate.cache.StandardQueryCache
+23:17:51,078  WARN EhCacheProvider:86 - Could not find configuration [org.hibernate.cache.StandardQueryCache]; using defaults.
+23:17:51,093 DEBUG EhCacheProvider:89 - started EHCache region: org.hibernate.cache.StandardQueryCache
+23:17:51,093 DEBUG SessionFactoryImpl:390 - Checking 0 named HQL queries
+23:17:51,093 DEBUG SessionFactoryImpl:410 - Checking 0 named SQL queries
+23:17:51,859  WARN CacheManager:271 - Creating a new instance of CacheManager using the diskStorePath "D:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\" which is already used by an existing CacheManager.
+The source of the configuration was InputStream java.io.FileInputStream@ce16ad.
+The diskStore path for this CacheManager will be set to D:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\\ehcache_auto_created_1165936671859.
+To avoid this warning consider using the CacheManager factory methods to create a singleton CacheManager or specifying a separate ehcache configuration (ehcache.xml) for each CacheManager instance.
+23:17:56,328 DEBUG SessionImpl:220 - opened session at timestamp: 4775676624830464
+23:17:56,500 DEBUG JDBCTransaction:54 - begin
+23:17:56,500 DEBUG ConnectionManager:415 - opening JDBC connection
+23:17:56,500 DEBUG JDBCTransaction:59 - current autocommit status: true
+23:17:56,500 DEBUG JDBCTransaction:62 - disabling autocommit
+23:17:56,625 DEBUG JDBCTransaction:152 - rollback
+23:17:56,625 DEBUG JDBCTransaction:193 - re-enabling autocommit
+23:17:56,625 DEBUG JDBCTransaction:163 - rolled back JDBC Connection
+23:17:56,625 DEBUG ConnectionManager:296 - transaction completed on session with on_close connection release mode; be sure to close the session to release JDBC resources!
+23:17:56,625 DEBUG ConnectionManager:435 - releasing JDBC connection [ (open PreparedStatements: 0, globally: 0) (open ResultSets: 0, globally: 0)]
+23:17:56,640 DEBUG ConnectionManager:296 - transaction completed on session with on_close connection release mode; be sure to close the session to release JDBC resources!
+23:17:56,671 DEBUG SessionImpl:220 - opened session at timestamp: 4775676627644416
+23:17:56,671 DEBUG JDBCTransaction:54 - begin
+23:17:56,671 DEBUG ConnectionManager:415 - opening JDBC connection
+23:17:56,671 DEBUG JDBCTransaction:59 - current autocommit status: true
+23:17:56,671 DEBUG JDBCTransaction:62 - disabling autocommit
+23:17:56,687 DEBUG JDBCTransaction:152 - rollback
+23:17:56,687 DEBUG JDBCTransaction:193 - re-enabling autocommit
+23:17:56,687 DEBUG JDBCTransaction:163 - rolled back JDBC Connection
+23:17:56,687 DEBUG ConnectionManager:296 - transaction completed on session with on_close connection release mode; be sure to close the session to release JDBC resources!
+23:17:56,687 DEBUG ConnectionManager:435 - releasing JDBC connection [ (open PreparedStatements: 0, globally: 0) (open ResultSets: 0, globally: 0)]
+23:17:56,687 DEBUG ConnectionManager:296 - transaction completed on session with on_close connection release mode; be sure to close the session to release JDBC resources!
+23:17:56,703 DEBUG SessionImpl:220 - opened session at timestamp: 4775676627775488
+23:17:56,703 DEBUG JDBCTransaction:54 - begin
+23:17:56,703 DEBUG ConnectionManager:415 - opening JDBC connection
+23:17:56,703 DEBUG JDBCTransaction:59 - current autocommit status: true
+23:17:56,703 DEBUG JDBCTransaction:62 - disabling autocommit
+23:17:56,718 DEBUG JDBCTransaction:152 - rollback
+23:17:56,718 DEBUG JDBCTransaction:193 - re-enabling autocommit
+23:17:56,718 DEBUG JDBCTransaction:163 - rolled back JDBC Connection
+23:17:56,718 DEBUG ConnectionManager:296 - transaction completed on session with on_close connection release mode; be sure to close the session to release JDBC resources!
+23:17:56,718 DEBUG ConnectionManager:435 - releasing JDBC connection [ (open PreparedStatements: 0, globally: 0) (open ResultSets: 0, globally: 0)]
+23:17:56,718 DEBUG ConnectionManager:296 - transaction completed on session with on_close connection release mode; be sure to close the session to release JDBC resources!
+23:17:56,734 DEBUG SessionImpl:220 - opened session at timestamp: 4775676627836928
+23:17:56,734 DEBUG JDBCTransaction:54 - begin
+23:17:56,734 DEBUG ConnectionManager:415 - opening JDBC connection
+23:17:56,734 DEBUG JDBCTransaction:59 - current autocommit status: true
+23:17:56,734 DEBUG JDBCTransaction:62 - disabling autocommit
+23:17:56,843 DEBUG AbstractSaveEventListener:113 - generated identifier: 402881c70f773da2010f773dcfeb0001, using strategy: org.hibernate.id.UUIDHexGenerator
+23:17:57,000 DEBUG JDBCTransaction:152 - rollback
+23:17:57,000 DEBUG JDBCTransaction:193 - re-enabling autocommit
+23:17:57,015 DEBUG JDBCTransaction:163 - rolled back JDBC Connection
+23:17:57,015 DEBUG ConnectionManager:296 - transaction completed on session with on_close connection release mode; be sure to close the session to release JDBC resources!
+23:17:57,015 DEBUG ConnectionManager:435 - releasing JDBC connection [ (open PreparedStatements: 0, globally: 0) (open ResultSets: 0, globally: 0)]
+23:17:57,015 DEBUG ConnectionManager:296 - transaction completed on session with on_close connection release mode; be sure to close the session to release JDBC resources!
+------------- ---------------- ---------------
+
+Testcase: testDaoUtils took 31.625 sec
+Testcase: testHibernateSupport took 0.032 sec
+Testcase: testJdbcSupport took 0.015 sec
+Testcase: testSaveOrUpdateObject took 0.297 sec

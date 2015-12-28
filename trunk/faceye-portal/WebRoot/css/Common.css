@@ -1,0 +1,293 @@
+/*
+ * Ext JS Library 2.0 RC 1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ * licensing@extjs.com
+ * 
+ * http://extjs.com/license
+ */
+body {
+	font-family: verdana, tahoma, helvetica;
+	padding: 2px 5px 5px 2px;
+	font-size: 12px !important;
+}
+
+.msg .x-box-mc {
+	font-size: 14px;
+}
+
+#msg-div {
+	position: absolute;
+	left: 35%;
+	top: 10px;
+	width: 250px;
+	z-index: 20000;
+}
+
+.x-panel-body p {
+	margin: 5px;
+}
+
+.div-column {
+	background-color: #fddfsfaf !               impotant;
+}
+
+.view-template-table {
+	border: 1;
+	width: 100%;
+	font-size: 12px;
+}
+
+#login-form {
+	margin-top: 200px;
+	margin-left: 400px;
+	height: 140px;
+}
+
+/**
+*�ϲ�������
+*/
+div#default-header {
+	font-size: 12px;
+}
+
+div#default-my {
+	float: right;
+}
+
+div#default-log {
+	float: left !important;
+	margin-left: 0;
+	margin-right: 5px;
+}
+
+div#default-log-pic {
+	float: left !important;
+}
+
+div#default-log-pic-1 {
+	float: left !important;
+	width: 200px !important;
+}
+
+div#default-log-pic-2 {
+	float: left !important;
+	heigth: 200px !important;
+	margin-left: 5px;
+	margin-right: 5px;
+	margin-left: 5px;
+}
+
+div#default-message {
+	float: left !important;
+	color: red;
+}
+
+div#default-toolbar-feed-home {
+	float: left;
+	border: 1px solid #F6CECD;
+	margin: 0 5px 0 5px;
+}
+
+.common-tool-bar {
+	float: left;
+	border: 1px solid #F6CECD;
+	margin: 0 5px 0 5px;
+}
+
+div#default-toolbar-desktop-home {
+	float: left;
+	border: 1px solid #F6CECD;
+	margin: 0 5px 0 5px;
+}
+
+div#default-toolbar-manager {
+	float: left;
+	border: 1px solid #F6CECD;
+	margin: 0 5px 0 5px;
+}
+
+div#default-toolbar-column-style-select {
+	float: left;
+	border: 1px solid #F6CECD;
+	margin: 0 5px 0 5px;
+}
+
+div#default-toolbar-register {
+	float: left;
+	border: 1px solid #F6CECD;
+	margin: 0 5px 0 5px;
+}
+
+div#default-toolbar-login {
+	float: left;
+	border: 1px solid #F6CECD;
+	margin: 0 5px 0 5px;
+}
+
+div#default-toolbar-logout {
+	float: left;
+	border: 1px solid #F6CECD;
+	margin: 0 5px 0 5px;
+}
+
+div#default-user-login-message {
+	float: left;
+	border: 1px solid #F6CECD;
+	margin: 0 5px 0 5px;
+	color: green !important;
+	font-weight: bolb !important;
+}
+
+div#default-user-logout-message {
+	float: left;
+	border: 1px solid #F6CECD;
+	margin: 0 5px 0 5px;
+	color: red !important;
+	font-weight: bolb !important;
+}
+
+div#default-user-help-message {
+	float: left;
+	border: 1px solid #F6CECD;
+	margin: 0 5px 0 5px;
+	color: #F6CECD !important;
+	font-weight: bolb !important;
+}
+
+/**
+*�û����������б�
+*/
+.user-blog-article-view {
+	color: red;
+}
+
+.user-blog-article-view table {
+	font-size: 12px;
+	color: red;
+}
+
+.user-blog-article-detail {
+	margin-left: 35px;
+	margin-top: 10px;
+	margin-right: 35px;
+}
+
+.user-blog-article-detail table {
+	font-size: 13px !important;
+}
+
+span#user-blog-article-detail-title {
+	font-size: 13px !important;
+	font-weight: bold !important;
+}
+
+span#article-time {
+	color: #666666;
+	letter-spacing: 0px;
+}
+
+span#article-title-split {
+	color: red;
+	font-weight: bold !important;
+}
+
+.user-blog-article-content {
+	line-height: 25px;
+	color: #666666;
+}
+div#user-blog-article-list-small-tool{
+	color:#666666;
+	font-size:12px;
+	}
+div#user-blog-article-content-summary{
+	margin-left:15px;
+	margin-right:5px;
+	line-height: 25px;
+	font-size:13px;
+	}
+hr#user-blog-article-hr{
+	align:center;
+	height:0px;
+	border:1px solid #eee;
+	}
+div#user-blog-article-discus-content{
+	margin-left:15px;
+	margin-right:5px;
+	line-height: 20px;
+	font-size:13px;
+	word-break:break-all !important;
+	width:200px !important;
+}
+/**
+*С��ʿ
+*/
+.msg .x-box-mc {
+	font-size: 14px;
+}
+
+#msg-div {
+	position: absolute;
+	left: 35%;
+	top: 10px;
+	width: 250px;
+	z-index: 20000;
+}
+
+#message-close {
+	position: relative;
+	height: 15px;
+	width: 15px;
+	padding: 0px;
+	margin: 0px 1px 0px 1px;
+	float: right;
+	background: url(../scripts/ext/resources/images/default/qtip/close.gif);
+}
+
+#message-title {
+	position: relative;
+	height: 15px;
+	padding: 0px;
+	margin: 0px 1px 0px 1px;
+	float: left;
+}
+
+#message-text {
+	margin: 15px 1px 0px 1px;
+	float: left !important;
+}
+
+/**
+*ͨ��Ext
+*css
+*add:������ʱ
+*/
+.add {
+	background-image:
+		url(/faceye/scripts/ext/resources/images/icons/fam/add.gif)
+		!important;
+}
+.option {
+	background-image:
+		url(/faceye/scripts/ext/resources/images/icons/fam/plugin.gif)
+		!important;
+}
+.remove {
+	background-image:
+		url(/faceye/scripts/ext/resources/images/icons/fam/delete.gif)
+		!important;
+}
+.lock {
+	background-image:
+		url(/faceye/scripts/ext/resources/images/default/grid/hmenu-lock.gif)
+		!important;
+}
+.unlock{
+	background-image:
+		url(/faceye/scripts/ext/resources/images/default/grid/hmenu-unlock.gif)
+		!important;
+}
+.detailChange{
+background-image:
+		url(/faceye/scripts/ext/resources/images/icons/fam/post.gif)
+		!important;
+}

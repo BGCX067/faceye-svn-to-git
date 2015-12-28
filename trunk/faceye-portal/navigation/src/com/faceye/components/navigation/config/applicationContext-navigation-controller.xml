@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+	<bean name="/traditionAction"
+		class="com.faceye.components.navigation.web.controller.TraditionAction">
+		<property name="service">
+			<ref bean="service" />
+		</property>
+		<property name="traditionService">
+			<ref bean="traditionService" />
+		</property>
+	</bean>
+	<bean name="/feedAction"
+		class="com.faceye.components.navigation.web.controller.FeedAction">
+		<property name="service">
+			<ref bean="service" />
+		</property>
+		<property name="feedService">
+			<ref bean="feedService" />
+		</property>
+		<property name="feedParseService">
+			<ref bean="feedParseService" />
+		</property>
+		<property name="userResourceCategoryService">
+			<ref bean="userResourceCategoryService" />
+		</property>
+	</bean>
+	<!-- 网站分类管理 -->
+	<bean name="/categoryAction"
+		class="com.faceye.components.navigation.web.controller.CategoryAction">
+		<property name="service">
+			<ref bean="service" />
+		</property>
+		<property name="treeService">
+			<ref bean="treeService" />
+		</property>
+		<property name="categoryService">
+			<ref bean="categoryService" />
+		</property>
+	</bean>
+	<bean name="/userResourceCategoryAction"
+		class="com.faceye.components.navigation.web.controller.UserResourceCategoryAction">
+		<property name="service">
+			<ref bean="service" />
+		</property>
+		<property name="treeService">
+			<ref bean="treeService" />
+		</property>
+		<property name="userResourceCategoryService">
+			<ref bean="userResourceCategoryService" />
+		</property>
+	</bean>
+
+</beans>

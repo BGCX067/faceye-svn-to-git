@@ -1,0 +1,131 @@
+(dao.TestHibernateDAOUtils           179 ) Loading context for: classpath*:/com/zaodian/core/config/applicationContext-resources.xml,classpath:/com/zaodian/core/config/applicationContext-dao.xml
+(core.CollectionFactory              76  ) JDK 1.4+ collections available
+(core.CollectionFactory              80  ) Commons Collections 3.x available
+(xml.XmlBeanDefinitionReader         347 ) Loading XML bean definitions from URL [file:/F:/WorkSpace/HomeJ2EE/ZaoDian/build/classes/com/zaodian/core/config/applicationContext-resources.xml]
+(xml.XmlBeanDefinitionReader         347 ) Loading XML bean definitions from class path resource [com/zaodian/core/config/applicationContext-dao.xml]
+(support.ClassPathXmlApplicationContext 100 ) Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext;hashCode=29173348]: org.springframework.beans.factory.support.DefaultListableBeanFactory defining beans [dataSource,sessionFactory,hibernateTemplate,cacheManager,jdbcTemplate,jdbcTransactionManager,sqlPropertiesEditorUtil,transactionManager,transactionTemplate,txProxyTemplate,jdbcTxProxyTemplate,hibernateSupport,jdbcSupport,daoUtils]; root of BeanFactory hierarchy
+(support.ClassPathXmlApplicationContext 322 ) 14 beans defined in application context [org.springframework.context.support.ClassPathXmlApplicationContext;hashCode=29173348]
+(support.ClassPathXmlApplicationContext 473 ) Unable to locate MessageSource with name 'messageSource': using default [org.springframework.context.support.DelegatingMessageSource@17494c8]
+(support.ClassPathXmlApplicationContext 495 ) Unable to locate ApplicationEventMulticaster with name 'applicationEventMulticaster': using default [org.springframework.context.event.SimpleApplicationEventMulticaster@e020c9]
+(support.DefaultListableBeanFactory  261 ) Pre-instantiating singletons in factory [org.springframework.beans.factory.support.DefaultListableBeanFactory defining beans [dataSource,sessionFactory,hibernateTemplate,cacheManager,jdbcTemplate,jdbcTransactionManager,sqlPropertiesEditorUtil,transactionManager,transactionTemplate,txProxyTemplate,jdbcTxProxyTemplate,hibernateSupport,jdbcSupport,daoUtils]; root of BeanFactory hierarchy]
+(cfg.Environment                     500 ) Hibernate 3.2.1
+(cfg.Environment                     533 ) hibernate.properties not found
+(cfg.Environment                     667 ) Bytecode provider name : cglib
+(cfg.Environment                     584 ) using JDK 1.4 java.sql.Timestamp handling
+(cfg.Configuration                   299 ) Reading mappings from file: F:\WorkSpace\HomeJ2EE\ZaoDian\build\test\com\zaodian\test\core\domain\Testdao.hbm.xml
+(cfg.HbmBinder                       300 ) Mapping class: com.zaodian.test.core.domain.Testdao -&gt; testdao
+(hibernate3.LocalSessionFactoryBean  736 ) Building new Hibernate SessionFactory
+(connection.ConnectionProviderFactory 72  ) Initializing connection provider: org.springframework.orm.hibernate3.LocalDataSourceConnectionProvider
+AbandonedObjectPool is used (org.apache.commons.dbcp.AbandonedObjectPool@15c62bc)
+   LogAbandoned: true
+   RemoveAbandoned: true
+   RemoveAbandonedTimeout: 60
+(cfg.SettingsFactory                 81  ) RDBMS: MySQL, version: 5.0.18-nt
+(cfg.SettingsFactory                 82  ) JDBC driver: MySQL-AB JDBC Driver, version: mysql-connector-java-5.0.3 ( $Date: 2006-07-26 17:26:47 +0200 (Wed, 26 Jul 2006) $, $Revision: 5553 $ )
+(dialect.Dialect                     151 ) Using dialect: org.hibernate.dialect.MySQLDialect
+(transaction.TransactionFactoryFactory 31  ) Using default transaction strategy (direct JDBC transactions)
+(transaction.TransactionManagerLookupFactory 33  ) No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+(cfg.SettingsFactory                 134 ) Automatic flush during beforeCompletion(): disabled
+(cfg.SettingsFactory                 138 ) Automatic session close at end of transaction: disabled
+(cfg.SettingsFactory                 145 ) JDBC batch size: 15
+(cfg.SettingsFactory                 148 ) JDBC batch updates for versioned data: disabled
+(cfg.SettingsFactory                 153 ) Scrollable result sets: enabled
+(cfg.SettingsFactory                 161 ) JDBC3 getGeneratedKeys(): enabled
+(cfg.SettingsFactory                 169 ) Connection release mode: on_close
+(cfg.SettingsFactory                 193 ) Maximum outer join fetch depth: 2
+(cfg.SettingsFactory                 196 ) Default batch fetch size: 1
+(cfg.SettingsFactory                 200 ) Generate SQL with comments: disabled
+(cfg.SettingsFactory                 204 ) Order SQL updates by primary key: disabled
+(cfg.SettingsFactory                 369 ) Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+(ast.ASTQueryTranslatorFactory       24  ) Using ASTQueryTranslatorFactory
+(cfg.SettingsFactory                 212 ) Query language substitutions: {no=0, yes=1}
+(cfg.SettingsFactory                 217 ) JPA-QL strict compliance: disabled
+(cfg.SettingsFactory                 222 ) Second-level cache: enabled
+(cfg.SettingsFactory                 226 ) Query cache: enabled
+(cfg.SettingsFactory                 356 ) Cache provider: org.hibernate.cache.EhCacheProvider
+(cfg.SettingsFactory                 241 ) Optimize cache for minimal puts: disabled
+(cfg.SettingsFactory                 250 ) Structured second-level cache entries: disabled
+(cfg.SettingsFactory                 343 ) Query cache factory: org.hibernate.cache.StandardQueryCacheFactory
+(cfg.SettingsFactory                 270 ) Echoing all SQL to stdout
+(cfg.SettingsFactory                 277 ) Statistics: disabled
+(cfg.SettingsFactory                 281 ) Deleted entity synthetic identifier rollback: disabled
+(cfg.SettingsFactory                 296 ) Default entity-mode: pojo
+(impl.SessionFactoryImpl             161 ) building session factory
+(config.ConfigurationFactory         127 ) No configuration found. Configuring ehcache from ehcache-failsafe.xml  found in the classpath: jar:file:/F:/WorkSpace/HomeJ2EE/ZaoDian/lib/ehcache/ehcache-1.2.3.jar!/ehcache-failsafe.xml
+(impl.SessionFactoryObjectFactory    82  ) Not binding factory to JNDI, no JNDI name configured
+(cache.UpdateTimestampsCache         41  ) starting update timestamps cache at region: org.hibernate.cache.UpdateTimestampsCache
+(cache.EhCacheProvider               86  ) Could not find configuration [org.hibernate.cache.UpdateTimestampsCache]; using defaults.
+(cache.StandardQueryCache            52  ) starting query cache at region: org.hibernate.cache.StandardQueryCache
+(cache.EhCacheProvider               86  ) Could not find configuration [org.hibernate.cache.StandardQueryCache]; using defaults.
+(ehcache.EhCacheManagerFactoryBean   90  ) Initializing EHCache CacheManager
+(ehcache.CacheManager                271 ) Creating a new instance of CacheManager using the diskStorePath "E:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\" which is already used by an existing CacheManager.
+The source of the configuration was InputStream java.io.FileInputStream@167d7fb.
+The diskStore path for this CacheManager will be set to E:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\\ehcache_auto_created_1168076803328.
+To avoid this warning consider using the CacheManager factory methods to create a singleton CacheManager or specifying a separate ehcache configuration (ehcache.xml) for each CacheManager instance.
+(hibernate3.HibernateTransactionManager 373 ) Using DataSource [org.apache.commons.dbcp.BasicDataSource@717323] of Hibernate SessionFactory for HibernateTransactionManager
+(datasource.JdbcTransactionObjectSupport 60  ) JDBC 3.0 Savepoint class is available
+(dao.TestHibernateDAOUtils           318 ) Began transaction (1): transaction manager [org.springframework.orm.hibernate3.HibernateTransactionManager@789869]; default rollback = true
+(dao.TestHibernateDAOUtils           284 ) Rolled back transaction after test execution
+(dao.TestHibernateDAOUtils           318 ) Began transaction (1): transaction manager [org.springframework.orm.hibernate3.HibernateTransactionManager@789869]; default rollback = true
+(dao.TestHibernateDAOUtils           284 ) Rolled back transaction after test execution
+(dao.TestHibernateDAOUtils           318 ) Began transaction (1): transaction manager [org.springframework.orm.hibernate3.HibernateTransactionManager@789869]; default rollback = true
+(dao.TestHibernateDAOUtils           284 ) Rolled back transaction after test execution
+(dao.TestHibernateDAOUtils           318 ) Began transaction (1): transaction manager [org.springframework.orm.hibernate3.HibernateTransactionManager@789869]; default rollback = true
+Hibernate: insert into zaodian.testdao (name, id) values (?, ?)
+(util.JDBCExceptionReporter          77  ) SQL Error: 1146, SQLState: 42S02
+(util.JDBCExceptionReporter          78  ) Table 'zaodian.testdao' doesn't exist
+(def.AbstractFlushingEventListener   301 ) Could not synchronize database state with session
+org.hibernate.exception.SQLGrammarException: Could not execute JDBC batch update
+	at org.hibernate.exception.SQLStateConverter.convert(SQLStateConverter.java:67)
+	at org.hibernate.exception.JDBCExceptionHelper.convert(JDBCExceptionHelper.java:43)
+	at org.hibernate.jdbc.AbstractBatcher.executeBatch(AbstractBatcher.java:249)
+	at org.hibernate.engine.ActionQueue.executeActions(ActionQueue.java:235)
+	at org.hibernate.engine.ActionQueue.executeActions(ActionQueue.java:139)
+	at org.hibernate.event.def.AbstractFlushingEventListener.performExecutions(AbstractFlushingEventListener.java:298)
+	at org.hibernate.event.def.DefaultAutoFlushEventListener.onAutoFlush(DefaultAutoFlushEventListener.java:41)
+	at org.hibernate.impl.SessionImpl.autoFlushIfRequired(SessionImpl.java:969)
+	at org.hibernate.impl.SessionImpl.list(SessionImpl.java:1562)
+	at org.hibernate.impl.CriteriaImpl.list(CriteriaImpl.java:283)
+	at org.springframework.orm.hibernate3.HibernateTemplate$5.doInHibernate(HibernateTemplate.java:528)
+	at org.springframework.orm.hibernate3.HibernateTemplate.execute(HibernateTemplate.java:362)
+	at org.springframework.orm.hibernate3.HibernateTemplate.loadAll(HibernateTemplate.java:524)
+	at com.zaodian.core.dao.hibernate.controller.HibernateDAOUtils.loadAllObjects(HibernateDAOUtils.java:423)
+	at com.zaodian.test.core.dao.TestHibernateDAOUtils.testSaveOrUpdateObjectAndLoadObject(TestHibernateDAOUtils.java:43)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:585)
+	at junit.framework.TestCase.runTest(TestCase.java:154)
+	at junit.framework.TestCase.runBare(TestCase.java:127)
+	at org.springframework.test.ConditionalTestCase.runBare(ConditionalTestCase.java:69)
+	at junit.framework.TestResult$1.protect(TestResult.java:106)
+	at junit.framework.TestResult.runProtected(TestResult.java:124)
+	at junit.framework.TestResult.run(TestResult.java:109)
+	at junit.framework.TestCase.run(TestCase.java:118)
+	at junit.framework.TestSuite.runTest(TestSuite.java:208)
+	at junit.framework.TestSuite.run(TestSuite.java:203)
+	at org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner.run(JUnitTestRunner.java:297)
+	at org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.executeInVM(JUnitTask.java:1072)
+	at org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute(JUnitTask.java:682)
+	at org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.executeOrQueue(JUnitTask.java:1434)
+	at org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute(JUnitTask.java:632)
+	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:275)
+	at org.apache.tools.ant.Task.perform(Task.java:364)
+	at org.apache.tools.ant.Target.execute(Target.java:341)
+	at org.apache.tools.ant.Target.performTasks(Target.java:369)
+	at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1216)
+	at org.apache.tools.ant.Project.executeTarget(Project.java:1185)
+	at org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:40)
+	at org.apache.tools.ant.Project.executeTargets(Project.java:1068)
+	at org.apache.tools.ant.Main.runBuild(Main.java:668)
+	at org.apache.tools.ant.Main.startAnt(Main.java:187)
+	at org.apache.tools.ant.launch.Launcher.run(Launcher.java:246)
+	at org.apache.tools.ant.launch.Launcher.main(Launcher.java:67)
+Caused by: java.sql.BatchUpdateException: Table 'zaodian.testdao' doesn't exist
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:1099)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:849)
+	at org.apache.commons.dbcp.DelegatingStatement.executeBatch(DelegatingStatement.java:294)
+	at org.hibernate.jdbc.BatchingBatcher.doExecuteBatch(BatchingBatcher.java:48)
+	at org.hibernate.jdbc.AbstractBatcher.executeBatch(AbstractBatcher.java:242)
+	... 42 more
+(dao.TestHibernateDAOUtils           284 ) Rolled back transaction after test execution

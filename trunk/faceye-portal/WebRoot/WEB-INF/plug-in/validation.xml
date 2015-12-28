@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE form-validation PUBLIC "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.1.3//EN" "http://jakarta.apache.org/commons/dtds/validator_1_1_3.dtd">
+
+<form-validation>
+
+	<formset>
+		<!-- ==============================功能点维护数据检验=============================== -->
+		<form name="/editFunctionKeyAction">
+			<field property="name" depends="required,maxlength">
+				<arg0 key="com.huasoft.misdframework.functionkey.name" />
+				<arg2 key="24" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>24</var-value>
+				</var>
+			</field>
+			<field property="location" depends="maxlength">
+				<arg0
+					key="com.huasoft.misdframework.functionkey.location" />
+				<arg2 key="122" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>122</var-value>
+				</var>
+			</field>
+			<field property="informationTypeCodeID"
+				depends="required">
+				<arg0
+					key="com.huasoft.misdframework.functionkey.select.informationTypeCode" />
+			</field>
+			<field property="modelid" depends="required">
+				<arg0
+					key="com.huasoft.misdframework.funcitonkey.select.module" />
+			</field>
+			<field property="description" depends="maxlength">
+				<arg0
+					key="com.huasoft.misdframework.functionkey.description" />
+				<arg2 key="122" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>122</var-value>
+				</var>
+			</field>
+		</form>
+		<!-- ======================角色数据校验======================================= -->
+		<form name="/editSecurityRoleAction">
+			<field property="name" depends="required,maxlength">
+				<arg0 key="com.huasoft.misdframework.securityRole.name" />
+				<arg2 key="22" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>22</var-value>
+				</var>
+			</field>
+			<field property="descn" depends="maxlength">
+				<arg0
+					key="com.huasoft.misdframework.securityRole.descn" />
+				<arg1 key="122" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>122</var-value>
+				</var>
+			</field>
+		</form>
+		<!-- =========================用户注册信息校验======================================== -->
+		<form name="/editSecurityUserAction">
+			<field property="loginid"
+				depends="required,minlength,maxlength,mask">
+				<msg name="mask" key="regiser.loginid.maskmsg" />
+				<arg0
+					key="com.huasoft.misdframework.securityUser.loginid" />
+				<arg1 key="3" />
+				<arg2 key="16" />
+				<var>
+					<var-name>minlength</var-name>
+					<var-value>3</var-value>
+				</var>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>16</var-value>
+				</var>
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[a-zA-Z0-9_]*$</var-value>
+				</var>
+			</field>
+			<field property="name" depends="required,maxlength">
+				<arg0
+					key="com.huasoft.misdframework.securityUser.truename" />
+				<arg0 key="25" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>25</var-value>
+				</var>
+			</field>
+			<field property="email" depends="required,email">
+				<arg0
+					key="com.huasoft.misdframework.securityUser.email" />
+			</field>
+			<field property="descn" depends="maxlength">
+				<arg0
+					key="com.huasoft.misdframework.securityUser.descn" />
+				<arg2 key="122" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>122</var-value>
+				</var>
+			</field>
+			<field property="passwd"
+				depends="required,minlength,maxlength">
+				<arg0
+					key="com.huasoft.misdframework.securityUser.password" />
+				<arg1 key="6" />
+				<arg2 key="16" />
+				<var>
+					<var-name>minlength</var-name>
+					<var-value>6</var-value>
+				</var>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>16</var-value>
+				</var>
+			</field>
+			<field property="repasswd"
+				depends="required,minlength,maxlength">
+				<arg0
+					key="com.huasoft.misdframework.securityUser.repassword" />
+				<arg1 key="6" />
+				<arg2 key="16" />
+				<var>
+					<var-name>minlength</var-name>
+					<var-value>6</var-value>
+				</var>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>16</var-value>
+				</var>
+			</field>
+		</form>
+		<!-- 取回用户密码信息校验 -->
+		<form name="/forgetPasswordSecurityUserAction">
+			<field property="loginid"
+				depends="required,minlength,maxlength,mask">
+				<msg name="mask" key="regiser.loginid.maskmsg" />
+				<arg0
+					key="com.huasoft.misdframework.securityUser.loginid" />
+				<arg1 key="3" />
+				<arg2 key="16" />
+				<var>
+					<var-name>minlength</var-name>
+					<var-value>3</var-value>
+				</var>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>16</var-value>
+				</var>
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[a-zA-Z0-9_]*$</var-value>
+				</var>
+			</field>
+		</form>
+		<!-- 从 Excel 导入用户到系统数据校验 -->
+		<form name="/importUserExcel">
+			<field property="excel" depends="required">
+				<arg0 />
+			</field>
+		</form>
+		<!-- 国标数据校验 -->
+		<form name="/editCodeTypeAction">
+			<field property="lxdm" depends="required,mask,maxlength">
+				<arg0
+					key="com.huasoft.misdframework.code.codetype.lxdm" />
+				<arg2 key="10" />
+				<msg name="mask" key="regiser.loginid.maskmsg" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>10</var-value>
+				</var>
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[a-zA-Z0-9_]*$</var-value>
+				</var>
+			</field>
+			<field property="lxmc" depends="required,maxlength">
+				<arg0
+					key="com.huasoft.misdframework.code.codetype.lxmc" />
+				<arg2 key="30" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>30</var-value>
+				</var>
+			</field>
+		</form>
+		<!-- 国标代码库数据校验 -->
+		<form name="/editCodeDetailAction">
+			<field property="dmname" depends="required,maxlength">
+				<arg0
+					key="com.huasoft.misdframework.code.codedetail.dmname" />
+				<arg2 key="100" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>100</var-value>
+				</var>
+			</field>
+			<field property="dmid" depends="maxlength">
+				<arg0
+					key="com.huasoft.misdframework.code.codedetail.dmid" />
+				<arg2 key="5" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>5</var-value>
+				</var>
+			</field>
+			<field property="enmc" depends="maxlength">
+				<arg0
+					key="com.huasoft.misdframework.code.codedetail.enmc" />
+				<arg2 key="150" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>150</var-value>
+				</var>
+			</field>
+		</form>
+		<!-- 国家地区信息校验 -->
+		<form name="/editAreaAction">
+			<field property="xzqdm" depends="maxlength">
+				<arg0 key="com.huasoft.misdframework.area.xzdom" />
+				<arg2 key="4" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>4</var-value>
+				</var>
+			</field>
+			<field property="xzqzmm" depends="maxlength,mask">
+				<arg0 key="com.huasoft.misdframework.area.xzqzmm" />
+				<msg name="mask" key="word.characeter.be.include.only" />
+				<arg2 key="20" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>20</var-value>
+				</var>
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[a-zA-Z]*$</var-value>
+				</var>
+			</field>
+			<field property="xzqlmpy" depends="maxlength">
+				<arg0 key="com.huasoft.misdframework.area.xzqlmpy" />
+				<arg2 key="25" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>25</var-value>
+				</var>
+			</field>
+			<field property="xzqmc" depends="required,maxlength">
+				<arg0 key="com.huasoft.misdframework.area.xzqmc" />
+				<arg2 key="40" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>40</var-value>
+				</var>
+			</field>
+		</form>
+		<!-- 课程基础信息校验 -->
+		<form name="/editCourseBaseInfoAction">
+			<field property="kcbh" depends="required,mask">
+				<arg0
+					key="com.huasoft.components.teachplan.courseBaseInfo.kcbh" />
+				<msg name="mask" key="regiser.loginid.maskmsg" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[a-zA-Z0-9_]*$</var-value>
+				</var>
+			</field>
+			<field property="kcmc" depends="required,maxlength">
+				<arg0
+					key="com.huasoft.components.teachplan.courseBaseInfo.kcmc" />
+				<arg1 key="40" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>40</var-value>
+				</var>
+			</field>
+			<field property="ywmc" depends="maxlength">
+				<arg0
+					key="com.huasoft.components.teachplan.courseBaseInfo.ywmc" />
+				<arg1 key="90" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>90</var-value>
+				</var>
+			</field>
+			<field property="kcjj" depends="maxlength">
+				<arg0
+					key="com.huasoft.components.teachplan.courseBaseInfo.kcjj" />
+				<arg1 key="122" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>122</var-value>
+				</var>
+			</field>
+			<field property="kcyq" depends="maxlength">
+				<arg0
+					key="com.huasoft.components.teachplan.courseBaseInfo.kcyq" />
+				<arg1 key="122" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>122</var-value>
+				</var>
+			</field>
+
+			<field property="jc" depends="maxlength">
+				<arg0
+					key="com.huasoft.components.teachplan.courseBaseInfo.jc" />
+				<arg1 key="122" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>122</var-value>
+				</var>
+			</field>
+
+			<field property="cksm" depends="maxlength">
+				<arg0
+					key="com.huasoft.components.teachplan.courseBaseInfo.cksm" />
+				<arg1 key="122" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>122</var-value>
+				</var>
+			</field>
+			<field property="jxzy" depends="maxlength">
+				<arg0
+					key="com.huasoft.components.teachplan.courseBaseInfo.jxzy" />
+				<arg1 key="122" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>122</var-value>
+				</var>
+			</field>
+		</form>
+		<form name="/editnewsAction">
+			<field property="title" depends="required,maxlength">
+				<msg name="required" key="error.news.title.isEmpty" />
+				<msg name="maxlength" key="error.news.title.toLong" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>120</var-value>
+				</var>
+			</field>
+			<field property="secondtitle" depends="maxlength">
+				<msg name="maxlength"
+					key="error.news.secondtitle.toLong" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>120</var-value>
+				</var>
+			</field>
+
+			<field property="author" depends="required,maxlength">
+				<msg name="required" key="error.news.author.isEmpty" />
+				<msg name="maxlength" key="error.news.author.toLong" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>20</var-value>
+				</var>
+			</field>
+			<field property="distributedepartment"
+				depends="maxlength">
+				<msg name="maxlength"
+					key="error.news.distributedepartment.toLong" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>120</var-value>
+				</var>
+			</field>
+		</form>
+	</formset>
+</form-validation>
+

@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+<session-factory>
+
+	<!-- Database connection settings -->
+	<property name="connection.driver_class">
+		com.mysql.jdbc.Driver
+	</property>
+	<property name="connection.url">
+		<!--  
+			jdbc:oracle:thin:@59.151.6.165:1521:EASOU-->
+		jdbc:mysql://localhost:3306/faceye
+	</property>
+	<!--<property name="connection.username">wapuser</property>
+		<property name="connection.password">LS9KPW01S</property>
+		<property name="hibernate.dialect">
+		org.hibernate.dialect.Oracle9Dialect
+		
+		org.hibernate.dialect.MySQLDialect
+		
+		</property>
+	--><!-- JDBC connection pool (use the built-in) -->
+	<property name="connection.pool_size">1</property>
+
+	<!-- SQL dialect -->
+
+
+	<!-- Enable Hibernate's automatic session context management -->
+	<property name="current_session_context_class">thread</property>
+
+	<!-- Disable the second-level cache  -->
+	<property name="cache.provider_class">
+		org.hibernate.cache.NoCacheProvider
+	</property>
+
+	<!-- Echo all executed SQL to stdout -->
+	<property name="show_sql">true</property>
+
+	<!-- Drop and re-create the database schema on startup -->
+	<property name="hbm2ddl.auto">create</property>
+	<!--<mapping resource="com/easou/search/channel/entity/Channel.hbm.xml"/>
+		<mapping resource="com/easou/search/channel/entity/Column.hbm.xml"/>
+		<mapping resource="com/easou/search/channel/entity/Catalog.hbm.xml"/>
+		<mapping resource="com/easou/search/channel/entity/Subject.hbm.xml"/>
+		<mapping resource="com/easou/search/channel/entity/Keyword.hbm.xml"/>
+		<mapping resource="com/easou/search/channel/entity/Comment.hbm.xml"/>
+		<mapping resource="com/easou/search/channel/entity/Cooperation.hbm.xml"/>
+	-->
+	<property name="connection.username">root</property>
+	<property name="connection.password">ecsunchina</property>
+	<property name="dialect">
+		org.hibernate.dialect.MySQLDialect
+	</property>
+	<mapping
+		resource="com/faceye/core/service/security/model/User.hbm.xml" />
+	<mapping
+		resource="com/faceye/core/service/security/model/Permission.hbm.xml" />
+	<mapping
+		resource="com/faceye/core/service/security/model/Resource.hbm.xml" />
+	<mapping
+		resource="com/faceye/core/service/security/model/Role.hbm.xml" />
+	<mapping
+		resource="com/faceye/core/service/security/model/Tree.hbm.xml" />
+	<mapping
+		resource="com/faceye/core/componentsupport/dao/model/Domain.hbm.xml" />
+	<mapping
+		resource="com/faceye/core/componentsupport/dao/model/Property.hbm.xml" />
+	<mapping
+		resource="com/faceye/core/componentsupport/dao/model/ValidatorType.hbm.xml" />
+	<mapping
+		resource="com/faceye/core/componentsupport/dao/model/HtmlType.hbm.xml" />
+	<mapping
+		resource="com/faceye/core/componentsupport/dao/model/DataType.hbm.xml" />
+	<mapping
+		resource="com/faceye/core/componentsupport/dao/model/QueryType.hbm.xml" />
+	<mapping
+		resource="com/faceye/core/componentsupport/dao/model/DomainQuery.hbm.xml" />
+
+
+	<mapping
+		resource="com/faceye/components/portal/dao/model/PortalColumn.hbm.xml" />
+	<mapping
+		resource="com/faceye/components/portal/dao/model/PortalColumnTemplate.hbm.xml" />
+	<mapping
+		resource="com/faceye/components/portal/dao/model/PortalContainer.hbm.xml" />
+	<mapping
+		resource="com/faceye/components/portal/dao/model/PortalStyle.hbm.xml" />
+	<mapping
+		resource="com/faceye/components/portal/dao/model/Portlet.hbm.xml" />
+	<mapping
+		resource="com/faceye/components/portal/dao/model/PortletSubscribe.hbm.xml" />
+	<mapping
+		resource="com/faceye/components/navigation/dao/model/Category.hbm.xml" />
+	<mapping
+		resource="com/faceye/components/navigation/dao/model/Feed.hbm.xml" />
+	<mapping
+		resource="com/faceye/components/navigation/dao/model/FeedSubscribe.hbm.xml" />
+	<mapping
+		resource="com/faceye/components/navigation/dao/model/FeedSubscribeCount.hbm.xml" />
+	<mapping
+		resource="com/faceye/components/navigation/dao/model/Tradition.hbm.xml" />
+	<mapping
+		resource="com/faceye/components/navigation/dao/model/UserResourceCategory.hbm.xml" />
+	<mapping
+		resource="com/faceye/components/opensource/dao/model/OpenSource.hbm.xml" />
+	<mapping
+		resource="com/faceye/core/service/security/model/Column.hbm.xml" />
+
+</session-factory>
+
+</hibernate-configuration>
+

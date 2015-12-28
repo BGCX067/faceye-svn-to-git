@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+	<bean id="articleCategoryService"
+		class="com.faceye.components.blog.service.controller.ArticleCategoryService">
+		<property name="treeService">
+			<ref bean="treeService" />
+		</property>
+		<property name="articleCategoryDao">
+			<ref bean="articleCategoryDao" />
+		</property>
+		<property name="baseDao">
+			<ref bean="baseDao" />
+		</property>
+		<property name="portalContainerDao">
+			<ref bean="portalContainerDao" />
+		</property>
+	</bean>
+	<bean id="articleService"
+		class="com.faceye.components.blog.service.controller.ArticleService">
+		<property name="articleDao">
+			<ref bean="articleDao" />
+		</property>
+		<property name="baseDao">
+			<ref bean="baseDao" />
+		</property>
+	</bean>
+	<bean id="discusService"
+		class="com.faceye.components.blog.service.controller.DiscusService">
+		<property name="discusDao">
+			<ref bean="discusDao" />
+		</property>
+		<property name="baseDao">
+			<ref bean="baseDao" />
+		</property>
+	</bean>
+	<bean id="articleClickCountService"
+		class="com.faceye.components.blog.service.controller.ArticleClickCountService">
+		<property name="articleClickCountDao">
+			<ref bean="articleClickCountDao" />
+		</property>
+		<property name="baseDao">
+			<ref bean="baseDao" />
+		</property>
+	</bean>
+	<bean id="blogService" class="com.faceye.components.blog.service.controller.BlogService">
+	  <property name="baseDao">
+	    <ref bean="baseDao"/>
+	  </property>
+	  <property name="blogClickHistoryDao">
+	    <ref bean="blogClickHistoryDao"/>
+	  </property>
+	</bean>
+</beans>

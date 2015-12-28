@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+	<class name="com.faceye.components.portal.dao.model.PortalColumn"
+		table="SYS_portal_column">
+		<id name="id" unsaved-value="" type="string">
+			<column name="id" length="32"></column>
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="name" type="string">
+			<column name="name" length="50"></column>
+		</property>
+		
+		<property name="icon" type="string">
+		  <column name="icon" length="255"></column>
+		</property>
+		<property name="iconCls" type="string">
+		  <column name="iconCls" length="255"></column>
+		</property>
+		<property name="singleColumnScale" type="string">
+		  <column name="singleColumnScale" length="50"></column>
+		</property>
+
+<property name="createTime" type="timestamp" update="false">
+			<column name="createTime"></column>
+		</property>
+		<many-to-one name="portal" column="portal_id"
+			class="com.faceye.components.portal.dao.model.Portal"
+			cascade="save-update" />
+		
+
+		<set name="portletSubscribes" cascade="save-update"
+			inverse="true">
+			<key>
+				<column name="portalColumn_id" length="32"></column>
+			</key>
+			<one-to-many
+				class="com.faceye.components.portal.dao.model.PortletSubscribe" />
+		</set>
+
+	</class>
+</hibernate-mapping>

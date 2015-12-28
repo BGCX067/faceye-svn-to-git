@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+	<class name="com.faceye.core.service.security.model.Permission" table="SYS_PERMISSION">
+        <id name="id" unsaved-value="" type="string">
+          <column name="id" length="32"></column>
+          <generator class="uuid.hex"></generator>
+        </id>
+        <property name="name" type="string">
+          <column name="name" length="50"></column>
+        </property>
+        <property name="alaisName" type="string">
+          <column name="alaisName" length="100"></column>
+        </property>
+         <set name="roles" table="SYS_ROLE_PERMISSION" inverse="true" cascade="save-update" batch-size="5">
+            <key>
+                <column name="PERMISSION_ID" not-null="true"/>
+            </key>
+            <many-to-many class="com.faceye.core.service.security.model.Role" column="ROLE_ID" outer-join="auto"/>
+        </set>
+        
+        <set name="resources" table="SYS_PERMISSION_RESOURCE"  cascade="save-update" inverse="false" lazy="false">
+            <key>
+                <column name="PERMISSION_ID" length="32"/>
+            </key>
+            <many-to-many class="com.faceye.core.service.security.model.Resource" column="RESOURCE_ID"/>
+        </set>
+	</class>
+	
+	<query name="queryPermissionsForSelect">
+	 <![CDATA[ from Permission p  ]]>
+	</query>
+</hibernate-mapping>

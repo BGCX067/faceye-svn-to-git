@@ -1,0 +1,664 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+  <testsuite errors="1" failures="0" id="0" name="TestHibernateDAOUtils" package="com.faceye.test.core.dao" tests="4" time="57.078">
+  
+    <properties>
+    
+      <property name="java.vendor" value="Sun Microsystems Inc."></property>
+
+          <property name="lib.dir" value="F:\WorkSpace\HomeJ2EE\faceye/lib"></property>
+
+          <property name="WebRoot.dir" value="F:\WorkSpace\HomeJ2EE\faceye/WebRoot"></property>
+
+          <property name="sun.management.compiler" value="HotSpot Client Compiler"></property>
+
+          <property name="test.data.dir" value="F:\WorkSpace\HomeJ2EE\faceye/test/data"></property>
+
+          <property name="env.PROMPT" value="$P$G"></property>
+
+          <property name="os.name" value="Windows XP"></property>
+
+          <property name="env.FP_NO_HOST_CHECK" value="NO"></property>
+
+          <property name="sun.boot.class.path" value="F:\Program Files\Java\jdk1.5.0_10\jre\lib\rt.jar;F:\Program Files\Java\jdk1.5.0_10\jre\lib\i18n.jar;F:\Program Files\Java\jdk1.5.0_10\jre\lib\sunrsasign.jar;F:\Program Files\Java\jdk1.5.0_10\jre\lib\jsse.jar;F:\Program Files\Java\jdk1.5.0_10\jre\lib\jce.jar;F:\Program Files\Java\jdk1.5.0_10\jre\lib\charsets.jar;F:\Program Files\Java\jdk1.5.0_10\jre\classes"></property>
+
+          <property name="env.COMPUTERNAME" value="3E1EEDCE04E1492"></property>
+
+          <property name="test.reports.dir" value="F:\WorkSpace\HomeJ2EE\faceye/test/reports"></property>
+
+          <property name="env.ALLUSERSPROFILE" value="E:\Documents and Settings\All Users"></property>
+
+          <property name="sun.desktop" value="windows"></property>
+
+          <property name="java.vm.specification.vendor" value="Sun Microsystems Inc."></property>
+
+          <property name="ant.home" value="F:\Program Files\apache-ant-1.6.5"></property>
+
+          <property name="java.runtime.version" value="1.5.0_10-b03"></property>
+
+          <property name="env.HOMEPATH" value="\Documents and Settings\Administrator"></property>
+
+          <property name="user.name" value="Administrator"></property>
+
+          <property name="tomcat.manager.url" value="http://localhost:8088/manager"></property>
+
+          <property name="build.dir" value="F:\WorkSpace\HomeJ2EE\faceye/build"></property>
+
+          <property name="user.language" value="zh"></property>
+
+          <property name="class.dir" value="F:\WorkSpace\HomeJ2EE\faceye/build/classes"></property>
+
+          <property name="sun.boot.library.path" value="F:\Program Files\Java\jdk1.5.0_10\jre\bin"></property>
+
+          <property name="doc.dir" value="F:\WorkSpace\HomeJ2EE\faceye/doc"></property>
+
+          <property name="ant.project.name" value="faceye"></property>
+
+          <property name="java.version" value="1.5.0_10"></property>
+
+          <property name="env.PROCESSOR_IDENTIFIER" value="x86 Family 15 Model 2 Stepping 9, GenuineIntel"></property>
+
+          <property name="user.timezone" value=""></property>
+
+          <property name="env.CLIENTNAME" value="Console"></property>
+
+          <property name="env.TEMP" value="E:\DOCUME~1\ADMINI~1\LOCALS~1\Temp"></property>
+
+          <property name="sun.arch.data.model" value="32"></property>
+
+          <property name="java.endorsed.dirs" value="F:\Program Files\Java\jdk1.5.0_10\jre\lib\endorsed"></property>
+
+          <property name="env._JAVACMD" value="F:\Program Files\Java\jdk1.5.0_10\bin\java.exe"></property>
+
+          <property name="sun.cpu.isalist" value=""></property>
+
+          <property name="env.HOMEDRIVE" value="E:"></property>
+
+          <property name="sun.jnu.encoding" value="GBK"></property>
+
+          <property name="file.encoding.pkg" value="sun.io"></property>
+
+          <property name="file.separator" value="\"></property>
+
+          <property name="java.specification.name" value="Java Platform API Specification"></property>
+
+          <property name="java.class.version" value="49.0"></property>
+
+          <property name="user.country" value="CN"></property>
+
+          <property name="java.home" value="F:\Program Files\Java\jdk1.5.0_10\jre"></property>
+
+          <property name="dist.dir" value="F:\WorkSpace\HomeJ2EE\faceye/dist"></property>
+
+          <property name="env.APPDATA" value="E:\Documents and Settings\Administrator\Application Data"></property>
+
+          <property name="java.vm.info" value="mixed mode, sharing"></property>
+
+          <property name="env.CATALINA_HOME" value="F:\Program Files\Apache Software Foundation\Tomcat 5.5"></property>
+
+          <property name="env.ComSpec" value="E:\WINDOWS\system32\cmd.exe"></property>
+
+          <property name="env.OS" value="Windows_NT"></property>
+
+          <property name="env.CommonProgramFiles" value="E:\Program Files\Common Files"></property>
+
+          <property name="ant.file" value="F:\WorkSpace\HomeJ2EE\faceye\build.xml"></property>
+
+          <property name="os.version" value="5.1"></property>
+
+          <property name="env._USE_CLASSPATH" value="yes"></property>
+
+          <property name="javac.debug" value="true"></property>
+
+          <property name="tomcat.manager.password" value="ecsunchina"></property>
+
+          <property name="path.separator" value=";"></property>
+
+          <property name="java.vm.version" value="1.5.0_10-b03"></property>
+
+          <property name="env.USERPROFILE" value="E:\Documents and Settings\Administrator"></property>
+
+          <property name="user.variant" value=""></property>
+
+          <property name="ant.library.dir" value="F:\Program Files\apache-ant-1.6.5\lib"></property>
+
+          <property name="env.JAVA_HOME" value="F:\Program Files\Java\jdk1.5.0_10"></property>
+
+          <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"></property>
+
+          <property name="tomcat.manager.username" value="admin"></property>
+
+          <property name="env.TMP" value="E:\DOCUME~1\ADMINI~1\LOCALS~1\Temp"></property>
+
+          <property name="sun.io.unicode.encoding" value="UnicodeLittle"></property>
+
+          <property name="awt.toolkit" value="sun.awt.windows.WToolkit"></property>
+
+          <property name="packages" value="com.faceye.core.*"></property>
+
+          <property name="metada.dir" value="F:\WorkSpace\HomeJ2EE\faceye/metada"></property>
+
+          <property name="user.home" value="E:\Documents and Settings\Administrator"></property>
+
+          <property name="env.SESSIONNAME" value="Console"></property>
+
+          <property name="java.specification.vendor" value="Sun Microsystems Inc."></property>
+
+          <property name="test.dir" value="F:\WorkSpace\HomeJ2EE\faceye/test"></property>
+
+          <property name="java.library.path" value="F:\Program Files\Java\jdk1.5.0_10\bin;.;E:\WINDOWS\system32;E:\WINDOWS;F:\Program Files\apache-ant-1.6.5\bin;F:\Program Files\Java\jdk1.5.0_10\bin;E:\WINDOWS\system32;E:\WINDOWS;E:\WINDOWS\System32\Wbem"></property>
+
+          <property name="env.NUMBER_OF_PROCESSORS" value="1"></property>
+
+          <property name="java.vendor.url" value="http://java.sun.com/"></property>
+
+          <property name="java.vm.vendor" value="Sun Microsystems Inc."></property>
+
+          <property name="java.runtime.name" value="Java(TM) 2 Runtime Environment, Standard Edition"></property>
+
+          <property name="ant.version" value="Apache Ant version 1.6.5 compiled on June 2 2005"></property>
+
+          <property name="java.class.path" value="F:\Program Files\apache-ant-1.6.5\lib\ant-launcher.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-antlr.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-apache-bcel.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-apache-bsf.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-apache-log4j.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-apache-oro.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-apache-regexp.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-apache-resolver.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-commons-logging.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-commons-net.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-icontract.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-jai.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-javamail.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-jdepend.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-jmf.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-jsch.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-junit.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-launcher.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-netrexx.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-nodeps.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-starteam.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-stylebook.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-swing.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-trax.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-vaj.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-weblogic.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-xalan1.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-xslp.jar;F:\Program Files\apache-ant-1.6.5\lib\ant.jar;F:\Program Files\apache-ant-1.6.5\lib\xercesImpl.jar;F:\Program Files\apache-ant-1.6.5\lib\xml-apis.jar;F:\Program Files\apache-ant-1.6.5\lib\junit.jar;F:\Program Files\Java\jdk1.5.0_10\lib\tools.jar"></property>
+
+          <property name="ant.file.faceye" value="F:\WorkSpace\HomeJ2EE\faceye\build.xml"></property>
+
+          <property name="project.name" value="faceye"></property>
+
+          <property name="java.vm.specification.name" value="Java Virtual Machine Specification"></property>
+
+          <property name="env.LOGONSERVER" value="\\3E1EEDCE04E1492"></property>
+
+          <property name="env.windir" value="E:\WINDOWS"></property>
+
+          <property name="env.PROCESSOR_ARCHITECTURE" value="x86"></property>
+
+          <property name="java.vm.specification.version" value="1.0"></property>
+
+          <property name="sun.os.patch.level" value="Service Pack 2"></property>
+
+          <property name="sun.cpu.endian" value="little"></property>
+
+          <property name="env.ProgramFiles" value="F:\Program Files"></property>
+
+          <property name="env.ANT_HOME" value="F:\Program Files\apache-ant-1.6.5"></property>
+
+          <property name="java.io.tmpdir" value="E:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\"></property>
+
+          <property name="env.PROCESSOR_REVISION" value="0209"></property>
+
+          <property name="test.src" value="F:\WorkSpace\HomeJ2EE\faceye/test/src"></property>
+
+          <property name="java.vendor.url.bug" value="http://java.sun.com/cgi-bin/bugreport.cgi"></property>
+
+          <property name="env.SystemRoot" value="E:\WINDOWS"></property>
+
+          <property name="os.arch" value="x86"></property>
+
+          <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"></property>
+
+          <property name="env.ANT_CMD_LINE_ARGS" value="junit-test"></property>
+
+          <property name="java.ext.dirs" value="F:\Program Files\Java\jdk1.5.0_10\jre\lib\ext"></property>
+
+          <property name="user.dir" value="F:\WorkSpace\HomeJ2EE\faceye"></property>
+
+          <property name="line.separator" value=" "></property>
+
+          <property name="build.test.dir" value="F:\WorkSpace\HomeJ2EE\faceye/build/test"></property>
+
+          <property name="java.vm.name" value="Java HotSpot(TM) Client VM"></property>
+
+          <property name="env.PATHEXT" value=".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH"></property>
+
+          <property name="env.Path" value="F:\Program Files\apache-ant-1.6.5\bin;F:\Program Files\Java\jdk1.5.0_10\bin;E:\WINDOWS\system32;E:\WINDOWS;E:\WINDOWS\System32\Wbem"></property>
+
+          <property name="tomcat.home" value="F:\Program Files\Apache Software Foundation\Tomcat 5.5"></property>
+
+          <property name="basedir" value="F:\WorkSpace\HomeJ2EE\faceye"></property>
+
+          <property name="ant.java.version" value="1.5"></property>
+
+          <property name="env.USERNAME" value="Administrator"></property>
+
+          <property name="generator.dir" value="F:\WorkSpace\HomeJ2EE\faceye/generator"></property>
+
+          <property name="env.SystemDrive" value="E:"></property>
+
+          <property name="file.encoding" value="GBK"></property>
+
+          <property name="build.web.dir" value="F:\WorkSpace\HomeJ2EE\faceye/build/web"></property>
+
+          <property name="env.USERDOMAIN" value="3E1EEDCE04E1492"></property>
+
+          <property name="bak.dir" value="F:\WorkSpace\HomeJ2EE\faceye/bak"></property>
+
+          <property name="java.specification.version" value="1.5"></property>
+
+          <property name="src.dir" value="F:\WorkSpace\HomeJ2EE\faceye/src"></property>
+
+          <property name="env.PROCESSOR_LEVEL" value="15"></property>
+
+      </properties>
+
+      <testcase classname="com.faceye.test.core.dao.TestHibernateDAOUtils" name="testDaoUtils" time="54.531"></testcase>
+
+      <testcase classname="com.faceye.test.core.dao.TestHibernateDAOUtils" name="testHibernateSupport" time="0.016"></testcase>
+
+      <testcase classname="com.faceye.test.core.dao.TestHibernateDAOUtils" name="testJdbcSupport" time="0.015"></testcase>
+
+      <testcase classname="com.faceye.test.core.dao.TestHibernateDAOUtils" name="testSaveOrUpdateObjectAndLoadObject" time="1.969">
+    
+      <error message="JDBC exception on Hibernate data access; nested exception is org.hibernate.exception.SQLGrammarException: Could not execute JDBC batch update" type="org.springframework.orm.hibernate3.HibernateJdbcException">org.springframework.orm.hibernate3.HibernateJdbcException: JDBC exception on Hibernate data access; nested exception is org.hibernate.exception.SQLGrammarException: Could not execute JDBC batch update
+Caused by: org.hibernate.exception.SQLGrammarException: Could not execute JDBC batch update
+	at org.hibernate.exception.SQLStateConverter.convert(SQLStateConverter.java:67)
+	at org.hibernate.exception.JDBCExceptionHelper.convert(JDBCExceptionHelper.java:43)
+	at org.hibernate.jdbc.AbstractBatcher.executeBatch(AbstractBatcher.java:249)
+	at org.hibernate.engine.ActionQueue.executeActions(ActionQueue.java:235)
+	at org.hibernate.engine.ActionQueue.executeActions(ActionQueue.java:139)
+	at org.hibernate.event.def.AbstractFlushingEventListener.performExecutions(AbstractFlushingEventListener.java:298)
+	at org.hibernate.event.def.DefaultAutoFlushEventListener.onAutoFlush(DefaultAutoFlushEventListener.java:41)
+	at org.hibernate.impl.SessionImpl.autoFlushIfRequired(SessionImpl.java:969)
+	at org.hibernate.impl.SessionImpl.list(SessionImpl.java:1562)
+	at org.hibernate.impl.CriteriaImpl.list(CriteriaImpl.java:283)
+	at org.springframework.orm.hibernate3.HibernateTemplate$5.doInHibernate(HibernateTemplate.java:528)
+	at org.springframework.orm.hibernate3.HibernateTemplate.execute(HibernateTemplate.java:362)
+	at org.springframework.orm.hibernate3.HibernateTemplate.loadAll(HibernateTemplate.java:524)
+	at com.faceye.core.dao.hibernate.controller.HibernateDAOUtils.loadAllObjects(HibernateDAOUtils.java:423)
+	at com.faceye.test.core.dao.TestHibernateDAOUtils.testSaveOrUpdateObjectAndLoadObject(TestHibernateDAOUtils.java:43)
+	at org.springframework.test.ConditionalTestCase.runBare(ConditionalTestCase.java:69)
+Caused by: java.sql.BatchUpdateException: Table &apos;faceye.testdao&apos; doesn&apos;t exist
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:1099)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:849)
+	at org.apache.commons.dbcp.DelegatingStatement.executeBatch(DelegatingStatement.java:294)
+	at org.hibernate.jdbc.BatchingBatcher.doExecuteBatch(BatchingBatcher.java:48)
+	at org.hibernate.jdbc.AbstractBatcher.executeBatch(AbstractBatcher.java:242)
+	... 42 more
+</error>
+
+      </testcase>
+
+      <system-out><![CDATA[(dao.TestHibernateDAOUtils           179 ) Loading context for: classpath*:/com/faceye/core/config/applicationContext-resources.xml,classpath:/com/faceye/core/config/applicationContext-dao.xml
+(core.CollectionFactory              76  ) JDK 1.4+ collections available
+(core.CollectionFactory              80  ) Commons Collections 3.x available
+(xml.XmlBeanDefinitionReader         347 ) Loading XML bean definitions from URL [file:/F:/WorkSpace/HomeJ2EE/faceye/build/classes/com/faceye/core/config/applicationContext-resources.xml]
+(xml.XmlBeanDefinitionReader         347 ) Loading XML bean definitions from class path resource [com/faceye/core/config/applicationContext-dao.xml]
+(support.ClassPathXmlApplicationContext 100 ) Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext;hashCode=29173348]: org.springframework.beans.factory.support.DefaultListableBeanFactory defining beans [dataSource,sessionFactory,hibernateTemplate,cacheManager,jdbcTemplate,jdbcTransactionManager,sqlPropertiesEditorUtil,transactionManager,transactionTemplate,txProxyTemplate,jdbcTxProxyTemplate,hibernateSupport,jdbcSupport,daoUtils]; root of BeanFactory hierarchy
+(support.ClassPathXmlApplicationContext 322 ) 14 beans defined in application context [org.springframework.context.support.ClassPathXmlApplicationContext;hashCode=29173348]
+(support.ClassPathXmlApplicationContext 473 ) Unable to locate MessageSource with name 'messageSource': using default [org.springframework.context.support.DelegatingMessageSource@17494c8]
+(support.ClassPathXmlApplicationContext 495 ) Unable to locate ApplicationEventMulticaster with name 'applicationEventMulticaster': using default [org.springframework.context.event.SimpleApplicationEventMulticaster@e020c9]
+(support.DefaultListableBeanFactory  261 ) Pre-instantiating singletons in factory [org.springframework.beans.factory.support.DefaultListableBeanFactory defining beans [dataSource,sessionFactory,hibernateTemplate,cacheManager,jdbcTemplate,jdbcTransactionManager,sqlPropertiesEditorUtil,transactionManager,transactionTemplate,txProxyTemplate,jdbcTxProxyTemplate,hibernateSupport,jdbcSupport,daoUtils]; root of BeanFactory hierarchy]
+(cfg.Environment                     500 ) Hibernate 3.2.1
+(cfg.Environment                     533 ) hibernate.properties not found
+(cfg.Environment                     667 ) Bytecode provider name : cglib
+(cfg.Environment                     584 ) using JDK 1.4 java.sql.Timestamp handling
+(cfg.Configuration                   299 ) Reading mappings from file: F:\WorkSpace\HomeJ2EE\faceye\build\test\com\faceye\test\core\domain\Testdao.hbm.xml
+(cfg.HbmBinder                       300 ) Mapping class: com.faceye.test.core.domain.Testdao -> testdao
+(hibernate3.LocalSessionFactoryBean  736 ) Building new Hibernate SessionFactory
+(connection.ConnectionProviderFactory 72  ) Initializing connection provider: org.springframework.orm.hibernate3.LocalDataSourceConnectionProvider
+AbandonedObjectPool is used (org.apache.commons.dbcp.AbandonedObjectPool@15c62bc)
+   LogAbandoned: true
+   RemoveAbandoned: true
+   RemoveAbandonedTimeout: 60
+(cfg.SettingsFactory                 81  ) RDBMS: MySQL, version: 5.0.18-nt
+(cfg.SettingsFactory                 82  ) JDBC driver: MySQL-AB JDBC Driver, version: mysql-connector-java-5.0.3 ( $Date: 2006-07-26 17:26:47 +0200 (Wed, 26 Jul 2006) $, $Revision: 5553 $ )
+(dialect.Dialect                     151 ) Using dialect: org.hibernate.dialect.MySQLDialect
+(transaction.TransactionFactoryFactory 31  ) Using default transaction strategy (direct JDBC transactions)
+(transaction.TransactionManagerLookupFactory 33  ) No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+(cfg.SettingsFactory                 134 ) Automatic flush during beforeCompletion(): disabled
+(cfg.SettingsFactory                 138 ) Automatic session close at end of transaction: disabled
+(cfg.SettingsFactory                 145 ) JDBC batch size: 15
+(cfg.SettingsFactory                 148 ) JDBC batch updates for versioned data: disabled
+(cfg.SettingsFactory                 153 ) Scrollable result sets: enabled
+(cfg.SettingsFactory                 161 ) JDBC3 getGeneratedKeys(): enabled
+(cfg.SettingsFactory                 169 ) Connection release mode: on_close
+(cfg.SettingsFactory                 193 ) Maximum outer join fetch depth: 2
+(cfg.SettingsFactory                 196 ) Default batch fetch size: 1
+(cfg.SettingsFactory                 200 ) Generate SQL with comments: disabled
+(cfg.SettingsFactory                 204 ) Order SQL updates by primary key: disabled
+(cfg.SettingsFactory                 369 ) Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+(ast.ASTQueryTranslatorFactory       24  ) Using ASTQueryTranslatorFactory
+(cfg.SettingsFactory                 212 ) Query language substitutions: {no=0, yes=1}
+(cfg.SettingsFactory                 217 ) JPA-QL strict compliance: disabled
+(cfg.SettingsFactory                 222 ) Second-level cache: enabled
+(cfg.SettingsFactory                 226 ) Query cache: enabled
+(cfg.SettingsFactory                 356 ) Cache provider: org.hibernate.cache.EhCacheProvider
+(cfg.SettingsFactory                 241 ) Optimize cache for minimal puts: disabled
+(cfg.SettingsFactory                 250 ) Structured second-level cache entries: disabled
+(cfg.SettingsFactory                 343 ) Query cache factory: org.hibernate.cache.StandardQueryCacheFactory
+(cfg.SettingsFactory                 270 ) Echoing all SQL to stdout
+(cfg.SettingsFactory                 277 ) Statistics: disabled
+(cfg.SettingsFactory                 281 ) Deleted entity synthetic identifier rollback: disabled
+(cfg.SettingsFactory                 296 ) Default entity-mode: pojo
+(impl.SessionFactoryImpl             161 ) building session factory
+(config.ConfigurationFactory         127 ) No configuration found. Configuring ehcache from ehcache-failsafe.xml  found in the classpath: jar:file:/F:/WorkSpace/HomeJ2EE/faceye/lib/ehcache/ehcache-1.2.3.jar!/ehcache-failsafe.xml
+(impl.SessionFactoryObjectFactory    82  ) Not binding factory to JNDI, no JNDI name configured
+(cache.UpdateTimestampsCache         41  ) starting update timestamps cache at region: org.hibernate.cache.UpdateTimestampsCache
+(cache.EhCacheProvider               86  ) Could not find configuration [org.hibernate.cache.UpdateTimestampsCache]; using defaults.
+(cache.StandardQueryCache            52  ) starting query cache at region: org.hibernate.cache.StandardQueryCache
+(cache.EhCacheProvider               86  ) Could not find configuration [org.hibernate.cache.StandardQueryCache]; using defaults.
+(ehcache.EhCacheManagerFactoryBean   90  ) Initializing EHCache CacheManager
+(ehcache.CacheManager                271 ) Creating a new instance of CacheManager using the diskStorePath "E:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\" which is already used by an existing CacheManager.
+The source of the configuration was InputStream java.io.FileInputStream@167d7fb.
+The diskStore path for this CacheManager will be set to E:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\\ehcache_auto_created_1168076803328.
+To avoid this warning consider using the CacheManager factory methods to create a singleton CacheManager or specifying a separate ehcache configuration (ehcache.xml) for each CacheManager instance.
+(hibernate3.HibernateTransactionManager 373 ) Using DataSource [org.apache.commons.dbcp.BasicDataSource@717323] of Hibernate SessionFactory for HibernateTransactionManager
+(datasource.JdbcTransactionObjectSupport 60  ) JDBC 3.0 Savepoint class is available
+(dao.TestHibernateDAOUtils           318 ) Began transaction (1): transaction manager [org.springframework.orm.hibernate3.HibernateTransactionManager@789869]; default rollback = true
+(dao.TestHibernateDAOUtils           284 ) Rolled back transaction after test execution
+(dao.TestHibernateDAOUtils           318 ) Began transaction (1): transaction manager [org.springframework.orm.hibernate3.HibernateTransactionManager@789869]; default rollback = true
+(dao.TestHibernateDAOUtils           284 ) Rolled back transaction after test execution
+(dao.TestHibernateDAOUtils           318 ) Began transaction (1): transaction manager [org.springframework.orm.hibernate3.HibernateTransactionManager@789869]; default rollback = true
+(dao.TestHibernateDAOUtils           284 ) Rolled back transaction after test execution
+(dao.TestHibernateDAOUtils           318 ) Began transaction (1): transaction manager [org.springframework.orm.hibernate3.HibernateTransactionManager@789869]; default rollback = true
+Hibernate: insert into faceye.testdao (name, id) values (?, ?)
+(util.JDBCExceptionReporter          77  ) SQL Error: 1146, SQLState: 42S02
+(util.JDBCExceptionReporter          78  ) Table 'faceye.testdao' doesn't exist
+(def.AbstractFlushingEventListener   301 ) Could not synchronize database state with session
+org.hibernate.exception.SQLGrammarException: Could not execute JDBC batch update
+	at org.hibernate.exception.SQLStateConverter.convert(SQLStateConverter.java:67)
+	at org.hibernate.exception.JDBCExceptionHelper.convert(JDBCExceptionHelper.java:43)
+	at org.hibernate.jdbc.AbstractBatcher.executeBatch(AbstractBatcher.java:249)
+	at org.hibernate.engine.ActionQueue.executeActions(ActionQueue.java:235)
+	at org.hibernate.engine.ActionQueue.executeActions(ActionQueue.java:139)
+	at org.hibernate.event.def.AbstractFlushingEventListener.performExecutions(AbstractFlushingEventListener.java:298)
+	at org.hibernate.event.def.DefaultAutoFlushEventListener.onAutoFlush(DefaultAutoFlushEventListener.java:41)
+	at org.hibernate.impl.SessionImpl.autoFlushIfRequired(SessionImpl.java:969)
+	at org.hibernate.impl.SessionImpl.list(SessionImpl.java:1562)
+	at org.hibernate.impl.CriteriaImpl.list(CriteriaImpl.java:283)
+	at org.springframework.orm.hibernate3.HibernateTemplate$5.doInHibernate(HibernateTemplate.java:528)
+	at org.springframework.orm.hibernate3.HibernateTemplate.execute(HibernateTemplate.java:362)
+	at org.springframework.orm.hibernate3.HibernateTemplate.loadAll(HibernateTemplate.java:524)
+	at com.faceye.core.dao.hibernate.controller.HibernateDAOUtils.loadAllObjects(HibernateDAOUtils.java:423)
+	at com.faceye.test.core.dao.TestHibernateDAOUtils.testSaveOrUpdateObjectAndLoadObject(TestHibernateDAOUtils.java:43)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:585)
+	at junit.framework.TestCase.runTest(TestCase.java:154)
+	at junit.framework.TestCase.runBare(TestCase.java:127)
+	at org.springframework.test.ConditionalTestCase.runBare(ConditionalTestCase.java:69)
+	at junit.framework.TestResult$1.protect(TestResult.java:106)
+	at junit.framework.TestResult.runProtected(TestResult.java:124)
+	at junit.framework.TestResult.run(TestResult.java:109)
+	at junit.framework.TestCase.run(TestCase.java:118)
+	at junit.framework.TestSuite.runTest(TestSuite.java:208)
+	at junit.framework.TestSuite.run(TestSuite.java:203)
+	at org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner.run(JUnitTestRunner.java:297)
+	at org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.executeInVM(JUnitTask.java:1072)
+	at org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute(JUnitTask.java:682)
+	at org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.executeOrQueue(JUnitTask.java:1434)
+	at org.apache.tools.ant.taskdefs.optional.junit.JUnitTask.execute(JUnitTask.java:632)
+	at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:275)
+	at org.apache.tools.ant.Task.perform(Task.java:364)
+	at org.apache.tools.ant.Target.execute(Target.java:341)
+	at org.apache.tools.ant.Target.performTasks(Target.java:369)
+	at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1216)
+	at org.apache.tools.ant.Project.executeTarget(Project.java:1185)
+	at org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:40)
+	at org.apache.tools.ant.Project.executeTargets(Project.java:1068)
+	at org.apache.tools.ant.Main.runBuild(Main.java:668)
+	at org.apache.tools.ant.Main.startAnt(Main.java:187)
+	at org.apache.tools.ant.launch.Launcher.run(Launcher.java:246)
+	at org.apache.tools.ant.launch.Launcher.main(Launcher.java:67)
+Caused by: java.sql.BatchUpdateException: Table 'faceye.testdao' doesn't exist
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:1099)
+	at com.mysql.jdbc.PreparedStatement.executeBatch(PreparedStatement.java:849)
+	at org.apache.commons.dbcp.DelegatingStatement.executeBatch(DelegatingStatement.java:294)
+	at org.hibernate.jdbc.BatchingBatcher.doExecuteBatch(BatchingBatcher.java:48)
+	at org.hibernate.jdbc.AbstractBatcher.executeBatch(AbstractBatcher.java:242)
+	... 42 more
+(dao.TestHibernateDAOUtils           284 ) Rolled back transaction after test execution
+]]></system-out>
+
+      <system-err></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" id="1" name="TestReflect" package="com.faceye.test.core.service" tests="1" time="0.968">
+  
+    <properties>
+    
+      <property name="java.vendor" value="Sun Microsystems Inc."></property>
+
+          <property name="lib.dir" value="F:\WorkSpace\HomeJ2EE\faceye/lib"></property>
+
+          <property name="WebRoot.dir" value="F:\WorkSpace\HomeJ2EE\faceye/WebRoot"></property>
+
+          <property name="sun.management.compiler" value="HotSpot Client Compiler"></property>
+
+          <property name="test.data.dir" value="F:\WorkSpace\HomeJ2EE\faceye/test/data"></property>
+
+          <property name="env.PROMPT" value="$P$G"></property>
+
+          <property name="os.name" value="Windows XP"></property>
+
+          <property name="env.FP_NO_HOST_CHECK" value="NO"></property>
+
+          <property name="sun.boot.class.path" value="F:\Program Files\Java\jdk1.5.0_10\jre\lib\rt.jar;F:\Program Files\Java\jdk1.5.0_10\jre\lib\i18n.jar;F:\Program Files\Java\jdk1.5.0_10\jre\lib\sunrsasign.jar;F:\Program Files\Java\jdk1.5.0_10\jre\lib\jsse.jar;F:\Program Files\Java\jdk1.5.0_10\jre\lib\jce.jar;F:\Program Files\Java\jdk1.5.0_10\jre\lib\charsets.jar;F:\Program Files\Java\jdk1.5.0_10\jre\classes"></property>
+
+          <property name="env.COMPUTERNAME" value="3E1EEDCE04E1492"></property>
+
+          <property name="test.reports.dir" value="F:\WorkSpace\HomeJ2EE\faceye/test/reports"></property>
+
+          <property name="env.ALLUSERSPROFILE" value="E:\Documents and Settings\All Users"></property>
+
+          <property name="sun.desktop" value="windows"></property>
+
+          <property name="java.vm.specification.vendor" value="Sun Microsystems Inc."></property>
+
+          <property name="ant.home" value="F:\Program Files\apache-ant-1.6.5"></property>
+
+          <property name="java.runtime.version" value="1.5.0_10-b03"></property>
+
+          <property name="env.HOMEPATH" value="\Documents and Settings\Administrator"></property>
+
+          <property name="user.name" value="Administrator"></property>
+
+          <property name="tomcat.manager.url" value="http://localhost:8088/manager"></property>
+
+          <property name="build.dir" value="F:\WorkSpace\HomeJ2EE\faceye/build"></property>
+
+          <property name="user.language" value="zh"></property>
+
+          <property name="class.dir" value="F:\WorkSpace\HomeJ2EE\faceye/build/classes"></property>
+
+          <property name="sun.boot.library.path" value="F:\Program Files\Java\jdk1.5.0_10\jre\bin"></property>
+
+          <property name="doc.dir" value="F:\WorkSpace\HomeJ2EE\faceye/doc"></property>
+
+          <property name="ant.project.name" value="faceye"></property>
+
+          <property name="java.version" value="1.5.0_10"></property>
+
+          <property name="env.PROCESSOR_IDENTIFIER" value="x86 Family 15 Model 2 Stepping 9, GenuineIntel"></property>
+
+          <property name="user.timezone" value=""></property>
+
+          <property name="env.CLIENTNAME" value="Console"></property>
+
+          <property name="env.TEMP" value="E:\DOCUME~1\ADMINI~1\LOCALS~1\Temp"></property>
+
+          <property name="sun.arch.data.model" value="32"></property>
+
+          <property name="java.endorsed.dirs" value="F:\Program Files\Java\jdk1.5.0_10\jre\lib\endorsed"></property>
+
+          <property name="env._JAVACMD" value="F:\Program Files\Java\jdk1.5.0_10\bin\java.exe"></property>
+
+          <property name="sun.cpu.isalist" value=""></property>
+
+          <property name="env.HOMEDRIVE" value="E:"></property>
+
+          <property name="sun.jnu.encoding" value="GBK"></property>
+
+          <property name="file.encoding.pkg" value="sun.io"></property>
+
+          <property name="file.separator" value="\"></property>
+
+          <property name="java.specification.name" value="Java Platform API Specification"></property>
+
+          <property name="java.class.version" value="49.0"></property>
+
+          <property name="user.country" value="CN"></property>
+
+          <property name="java.home" value="F:\Program Files\Java\jdk1.5.0_10\jre"></property>
+
+          <property name="dist.dir" value="F:\WorkSpace\HomeJ2EE\faceye/dist"></property>
+
+          <property name="env.APPDATA" value="E:\Documents and Settings\Administrator\Application Data"></property>
+
+          <property name="java.vm.info" value="mixed mode, sharing"></property>
+
+          <property name="env.CATALINA_HOME" value="F:\Program Files\Apache Software Foundation\Tomcat 5.5"></property>
+
+          <property name="env.ComSpec" value="E:\WINDOWS\system32\cmd.exe"></property>
+
+          <property name="env.OS" value="Windows_NT"></property>
+
+          <property name="env.CommonProgramFiles" value="E:\Program Files\Common Files"></property>
+
+          <property name="ant.file" value="F:\WorkSpace\HomeJ2EE\faceye\build.xml"></property>
+
+          <property name="os.version" value="5.1"></property>
+
+          <property name="env._USE_CLASSPATH" value="yes"></property>
+
+          <property name="javac.debug" value="true"></property>
+
+          <property name="tomcat.manager.password" value="ecsunchina"></property>
+
+          <property name="path.separator" value=";"></property>
+
+          <property name="java.vm.version" value="1.5.0_10-b03"></property>
+
+          <property name="env.USERPROFILE" value="E:\Documents and Settings\Administrator"></property>
+
+          <property name="user.variant" value=""></property>
+
+          <property name="ant.library.dir" value="F:\Program Files\apache-ant-1.6.5\lib"></property>
+
+          <property name="env.JAVA_HOME" value="F:\Program Files\Java\jdk1.5.0_10"></property>
+
+          <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"></property>
+
+          <property name="tomcat.manager.username" value="admin"></property>
+
+          <property name="env.TMP" value="E:\DOCUME~1\ADMINI~1\LOCALS~1\Temp"></property>
+
+          <property name="sun.io.unicode.encoding" value="UnicodeLittle"></property>
+
+          <property name="awt.toolkit" value="sun.awt.windows.WToolkit"></property>
+
+          <property name="packages" value="com.faceye.core.*"></property>
+
+          <property name="metada.dir" value="F:\WorkSpace\HomeJ2EE\faceye/metada"></property>
+
+          <property name="user.home" value="E:\Documents and Settings\Administrator"></property>
+
+          <property name="env.SESSIONNAME" value="Console"></property>
+
+          <property name="java.specification.vendor" value="Sun Microsystems Inc."></property>
+
+          <property name="test.dir" value="F:\WorkSpace\HomeJ2EE\faceye/test"></property>
+
+          <property name="java.library.path" value="F:\Program Files\Java\jdk1.5.0_10\bin;.;E:\WINDOWS\system32;E:\WINDOWS;F:\Program Files\apache-ant-1.6.5\bin;F:\Program Files\Java\jdk1.5.0_10\bin;E:\WINDOWS\system32;E:\WINDOWS;E:\WINDOWS\System32\Wbem"></property>
+
+          <property name="env.NUMBER_OF_PROCESSORS" value="1"></property>
+
+          <property name="java.vendor.url" value="http://java.sun.com/"></property>
+
+          <property name="java.vm.vendor" value="Sun Microsystems Inc."></property>
+
+          <property name="java.runtime.name" value="Java(TM) 2 Runtime Environment, Standard Edition"></property>
+
+          <property name="ant.version" value="Apache Ant version 1.6.5 compiled on June 2 2005"></property>
+
+          <property name="java.class.path" value="F:\Program Files\apache-ant-1.6.5\lib\ant-launcher.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-antlr.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-apache-bcel.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-apache-bsf.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-apache-log4j.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-apache-oro.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-apache-regexp.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-apache-resolver.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-commons-logging.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-commons-net.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-icontract.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-jai.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-javamail.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-jdepend.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-jmf.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-jsch.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-junit.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-launcher.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-netrexx.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-nodeps.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-starteam.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-stylebook.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-swing.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-trax.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-vaj.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-weblogic.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-xalan1.jar;F:\Program Files\apache-ant-1.6.5\lib\ant-xslp.jar;F:\Program Files\apache-ant-1.6.5\lib\ant.jar;F:\Program Files\apache-ant-1.6.5\lib\xercesImpl.jar;F:\Program Files\apache-ant-1.6.5\lib\xml-apis.jar;F:\Program Files\apache-ant-1.6.5\lib\junit.jar;F:\Program Files\Java\jdk1.5.0_10\lib\tools.jar"></property>
+
+          <property name="ant.file.faceye" value="F:\WorkSpace\HomeJ2EE\faceye\build.xml"></property>
+
+          <property name="project.name" value="faceye"></property>
+
+          <property name="java.vm.specification.name" value="Java Virtual Machine Specification"></property>
+
+          <property name="env.LOGONSERVER" value="\\3E1EEDCE04E1492"></property>
+
+          <property name="env.windir" value="E:\WINDOWS"></property>
+
+          <property name="env.PROCESSOR_ARCHITECTURE" value="x86"></property>
+
+          <property name="java.vm.specification.version" value="1.0"></property>
+
+          <property name="sun.os.patch.level" value="Service Pack 2"></property>
+
+          <property name="sun.cpu.endian" value="little"></property>
+
+          <property name="env.ProgramFiles" value="F:\Program Files"></property>
+
+          <property name="env.ANT_HOME" value="F:\Program Files\apache-ant-1.6.5"></property>
+
+          <property name="java.io.tmpdir" value="E:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\"></property>
+
+          <property name="env.PROCESSOR_REVISION" value="0209"></property>
+
+          <property name="test.src" value="F:\WorkSpace\HomeJ2EE\faceye/test/src"></property>
+
+          <property name="java.vendor.url.bug" value="http://java.sun.com/cgi-bin/bugreport.cgi"></property>
+
+          <property name="env.SystemRoot" value="E:\WINDOWS"></property>
+
+          <property name="os.arch" value="x86"></property>
+
+          <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"></property>
+
+          <property name="env.ANT_CMD_LINE_ARGS" value="junit-report"></property>
+
+          <property name="java.ext.dirs" value="F:\Program Files\Java\jdk1.5.0_10\jre\lib\ext"></property>
+
+          <property name="user.dir" value="F:\WorkSpace\HomeJ2EE\faceye"></property>
+
+          <property name="line.separator" value=" "></property>
+
+          <property name="build.test.dir" value="F:\WorkSpace\HomeJ2EE\faceye/build/test"></property>
+
+          <property name="java.vm.name" value="Java HotSpot(TM) Client VM"></property>
+
+          <property name="env.PATHEXT" value=".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH"></property>
+
+          <property name="env.Path" value="F:\Program Files\apache-ant-1.6.5\bin;F:\Program Files\Java\jdk1.5.0_10\bin;E:\WINDOWS\system32;E:\WINDOWS;E:\WINDOWS\System32\Wbem"></property>
+
+          <property name="tomcat.home" value="F:\Program Files\Apache Software Foundation\Tomcat 5.5"></property>
+
+          <property name="basedir" value="F:\WorkSpace\HomeJ2EE\faceye"></property>
+
+          <property name="ant.java.version" value="1.5"></property>
+
+          <property name="env.USERNAME" value="Administrator"></property>
+
+          <property name="generator.dir" value="F:\WorkSpace\HomeJ2EE\faceye/generator"></property>
+
+          <property name="env.SystemDrive" value="E:"></property>
+
+          <property name="file.encoding" value="GBK"></property>
+
+          <property name="build.web.dir" value="F:\WorkSpace\HomeJ2EE\faceye/build/web"></property>
+
+          <property name="env.USERDOMAIN" value="3E1EEDCE04E1492"></property>
+
+          <property name="bak.dir" value="F:\WorkSpace\HomeJ2EE\faceye/bak"></property>
+
+          <property name="java.specification.version" value="1.5"></property>
+
+          <property name="src.dir" value="F:\WorkSpace\HomeJ2EE\faceye/src"></property>
+
+          <property name="env.PROCESSOR_LEVEL" value="15"></property>
+
+      </properties>
+
+      <testcase classname="com.faceye.test.core.service.TestReflect" name="testInterface" time="0.078"></testcase>
+
+      <system-out><![CDATA[com.faceye.core.service.iface.IBaseService
+]]></system-out>
+
+      <system-err></system-err>
+
+  </testsuite>
+</testsuites>

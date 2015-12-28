@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+
+	<bean name="/portalContainerAction"
+		class="com.faceye.components.portal.web.controller.PortalContainerAction">
+		<property name="service">
+			<ref bean="service" />
+		</property>
+		<property name="portalContainerService">
+			<ref bean="portalContainerService" />
+		</property>
+	</bean>
+	<bean name="/portalColumnAction"
+		class="com.faceye.components.portal.web.controller.PortalColumnAction">
+		<property name="service">
+			<ref bean="service" />
+		</property>
+		<property name="portalColumnService">
+			<ref bean="portalColumnService" />
+		</property>
+	</bean>
+	<bean name="/portalColumnTemplateAction"
+		class="com.faceye.components.portal.web.controller.PortalColumnTemplateAction">
+		<property name="service">
+			<ref bean="service" />
+		</property>
+			<property name="portalColumnService">
+			<ref bean="portalColumnService" />
+		</property>
+	</bean>
+	<bean name="/portalStyleAction"
+		class="com.faceye.components.portal.web.controller.PortalStyleAction">
+		<property name="service">
+			<ref bean="service" />
+		</property>
+		<property name="portalContainerService">
+			<ref bean="portalContainerService" />
+		</property>
+	</bean>
+	<bean name="/portletAction"
+		class="com.faceye.components.portal.web.controller.PortletAction">
+		<property name="service">
+			<ref bean="service" />
+		</property>
+		<property name="portletService">
+			<ref bean="portletService" />
+		</property>
+	</bean>
+	<bean name="/portalAction"
+		class="com.faceye.components.portal.web.controller.PortalAction">
+		<property name="service">
+			<ref bean="service" />
+		</property>
+		<property name="portalService">
+			<ref bean="portalService" />
+		</property>
+	</bean>
+</beans>

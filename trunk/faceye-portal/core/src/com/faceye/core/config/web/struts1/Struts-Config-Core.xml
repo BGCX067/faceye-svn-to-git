@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "struts-config_1_2.dtd" >
+<struts-config id="idvalue0">
+	<display-name id="idvalue1">faceye</display-name>
+	<description id="idvalue2">description</description>
+	<!-- 
+		<data-sources id="idvalue3">
+		<data-source className="" id="idvalue4" key="" type="">
+		<set-property id="idvalue5" property="" value=""/>
+		</data-source>
+		</data-sources>
+	-->
+	<form-beans>
+		<form-bean name="userForm"
+			type="com.faceye.core.service.security.web.form.UserForm">
+		</form-bean>
+		<form-bean name="roleForm"
+			type="com.faceye.core.service.security.web.form.RoleForm">
+		</form-bean>
+		<form-bean name="resourceForm"
+			type="com.faceye.core.service.security.web.form.ResourceForm">
+		</form-bean>
+		<form-bean name="permissionForm"
+			type="com.faceye.core.service.security.web.form.PermissionForm">
+		</form-bean>
+		<form-bean name="treeForm"
+			type="com.faceye.core.service.security.web.form.TreeForm">
+		</form-bean>
+		<form-bean name="domainForm"
+			type="com.faceye.core.componentsupport.web.form.DomainForm">
+		</form-bean>
+		<form-bean name="propertyForm"
+			type="com.faceye.core.componentsupport.web.form.PropertyForm">
+		</form-bean>
+		<form-bean name="validatorTypeForm"
+			type="com.faceye.core.componentsupport.web.form.ValidatorTypeForm">
+		</form-bean>
+		<form-bean name="htmlTypeForm"
+			type="com.faceye.core.componentsupport.web.form.HtmlTypeForm">
+		</form-bean>
+		<form-bean name="dataTypeForm"
+			type="com.faceye.core.componentsupport.web.form.DataTypeForm">
+		</form-bean>
+		<form-bean name="queryTypeForm"
+			type="com.faceye.core.componentsupport.web.form.QueryTypeForm">
+		</form-bean>
+		<!-- 
+			<form-bean className="" dynamic="true" id="idvalue7" name="" type="">
+			<icon id="idvalue8">
+			<small-icon id="idvalue9">small-icon</small-icon>
+			<large-icon id="idvalue10">large-icon</large-icon>
+			</icon>
+			<display-name id="idvalue11">display-name</display-name>
+			<description id="idvalue12">description</description>
+			<set-property id="idvalue13" property="" value=""/>
+			<form-property className="" initial="" name="" size="" type="">
+			<set-property id="idvalue14" property="" value=""/>
+			</form-property>
+			
+			</form-bean>
+		-->
+	</form-beans>
+	<global-exceptions>
+		<!-- 
+			<exception bundle="" className="" handler="" id="idvalue16" key="" path="" scope="" type="">
+			<icon id="idvalue17">
+			<small-icon id="idvalue18">small-icon</small-icon>
+			<large-icon id="idvalue19">large-icon</large-icon>
+			</icon>
+			<display-name id="idvalue20">display-name</display-name>
+			<description id="idvalue21">description</description>
+			<set-property id="idvalue22" property="" value=""/>
+			</exception>
+		-->
+	</global-exceptions>
+	<global-forwards>
+		<!--forward className="" contextRelative="true" id="idvalue24" module="" name="" path="" redirect="true">
+			<icon id="idvalue25">
+			<small-icon id="idvalue26">small-icon</small-icon>
+			<large-icon id="idvalue27">large-icon</large-icon>
+			</icon>
+			<display-name id="idvalue28">display-name</display-name>
+			<description id="idvalue29">description</description>
+			<set-property id="idvalue30" property="" value=""/>
+			</forward-->
+		<forward name="MESSAGE" path=".system.global.message"></forward>
+		<forward name="system.tree.common.list"
+			path="/templates/global/commonListTemplateOfJSON.jsp">
+		</forward>
+		<forward name="portal" path="/portal.jsp"></forward>
+		<forward name="home" path="/portalContainerAction.do?method=my"></forward>
+		<forward name="login" path="/core/security/user/login.jsp"></forward>
+	</global-forwards>
+	<action-mappings>
+		<action path="/default" parameter="method" scope="request">
+			<forward name="default"
+				path="/templates/layout/default.jsp">
+			</forward>
+
+			<forward name="testcontainer"
+				path="/templates/tiles/basicBodyContainer.jsp">
+			</forward>
+			<forward name="system.admin.index" path=".admin"></forward>
+			<forward name="system.admin.face"
+				path="/templates/tiles/defaultPart/nested-container.jsp">
+			</forward>
+			<forward name="system.admin.portal"
+				path="/templates/tiles/defaultPart/portal.jsp">
+			</forward>
+			<!--Test Pages Forward-->
+			<forward name="test.feed-viewer"
+				path="/test/feed-viewer.jsp">
+			</forward>
+			<forward name="test.tree" path="/test/test.tree.jsp"></forward>
+			<!--　Is Be Used Container -->
+			<forward name="test.complex.container"
+				path="/templates/tiles/defaultPart/complex-container.jsp">
+			</forward>
+			<forward name="test.nested.container"
+				path="/templates/tiles/defaultPart/nested-container.jsp">
+			</forward>
+			<forward name="test.feed-viewer"
+				path="/templates/tiles/defaultPart/feed-viewer-container.jsp">
+			</forward>
+			<forward name="jsSource" path="/core/source/show-portlet-source-js.jsp"></forward>
+		</action>
+		<!-- ================================Security Controller===================================== -->
+		<!-- System Security Controller,with User,Role,Resource,Permission controller -->
+		<action path="/userAction" parameter="method" name="userForm"
+			scope="request">
+			<forward name="register"
+				path="/core/security/user/update.jsp">
+			</forward>
+			<forward name="list" path="/core/security/user/list.jsp"></forward>
+		    <forward name="login" path="/core/security/user/login.jsp"></forward>
+			<!-- 
+			<forward name="permission" path="/core/security/user/selectRoles.jsp"></forward>
+			
+				<forward name="save" path=".security.user.register"></forward>
+				<forward name="list" path=".security.user.list"></forward>
+			-->
+		</action>
+		<action path="/roleAction" parameter="method" name="roleForm"
+			scope="request">
+			<forward name="list" path="/core/security/role/list.jsp"></forward>
+		</action>
+		<action path="/resourceAction" parameter="method"
+			name="resourceForm" scope="request">
+			<forward name="save"
+				path="/core/security/resource/update.jsp">
+			</forward>
+			<forward name="list"
+				path="/core/security/resource/list.jsp">
+			</forward>
+			<!--  
+				<forward name="save" path=".security.resource.update"></forward>
+				<forward name="list" path=".security.resource.list"></forward>
+			-->
+		</action>
+		<action path="/permissionAction" parameter="method"
+			name="permissionForm" scope="request">
+			<forward name="save"
+				path="/core/security/permission/update.jsp">
+			</forward>
+			<forward name="list"
+				path="/core/security/permission/list.jsp">
+			</forward>
+			<!--  
+				<forward name="save" path=".security.permission.update"></forward>
+				<forward name="list" path=".security.permission.list"></forward>
+			-->
+		</action>
+		<action path="/treeAction" parameter="method" name="treeForm"
+			scope="request">
+			<forward name="save"
+				path="/core/security/tree/update.jsp">
+			</forward>
+			<forward name="list" path="/core/security/tree/list.jsp"></forward>
+			<forward name="system.admin.face"
+				path="/templates/tiles/defaultPart/nested-container.jsp">
+			</forward>
+
+		</action>
+		<!-- =================================End Security Controller================================== -->
+		<!-- ===========================Common components support confit=============================== -->
+		<action path="/domainAction" parameter="method"
+			name="domainForm" scope="request">
+			<forward name="save"
+				path="/core/componentSupport/domain/update.jsp">
+			</forward>
+			<forward name="list"
+				path="/core/componentSupport/domain/list.jsp">
+			</forward>
+		</action>
+		<action path="/propertyAction" parameter="method"
+			name="propertyForm" scope="request">
+		</action>
+		<action path="/validatorTypeAction" parameter="method"
+			name="validatorTypeForm" scope="request">
+		</action>
+		<action path="/htmlTypeAction" parameter="method"
+			name="htmlTypeForm" scope="request">
+		</action>
+		<action path="/dataTypeAction" parameter="method"
+			name="dataTypeForm" scope="request">
+			<forward name="list"
+				path="/core/componentSupport/dataType/list.jsp">
+			</forward>
+			<forward name="save"
+				path="/core/componentSupport/dataType/update.jsp">
+			</forward>
+		</action>
+		<action path="/queryTypeAction" parameter="method"
+			name="queryTypeForm" scope="request">
+		</action>
+		<action path="/domainQueryAction" parameter="method"
+			name="domainQueryAction" scope="request">
+		</action>
+		<!-- 栏目管理 -->
+		<action path="/columnAction" parameter="method"
+			scope="request">
+			<forward name="list"
+				path="/core/security/column/list.jsp">
+			</forward>
+		</action>
+		<!-- 开源栏目管理 -->
+		<action path="/openSourceAction" parameter="method"
+			scope="request">
+			<forward name="list"
+				path="/components/opensource/list.jsp">
+			</forward>
+		</action>
+		<!-- 传统导航管理 -->
+		<action path="/traditionAction" parameter="method"
+			scope="request">
+			<forward name="list"
+				path="/components/navigation/tradition/list.jsp">
+			</forward>
+			
+		</action>
+		<!-- Feed 导航管理 -->
+		<action path="/feedAction" parameter="method" scope="request">
+			<forward name="list"
+				path="/components/navigation/feed/list.jsp">
+			</forward>
+			
+			<!-- 
+			<forward name="feedReader" path="/components/navigation/feed/feedReader.jsp"></forward>
+			-->
+		</action>
+		<!-- 网站分类管理 -->
+		<action path="/categoryAction" parameter="method" scope="request">
+		  <forward name="list" path="/components/navigation/category/list.jsp"></forward>
+		</action>
+		<action path="/userResourceCategoryAction" parameter="method" scope="request">
+		  <forward name="list" path="/components/navigation/feed/userResourceCategory/list.jsp"></forward>
+		  <forward name="feedReader" path="/components/navigation/feed/feed-viewer/view.jsp"></forward>
+		</action>
+		<!-- portal -->
+		<action path="/portalContainerAction" parameter="method" scope="request"></action>
+		<action path="/portalColumnAction" parameter="method" scope="request"></action>
+		<action path="/portalColumnTemplateAction"  parameter="method" scope="request">
+		  <forward name="list" path="/components/portal/listPortalColumnTemplates.jsp"></forward>
+		</action>
+		<action path="/portalStyleAction"  parameter="method" scope="request">
+		  <forward name="list" path="/components/portal/listPortalStyles.jsp"></forward>
+		</action>
+		<action path="/portletAction"  parameter="method" scope="request">
+		  <forward name="list" path="/components/portal/listPortlets.jsp"></forward>
+		  <forward name="userSubscrbie" path="/components/portal/subscribePortlets.jsp"></forward>
+		</action>
+		<action path="/portalAction" parameter="method" scope="request"></action>
+		
+		<!-- blog -->
+		<action path="/articleAction" parameter="method" scope="request">
+		  <forward name="update" path="/components/blog/updateArticle.jsp"></forward>
+		  <forward name="detail" path="/components/blog/detailArticle.jsp"></forward>
+		</action>
+		<action path="/blogManagerAction" parameter="method" scope="request">
+		</action>
+		<action path="/articleCategoryAction" parameter="method" scope="request"></action>
+		<action path="/discusAction" parameter="method" scope="request"></action>
+		<action path="/articleClickAction" parameter="method" scope="request"></action>
+	</action-mappings>
+	<controller
+		processorClass="org.springframework.web.struts.DelegatingTilesRequestProcessor" />
+	<!--
+		<message-resources parameter="com/faceye/core/config/i18n/ApplicationResources.properties" />
+	-->
+	<message-resources
+		parameter="com.faceye.core.config.i18n.ApplicationResources" />
+	<plug-in className="org.apache.struts.tiles.TilesPlugin">
+		<set-property property="definitions-config"
+			value="/WEB-INF/classes/com/faceye/core/config/web/tiles-definitions.xml" />
+	</plug-in>
+	<plug-in
+		className="org.springframework.web.struts.ContextLoaderPlugIn">
+		<set-property property="contextConfigLocation"
+			value="/WEB-INF/classes/com/faceye/core/config/web/struts1/applicationContext-struts.xml" />
+	</plug-in>
+	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property property="pathnames"
+			value="/WEB-INF/plug-in/validator-rules.xml,/WEB-INF/plug-in/validation.xml" />
+	</plug-in>
+</struts-config>

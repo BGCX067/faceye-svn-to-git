@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="build-common-java">
+	<!-- ================================= 
+		target: compile 定义编译器                 
+		=================================   -->
+	<import file="build-common.xml" />
+	<property name="project.name" value="faceye">
+	</property>
+	<!-- ================================= 
+		target: javadoc 系统构建目录初始化                
+		=================================   -->
+	<target name="init" description="系统构建目录初始化">
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${dist.dir}" />
+		<mkdir dir="${bak.dir}" />
+		<mkdir dir="${src.dir}">
+		</mkdir>
+		<mkdir dir="${doc.dir}" />
+		<mkdir dir="${doc.dir}/source" />
+		<mkdir dir="${doc.dir}/api" />
+		<mkdir dir="${class.dir}" />
+		<mkdir dir="${test.dir}" />
+		<mkdir dir="${test.data.dir}" />
+		<mkdir dir="${test.reports.dir}" />
+		<mkdir dir="${test.src}" />
+		<mkdir dir="${build.test.dir}" />
+		<mkdir dir="${WebRoot.dir}" />
+		<mkdir dir="${generator.dir}" />
+		<mkdir dir="${metada.dir}" />
+	</target>
+	<!-- ================================= 
+		target: clean 系统目录清理        depends="bak"         
+		=================================   -->
+	<target name="clean">
+		<delete dir="${build.dir}">
+		</delete>
+		<delete dir="${dist.dir}">
+		</delete>
+		<delete dir="${doc.dir}">
+		</delete>
+		<antcall target="clean-bak-file">
+		</antcall>
+	</target>
+	<target name="prepare-compile">
+		<mkdir dir="${project.dir}/build/src" />
+		<copy todir="${project.dir}/src">
+			<fileset dir="${src.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+	<target name="compile" depends="init">
+		<mkdir dir="${project.dir}/build/classes" />
+		<javac debug="${javac.debug}" destdir="${class.dir}">
+			<src path="${src.dir}">
+			</src>
+			<classpath refid="project.class.path">
+			</classpath>
+		</javac>
+		<copy todir="${class.dir}">
+			<fileset dir="${src.dir}">
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+		<copy todir="${project.dir}/build/classes">
+			<fileset dir="${class.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+	<!-- ================================= 
+          target: prepare-src              
+         ================================= -->
+	<target name="prepare-src" depends="init" description="--> prepare src">
+		<mkdir dir="${project.dir}/build/src" />
+		<copy todir="${project.dir}/build/src">
+			<fileset dir="${src.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+	<!-- ================================= 
+          target: prepare-web              
+         ================================= -->
+	<target name="prepare-web" depends="init" description="--> prepare-web ${project.name}">
+		<mkdir dir="${project.dir}/build/web" />
+		<copy todir="${project.dir}/build/web">
+			<fileset dir="${WebRoot.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+
+
+	<!-- ================================= 
+	          target: test-compile 测试编译                 
+	         =================================   -->
+	<target name="test-compile" depends="init">
+		<mkdir dir="${project.dir}/build/test" />
+		<javac debug="${javac.debug}" destdir="${build.test.dir}" includeAntRuntime="true">
+			<src path="${test.src}">
+			</src>
+			<classpath refid="test.class.path">
+			</classpath>
+		</javac>
+		<copy todir="${build.test.dir}">
+			<fileset dir="${test.src}">
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+		<copy todir="${project.dir}/build/test">
+			<fileset dir="${build.test.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+	<!-- ================================= 
+	          target: junit-test  Junit测试任务                 
+	         =================================   -->
+	<target name="junit-test" depends="test-compile">
+		<!-- haltonfailure="true" 本参数表明，测试失败，构建失败   -->
+		<junit printsummary="withOutAndErr" errorProperty="junit-test.failed" failureProperty="junit-test.failed">
+			<classpath refid="test.class.path">
+			</classpath>
+			<formatter type="xml" />
+			<batchtest todir="${test.data.dir}">
+				<fileset dir="${build.test.dir}">
+					<include name="**/*.class" />
+				</fileset>
+			</batchtest>
+			<!--
+			<test name="com.faceye.test.core.dao.TestHibernateDAOUtils">
+			</test>
+			  -->
+		</junit>
+		<copy todir="${project.dir}/build/test">
+			<fileset dir="${build.test.dir}">
+				<fileset dir="${build.test.dir}">
+					<include name="**/*.*" />
+				</fileset>
+			</fileset>
+		</copy>
+	</target>
+	<!-- ================================= 
+	          target: junit-report 生成Junit测试报告任务                 
+	         =================================   -->
+	<target name="junit-report" depends="junit-test">
+		<junitreport todir="${test.reports.dir}">
+			<fileset dir="${test.data.dir}">
+				<include name="TEST-*.xml" />
+			</fileset>
+			<report format="frames" todir="${test.reports.dir}" />
+		</junitreport>
+		<fail message="Junit Test Target Failer,Check junit-test target" if="junit-teset.failed" />
+		<mkdir dir="${project.dir}/test/reports/${component.name}" />
+		<copy todir="${project.dir}/test/reports/${component.name}">
+			<fileset dir="${test.reports.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+	<!-- ================================= 
+          target: jar  打包           
+         =================================   -->
+	<target name="jar" depends="compile">
+		<mkdir dir="${project.dir}/dist" />
+		<antcall target="jar-dao"></antcall>
+		<ant target="jar-service"></ant>
+		<ant target="jar-common"></ant>
+		<!--
+		<jar destfile="${dist.dir}/${project.name}-${component.name}-${project.version}.jar">
+			<fileset dir="${class.dir}">
+				<exclude name="**/*.xml" />
+			</fileset>
+		</jar>
+		<copy todir="${project.dir}/dist">
+			<fileset dir="${dist.dir}">
+				<include name="*.jar" />
+			</fileset>
+		</copy>
+		-->
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: jar-dao                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="jar-dao" depends="compile">
+		<mkdir dir="${project.dir}/dist" />
+		<jar destfile="${dist.dir}/${project.name}-${component.name}-dao-${project.version}.jar">
+			<fileset dir="${class.dir}">
+				<include name="**/*Dao*.class" />
+			</fileset>
+		</jar>
+		<copy todir="${project.dir}/dist">
+			<fileset dir="${dist.dir}">
+				<include name="*.jar" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="jar-service" depends="compile">
+		<mkdir dir="${project.dir}/dist" />
+			<jar destfile="${dist.dir}/${project.name}-${component.name}-service-${project.version}.jar">
+				<fileset dir="${class.dir}">
+					<include name="**/*Service*.class" />
+				</fileset>
+			</jar>
+			<copy todir="${project.dir}/dist">
+				<fileset dir="${dist.dir}">
+					<include name="*.jar" />
+				</fileset>
+			</copy>
+	</target>
+	
+	<target name="jar-common" depends="compile">
+		<mkdir dir="${project.dir}/dist" />
+				<jar destfile="${dist.dir}/${project.name}-${component.name}-common-${project.version}.jar">
+					<fileset dir="${class.dir}">
+						<exclude name="**/*Service*.class" />
+						<exclude name="**/*Dao*.class" />
+						<exclude name="**/*Action*.class"/>
+					</fileset>
+				</jar>
+				<copy todir="${project.dir}/dist">
+					<fileset dir="${dist.dir}">
+						<include name="*.jar" />
+					</fileset>
+				</copy>
+	</target>
+
+	<!--==============================================================系统级备份===============================================================-->
+	<!-- - - - - - - - - - - - - - - - - - 
+		target: bak  系统代码备份。
+		在两种情况下可以备份代码，一种情况为单一备份，
+		另一种情况为在清空构建目录之前进行代码备份，保证代码安全。                     
+		- - - - - - - - - - - - - - - - - -->
+	<target name="bak" depends="init">
+		<tstamp prefix="source.">
+			<format property="TimeSign" pattern="yyyy-MM-dd HH.mm.ss" />
+		</tstamp>
+		<mkdir dir="${bak.dir}/${source.TimeSign}.version.${project.version}" />
+		<copy todir="${bak.dir}/${source.TimeSign}.version.${project.version}/src">
+			<fileset dir="${src.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+		<copy todir="${bak.dir}/${source.TimeSign}.version.${project.version}/test">
+			<fileset dir="${test.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+		<copy todir="${bak.dir}/${source.TimeSign}.version.${project.version}/build">
+			<fileset dir="${build.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+		<copy todir="${bak.dir}/${source.TimeSign}.version.${project.version}/dist">
+			<fileset dir="${dist.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+		<copy todir="${bak.dir}/${source.TimeSign}.version.${project.version}/web">
+			<fileset dir="${WebRoot.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+		<copy todir="${bak.dir}/${source.TimeSign}.version.${project.version}/doc">
+			<fileset dir="${doc.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: clean-bak   清理系统备份                   
+         - - - - - - - - - - - - - - - - - -->
+	<target name="clean-bak">
+		<delete dir="${bak.dir}">
+		</delete>
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: clean-bak-file 清除系统中以.bak结尾的备份文件                     
+         - - - - - - - - - - - - - - - - - -->
+	<target name="clean-bak-file">
+		<delete dir="${project.dir}">
+			<include name="**/*.bak" />
+		</delete>
+	</target>
+
+	<target name="doc" depends="javadoc">
+	</target>
+	<!-- ================================= 
+          target: javadoc 生成API文档              
+         =================================   -->
+	<target name="javadoc" depends="init" description="Create System Core API">
+		<javadoc packagenames="${packages}.${component.name}.*" sourcepath="${src.dir}" destdir="${doc.dir}/api" author="true" version="true" use="true" splitindex="true" windowtitle="${project.name} API" doctitle="${project.name}">
+		</javadoc>
+		<mkdir dir="${project.dir}/doc/api/${component.name}" />
+		<copy todir="${project.dir}/doc/api/${component.name}">
+			<fileset dir="${doc.dir}/api">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+
+	<!-- =================================================================== -->
+	<!-- Create HTML versions of the Java code in this project               -->
+	<!-- =================================================================== -->
+	<target name="java2html" depends="init" description="creates HTML pages of code for online viewing">
+		<taskdef name="java2html" classname="com.java2html.Java2HTMLTask" classpath="project.class.path" />
+
+		<java2html destination="${doc.dir}/source">
+			<fileset dir="${src.dir}">
+			</fileset>
+			<!--
+	            <fileset dir="test">
+	                <patternset refid="java.files.pattern"/>
+	            </fileset>
+	            -->
+		</java2html>
+		<mkdir dir="${project.dir}/doc/source/${component.name}" />
+		<copy todir="${project.dir}/doc/source/${component.name}">
+			<fileset dir="${doc.dir}/source">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+
+
+
+	<!-- ==============hibernate 工具类相关定义 ==================== -->
+	<!--
+		<taskdef name="hibernatetool" classname="org.hibernate.tool.ant.HibernateToolTask" classpathref="project.class.path" />
+
+		<hibernatetool destdir="${generator.dir}">
+			<configuration configurationfile="${src.dir}/hibernate.cfg.xml" />
+			<hbm2ddl export="true" drop="false" outputfilename="sql.ddl" create="true" format="true" />
+		</hibernatetool>
+		<hibernatetool destdir="${generator.dir}">
+			<configuration configurationfile="${src.dir}/hibernate.cfg.xml" />
+			<hbm2java jdk5="true" />
+		</hibernatetool>
+		<target name="hibernate">
+			<antcall target="hibernatetool" />
+		</target>
+			-->
+
+	<target name="hibernate" depends="init">
+		<taskdef name="hibernatetool" classname="org.hibernate.tool.ant.HibernateToolTask" classpathref="project.class.path" />
+		<mkdir dir="${generator.dir}/model" />
+		<!--  由HBM生成数据库脚本 -->
+		<hibernatetool destdir="${generator.dir}/sql">
+			<configuration configurationfile="${src.dir}/hibernate.cfg.xml" />
+			<hbm2ddl export="false" update="false" drop="false" outputfilename="sql.ddl" create="false" haltonerror="true" format="true" />
+		</hibernatetool>
+
+		<!-- 由HBM 生成 java类 -->
+		<hibernatetool destdir="${generator.dir}/model">
+			<configuration configurationfile="${src.dir}/hibernate.cfg.xml" />
+			<hbm2java jdk5="true" />
+		</hibernatetool>
+
+		<!-- 由HBM生成DAO数据库操作类  -->
+		<hibernatetool destdir="${generator.dir}/dao">
+			<configuration configurationfile="${src.dir}/hibernate.cfg.xml" />
+			<hbm2dao />
+		</hibernatetool>
+
+		<!-- 由数据库生成HBM配制文件 -->
+		<!--hibernatetool destdir="${generator.dir}/hbmxml">
+			<jdbcconfiguration configurationfile="${src.dir}/hibernate.cfg.xml" packagename="com.${project.name}.${component.name}.dbengine.model" />
+			<hbm2hbmxml />
+		</hibernatetool-->
+	</target>
+	<!--  通过Model生成Form 在Struts中使用 -->
+	<target name="generator-form">
+		<mkdir dir="${generator.dir}/web/form" />
+		<copy todir="${generator.dir}/web/form">
+			<fileset dir="${generator.dir}/model">
+				<include name="**/*.java" />
+			</fileset>
+		</copy>
+		<replaceregexp flags="g">
+			<regexp pattern="model" />
+			<substitution expression="web.form" />
+			<fileset dir="${generator.dir}/web/form">
+				<include name="*.java" />
+				<!--
+		    	                <exclude name="lib/rename-packages-*/*.xml"/>
+		    	                <exclude name="src/**/*.java"/>
+		    	                <exclude name="src/**/*.xml"/>
+		    	                <exclude name="test/**/*.java"/>
+		    	                <exclude name="test/**/*.xml"/>   
+		    	                <exclude name="extras/**/*.java"/>
+		    	                <exclude name="extras/**/*.xml"/>
+		    	                <exclude name="metadata/web/global-exceptions.xml"/>
+		    	                <exclude name="web/WEB-INF/*.xml"/>
+		    	                <exclude name="web/WEB-INF/classes/log4j.properties"/>
+		    	                <exclude name="web/WEB-INF/classes/mail.properties"/>
+		    	                <exclude name="**/*.page"/>
+		    	                <exclude name="**/*.application"/>
+		    	                <exclude name="**/*.jwc"/>
+		    	                <exclude name="**/*_page.xdt"/>
+		    	                <exclude name="**/managed-beans.xdt"/>
+		    	                <exclude name="docs/**"/>
+		    	                <exclude name="**/loginMenu.jsp"/>
+		    	                <exclude name="**/README.txt"/>
+		    	                <exclude name=".springBeansProject"/>
+		    	                <exclude name="**/*.jar"/>
+		    	                -->
+			</fileset>
+		</replaceregexp>
+	</target>
+
+</project>

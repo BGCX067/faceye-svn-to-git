@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="basic-environment">
+   <property name="extends.bak.dir" value="G:/ExtendSourceBak"/>
+    <!--property name="extends.bak.dir" value="l:/j2eesoruce"/-->
+	<property name="project.name" value="faceye">
+	</property>
+	<!-- 模板信息-->
+	<property name="template.dir" value="${basedir}/template/modeltemplate">
+	</property>
+	<!--tomcat 基础信息 -->
+	<property environment="env"></property>
+	<property name="tomcat.home" value="${env.CATALINA_HOME}"/>
+	<property name="tomcat.manager.url" value="http://localhost:8088/manager">
+	</property>
+	<property name="tomcat.manager.username" value="admin">
+	</property>
+	<property name="tomcat.manager.password" value="ecsunchina">
+	</property>
+	<property name="deploy.name" value="faceye-ext-portal"></property>
+	<property name="deplay.path" value="D:/WebDeploy"></property>
+</project>

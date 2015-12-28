@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+   
+  <bean id="userService" class="com.faceye.core.service.security.service.controller.UserService">
+    <property name="baseDao">
+      <ref bean="baseDao"/>
+    </property><!--
+    <property name="userCache">
+     <ref bean="userCache"/>
+    </property>
+  --></bean>
+  <bean id="permissionService" class="com.faceye.core.service.security.service.controller.PermissionService">
+    <property name="baseDao">
+      <ref bean="baseDao"/>
+    </property>
+  </bean>
+  <bean id="roleService" class="com.faceye.core.service.security.service.controller.RoleService">
+    <property name="baseDao">
+      <ref bean="baseDao"/>
+    </property>
+  </bean>
+  <bean id="resourceService" class="com.faceye.core.service.security.service.controller.ResourceService">
+     <property name="baseDao">
+      <ref bean="baseDao"/>
+    </property>
+  </bean>
+  <bean id="treeService" class="com.faceye.core.service.security.service.controller.TreeService">
+    <property name="baseDao">
+      <ref bean="baseDao"/>
+    </property>
+  </bean>
+  
+    <bean id="columnService" class="com.faceye.core.service.security.service.controller.ColumnService">
+    <property name="baseDao">
+      <ref bean="baseDao"/>
+    </property>
+    <property name="columnDao">
+      <ref bean="columnDao"/>
+    </property>
+    
+  </bean>
+</beans>

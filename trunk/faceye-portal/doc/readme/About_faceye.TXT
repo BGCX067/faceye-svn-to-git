@@ -1,0 +1,83 @@
+﻿Faceye 基础版概框
+
+更多内容请访问：http://ecsun.javaeye.com
+作者:海鹏 联系:myecsun@hotmail.com/Q:82676683/
+
+1.技术体系
+ Ext2.1,Struts1.3,Hibernate3.2,Spring2.5,Acegi 1.06,MySQL
+2.功能概述:
+Blog,RSS订阅,网址导航
+3.特色
+基于标准的SSH结构,基础Ext的展现界面,基于数据库的acegi安全认证.可随意更改的portal布局,可随意添加的portlet.
+4.如何安装Faceye基础版
+4.1.安装环境
+  JDK1.5及其以上
+  MySQL5.0以上
+  Tomcat5.5以上或其它Web容器,如JBoss
+  Ant(非必须,当然,如果有ant环境的话更好.)
+4.2.数据库安装.
+在进行本步操作之前,请确保MySQL数据库服务器已安装成功,并成功启动服务.
+进入x:/faceye/db/
+(注:x为你的驱动器盘符)
+可以看到数据库faceye.sql
+进行mysql根目录,如你的MySQL安装在C:/下
+那么你的根目录为:c:/MySQL/bin
+使用:mysql -u root -p
+其中 root为你MySQL数据库的用户名,当然你可以使用其它数据库用户,默认使用root用户
+执行完本命令后,控制台会提示您输入数据库密码,请输入数据库用户root的密码,如"root"
+进入MySQL控制台:
+mysql>source x:/faceye/db/faceye.sql
+执行完本命令,数据库导入结束.
+如果不能使用命令模式导入数据库,请尝试使用navicat8进入数据库的导入操作.
+
+4.3.部署
+将x:/faceye/dist/faceye.war拷贝至Web容器
+如果你使用的是tomcat,请拷贝至:x:/tomcat/Webapps/
+如果你使用的是JBoss,请拷贝至:x:/jboss/server/default/deploy
+（注：默认部署后既解包，如没有解包，请首先解包)
+
+4.4.数据库连接配置
+打开:x:/tomcat/faceye/WebRoot/Web-INF/classes/com/faceye/core/config/ApplicationContext-resource.xml
+修改数据库连接参数(主要为数据库端口(默认3306),用户名及密码(默认均为root))
+
+4.5.JS全局路径修改
+打开：x:/tomcat/faceye-ext-portal/WebRoot/scripts/util/Util.js
+找到：var BP='http://localhost:80/faceye/';进行修改
+如：你的web容器使用的是8080端口，则修改为：
+var BP='http://localhost:8080/faceye/';
+
+4.5.重启动faceye
+在做完以上操作后,既完成了基础的配置工作,可以启动服务器
+请以:http://localhost:port/faceye-ext-portal/(port为Web窗口端口,默认8080)
+
+系统用户名/密码：admin/admin
+
+4.5.如何从源码构建并部署至应用服务器.
+ 1.打开MyEclipse
+ 2.新建一web project
+ 3.部署到指定服务器.
+ (注：修改数据库连接及JS全局路径。)
+更多内容请访问：http://papalong.javaeye.com
+
+
+=FaceYe portal任务=
+
+
+
+关于Faceye开源项目的更多信息,请关注: http://faceye.com/haipeng 
+或：http://papalong.javaeye.com
+
+FaceYe　ext portal在线：
+http://faceye.com/faceye-ext-portal
+
+开放用户：admin/admin,guest/admin
+
+与海鹏联系：haipenge@gmail.com
+MSN:haipenge@gmail.com
+
+SVN:http://faceye.googlecode.com/svn/trunk
+
+
+
+
+
